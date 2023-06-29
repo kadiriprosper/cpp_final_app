@@ -167,12 +167,18 @@ class _HomePageState extends State<HomePage> {
                     child: GridView.builder(
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 6 / 7,
+                        crossAxisSpacing: 2,
                         crossAxisCount:
                             (MediaQuery.of(context).size.width / 150).floor(),
                       ),
+                      itemCount: HelperFunctions.trendingImages.length,
                       itemBuilder: (context, index) {
-                        return GridTile(
-                          child: Column(),
+                        return TrendingCategoryWidgetFinal(
+                          imagePath: HelperFunctions.trendingImages[index],
+                          label: 'UI/UX masterclass and some lot of stuff',
+                          onBookMark: () {},
+                          onPressed: () {},
                         );
                       },
                     ),
@@ -187,8 +193,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class TrendingCategoryCard extends StatelessWidget {
-  const TrendingCategoryCard({
+class TrendingCategoryWidgetFinal extends StatelessWidget {
+  const TrendingCategoryWidgetFinal({
     super.key,
     required this.imagePath,
     required this.label,
@@ -206,135 +212,41 @@ class TrendingCategoryCard extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: (MediaQuery.of(context).size.width / 2) - 16,
-        margin: const EdgeInsets.all(8),
-        // height: 200,
+        // margin: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
-          // color: Colors.blue,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Column(
-          children: [
-            Container(
-              width: (MediaQuery.of(context).size.width / 2) - 6,
-              height: 160,
-              // decoration: BoxDecoration(
-              //   // color: Colors.white,
-              //   borderRadius: BorderRadius.circular(15),
-              //   image: DecorationImage(
-              //     image: AssetImage(imagePath),
-              //     fit: BoxFit.contain,
-              //   ),
-              // ),
-              child: Stack(
-                children: [
-                  Image.asset(imagePath),
-                  Positioned(
-                    top: 15,
-                    left: 12,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
-                      ),
-                      padding: const EdgeInsets.all(3),
-                      //TODO: Check to see if the course has been bookmmarked
-                      //use the isBookmarked variable
-                      child: Center(
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-
-                          onPressed: onBookMark,
-                          //TODO: Update icon on click
-                          icon: const Icon(Icons.bookmark_outline_outlined),
-                          iconSize: 18,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 5,
-                  left: 3,
-                  right: 3,
-                ),
-                child: Text(
-                  label,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.start,
-                  maxLines: 2,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class TrendingCategoryWidget extends StatelessWidget {
-  const TrendingCategoryWidget({
-    super.key,
-    required this.isBookmarked,
-    required this.title,
-    required this.onClicked,
-    required this.imagePath,
-  });
-
-  final bool isBookmarked;
-  final String title;
-  final String imagePath;
-  final VoidCallback onClicked;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onClicked,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width / 2.2,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width / 2.5,
-              height: 160,
               decoration: BoxDecoration(
-                // color: Colors.black,
                 borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
-                  filterQuality: FilterQuality.high,
-                  image: AssetImage(
-                    imagePath,
-                  ),
-                  fit: BoxFit.contain,
-                ),
               ),
               child: Stack(
                 children: [
+                  Image.asset(
+                    imagePath,
+                    fit: BoxFit.cover,
+                  ),
                   Positioned(
-                    top: 15,
-                    left: 12,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
-                      ),
-                      padding: const EdgeInsets.all(3),
-                      //TODO: Check to see if the course has been bookmmarked
-                      //use the isBookmarked variable
-                      child: const Center(
-                        child: Icon(
-                          Icons.bookmark_outline_outlined,
-                          size: 18,
+                    top: 5,
+                    left: 5,
+                    child: InkWell(
+                      onTap: onBookMark,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        padding: const EdgeInsets.all(3),
+                        //TODO: Check to see if the course has been bookmmarked
+                        //use the isBookmarked variable
+                        child: Center(
+                          child: Icon(
+                            Icons.bookmark_outline_outlined,
+                            size: 20,
+                          ),
                         ),
                       ),
                     ),
@@ -342,15 +254,17 @@ class TrendingCategoryWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(right: 5),
+            Padding(
+              padding: const EdgeInsets.all(5).copyWith(
+                bottom: 2,
+              ),
               child: Text(
-                title,
+                label,
                 overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.start,
+                maxLines: 2,
                 style: const TextStyle(
-                  fontSize: 12,
                   fontWeight: FontWeight.bold,
+                  fontSize: 12,
                 ),
               ),
             )
