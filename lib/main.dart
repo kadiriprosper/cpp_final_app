@@ -8,6 +8,8 @@ import 'package:cpp_final_app/views/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
+//TODO: Change the text theme of the whole app
 void main() {
   runApp(const MainApp());
 }
