@@ -1,7 +1,19 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/chat_page.dart';
+import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
+import 'package:cpp_final_app/views/settingscreens/feedback_page.dart';
+import 'package:cpp_final_app/views/settingscreens/help_center_page.dart';
+import 'package:cpp_final_app/views/settingscreens/payments_page.dart';
+import 'package:cpp_final_app/views/settingscreens/privacy_page.dart';
+import 'package:cpp_final_app/widgets/custom_button.dart';
+import 'package:cpp_final_app/widgets/custom_button_small.dart';
+import 'package:cpp_final_app/widgets/profile_pic_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -18,20 +30,15 @@ class ProfilePage extends StatelessWidget {
               .appBarTheme
               .titleTextStyle
               ?.copyWith(fontWeight: FontWeight.bold)),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.grey,
-                radius: 46,
-                child: CircleAvatar(
-                  backgroundImage: AssetImage(HelperFunctions.profilePic),
-                  radius: 44,
-                ),
+              const ProfilePicWidget(
+                isEditable: false,
               ),
               const SizedBox(height: 10),
               //TODO: Get the username
@@ -65,20 +72,78 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 10),
               SettingsButton(
                 label: 'My Certification',
-                leadingIcon: Icon(Icons.badge),
+                leadingIcon:
+                    SvgPicture.asset(ProfileCustomIcon.certificateIcon),
+                onPressed: () {
+                  Get.to(const CertificatePage());
+                },
+              ),
+              const SizedBox(height: 15),
+              SettingsButton(
+                label: 'My Projects',
+                leadingIcon: SvgPicture.asset(ProfileCustomIcon.projectIcon),
                 onPressed: () {},
               ),
               const SizedBox(height: 15),
               SettingsButton(
-                label: 'My Certification',
-                leadingIcon: Icon(Icons.badge),
+                label: 'Saved Courses',
+                leadingIcon:
+                    SvgPicture.asset(ProfileCustomIcon.savedCourseIcon),
                 onPressed: () {},
               ),
-              //TODO: Add the remaining buttons and change the color
-              //TODO: Also change all the colors to fill the colors
               const SizedBox(height: 15),
-              //TODO: Work on the sign out button functionality
-              const SignOutSettingButton(),
+              SettingsButton(
+                label: 'My Card',
+                leadingIcon: SvgPicture.asset(ProfileCustomIcon.cardIcon),
+                onPressed: () {
+                  Get.to(const PaymentsPage());
+                },
+              ),
+              const SizedBox(height: 15),
+              SettingsButton(
+                label: 'Help Center',
+                leadingIcon: SvgPicture.asset(ProfileCustomIcon.helpCenterIcon),
+                onPressed: () {
+                  Get.to(const HelpCenterPage());
+                },
+              ),
+              const SizedBox(height: 15),
+              SettingsButton(
+                label: 'Privacy Policy',
+                leadingIcon:
+                    SvgPicture.asset(ProfileCustomIcon.privacyPolicyIcon),
+                onPressed: () {
+                  Get.to(const PrivacyPolicy());
+                },
+              ),
+              const SizedBox(height: 15),
+              SettingsButton(
+                label: 'Feedback',
+                leadingIcon: SvgPicture.asset(ProfileCustomIcon.feedbackIcon),
+                onPressed: () {
+                  Get.to(const FeedbackPage());
+                },
+              ),
+              const SizedBox(height: 15),
+              SettingsButton(
+                label: 'Rate Us',
+                leadingIcon: SvgPicture.asset(ProfileCustomIcon.rateIcon),
+                onPressed: () {
+                  Get.dialog(
+                    RateUsDialogBox(),
+                  );
+                },
+              ),
+              const SizedBox(height: 15),
+              CustomButton(
+                buttonColor: Colors.white,
+                buttonText: 'Logout',
+                onPressed: () {
+                  Get.dialog(
+                    const ProfileDialogBoxWidget(),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -87,79 +152,134 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-class SignOutSettingButton extends StatelessWidget {
-  const SignOutSettingButton({
+class RateUsDialogBox extends StatelessWidget {
+  const RateUsDialogBox({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: MaterialButton(
-        onPressed: () {},
-        height: 60,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: CustomColor.buttonColor1,
-          ),
+    return Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Container(
+        width: 500,
+        height: 500,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
         ),
-        minWidth: MediaQuery.of(context).size.width,
-        child: const Text(
-          'Logout',
-          style: TextStyle(
-            color: CustomColor.buttonColor1,
-          ),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+        child: Column(
+          children: [
+            Image.asset(
+              HelperFunctions.rateusPic,
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.high,
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Give Your Opinion',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Your opinion matters to us a lot, we\'d love to know how you rate this app',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 12,
+              ),
+            ),
+            const SizedBox(height: 10),
+            RatingBar.builder(
+              allowHalfRating: true,
+              glowColor: Colors.amberAccent,
+              itemSize: 50,
+              maxRating: 5,
+              itemCount: 5,
+              itemBuilder: (context, index) => const Icon(
+                Icons.star_rate_rounded,
+                color: Colors.amber,
+              ),
+              onRatingUpdate: (value) {
+                //TODO: Get the rating value from the widget
+              },
+            ),
+            const Spacer(),
+            ButtonBar(
+              children: [
+                CustomButtonSmall(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  title: 'Cancel',
+                ),
+                CustomButtonSmall(
+                  onPressed: () {},
+                  title: 'Submit',
+                  textColor: CustomColor.buttonColor1,
+                  buttonColor: Colors.white,
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
   }
 }
 
-class SettingsButton extends StatelessWidget {
-  const SettingsButton({
+class ProfileDialogBoxWidget extends StatelessWidget {
+  const ProfileDialogBoxWidget({
     super.key,
-    required this.label,
-    required this.onPressed,
-    required this.leadingIcon,
   });
-
-  final String label;
-  final VoidCallback onPressed;
-  final Icon leadingIcon;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 13),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.blue,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset.fromDirection(90),
-              blurRadius: 10,
-              spreadRadius: 2,
+    return SimpleDialog(
+      //TODO: Probably convert this to container instead of simple dialog
+      //TODO: Also use the index to know which card is selected
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      title: const Text(
+        'Are you sure you want to Logout!',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
+      ),
+      children: [
+        ButtonBar(
+          alignment: MainAxisAlignment.center,
+          children: [
+            CustomButtonSmall(
+              onPressed: () {
+                //TODO: Code to logout
+              },
+              title: 'Yes',
+            ),
+            CustomButtonSmall(
+              onPressed: () {
+                Get.back();
+              },
+              buttonColor: Colors.white,
+              textColor: CustomColor.buttonColor1,
+              title: 'No',
             ),
           ],
         ),
-        child: ListTile(
-          leading: leadingIcon,
-          title: Text(
-            label,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 14,
-            ),
-          ),
-          trailing: const Icon(Icons.arrow_forward_ios_rounded),
-        ),
-      ),
+      ],
     );
   }
 }

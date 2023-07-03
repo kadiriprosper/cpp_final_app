@@ -31,16 +31,27 @@ class _CoursesPageState extends State<CoursesPage> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: CustomColor.color14,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  offset: Offset.fromDirection(90),
+                  blurRadius: 10,
+                  spreadRadius: 0.1,
+                ),
+              ],
             ),
             width: MediaQuery.of(context).size.width,
             height: 45,
             child: ButtonBar(
-              buttonPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+              buttonPadding: const EdgeInsets.symmetric(
+                vertical: 0,
+                horizontal: 5,
+              ),
               alignment: MainAxisAlignment.center,
               children: [
                 StatusButton(
@@ -64,7 +75,7 @@ class _CoursesPageState extends State<CoursesPage> {
               ],
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           isOngoingSelected
               ? CoursesListView(totalCourseProgress: totalCourseProgress)
               : CoursesListView(totalCourseProgress: totalCourseProgress),
@@ -98,8 +109,16 @@ class CoursesListView extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset.fromDirection(90),
+                blurRadius: 10,
+                spreadRadius: 0.1,
+              ),
+            ],
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -111,22 +130,23 @@ class CoursesListView extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image:
-                        AssetImage(HelperFunctions.ongoingCourseImages[index]),
+                    image: AssetImage(
+                      HelperFunctions.ongoingCourseImages[index],
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               Container(
                 padding: const EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width / 1.9,
+                // width: MediaQuery.of(context).size.width / 2.2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'UI UX Design',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -134,22 +154,30 @@ class CoursesListView extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       '8 Lessons to go',
-                      style: TextStyle(
-                        fontSize: 12,
+                      style: const TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(height: 10),
                     Row(
                       children: [
                         SizedBox(
-                          width: MediaQuery.of(context).size.width / 3,
+                          width: MediaQuery.of(context).size.width - 200,
                           child: LinearProgressIndicator(
                             value: totalCourseProgress / 100,
+                            minHeight: 3.5,
                             color: CustomColor.buttonColor1,
                           ),
                         ),
-                        const SizedBox(width: 5),
-                        Text('$totalCourseProgress%'),
+                        const SizedBox(width: 10),
+                        Text(
+                          '$totalCourseProgress%',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -180,7 +208,16 @@ class StatusButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: isSelected ? Colors.blueAccent.shade200 : Colors.transparent,
+      // hoverColor: Colors.transparent,
+      // splashColor: Colors.transparent,
+      // focusColor: Colors.transparent,
+      // highlightColor: Colors.transparent,
+      colorBrightness: Brightness.dark,
+      hoverElevation: 0,
+      highlightElevation: 0,
+      color: isSelected
+          ? const Color.fromARGB(255, 212, 228, 253)
+          : Colors.transparent,
       elevation: 0,
       // padding: EdgeInsets.all(0),
       shape: RoundedRectangleBorder(
@@ -193,8 +230,8 @@ class StatusButton extends StatelessWidget {
         label,
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 14,
-          color: isSelected ? CustomColor.buttonColor1 : Colors.white,
+          fontSize: 12,
+          color: isSelected ? CustomColor.buttonColor1 : Colors.grey,
         ),
       ),
     );

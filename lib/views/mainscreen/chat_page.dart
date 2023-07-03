@@ -103,14 +103,14 @@ class UserChatCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 198, 229, 255),
+          color: Color.fromARGB(244, 250, 250, 250),
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
               offset: Offset.fromDirection(90),
               blurRadius: 10,
-              spreadRadius: 2,
+              spreadRadius: .1,
             ),
           ],
         ),

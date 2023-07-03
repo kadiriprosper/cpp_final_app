@@ -67,9 +67,10 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 15),
             //TODO: Change the widget to a proper carousal
-            SizedBox(
+            Container(
               height: 140,
               width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -97,29 +98,64 @@ class _HomePageState extends State<HomePage> {
             Container(
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.symmetric(horizontal: 5),
-              height: 130,
+              alignment: Alignment.center,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: List.generate(
-                    HelperFunctions.categoryImages.length,
-                    (index) => CategoryWidget(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CategoryWidget(
                       label: 'Design',
                       onPressed: () {},
-                      photoPath: HelperFunctions.categoryImages[index],
-                      isFirst: index == 0,
-                      isLast: index ==
-                          HelperFunctions.categoryImages.indexOf(
-                            HelperFunctions.categoryImages.last,
-                          ),
-                      color: [
-                        CustomColor.color1,
-                        CustomColor.color2,
-                        CustomColor.color4,
-                        CustomColor.color4,
-                      ][index],
+                      photoPath: HelperFunctions.categoryImages[0],
+                      isFirst: true,
+                      isLast: false,
+                      color: CustomColor.color1,
                     ),
-                  ),
+                    CategoryWidget(
+                      label: 'Code',
+                      onPressed: () {},
+                      photoPath: HelperFunctions.categoryImages[1],
+                      isFirst: true,
+                      isLast: false,
+                      color: CustomColor.color1,
+                    ),
+                    CategoryWidget(
+                      label: 'Business',
+                      onPressed: () {},
+                      photoPath: HelperFunctions.categoryImages[2],
+                      isFirst: true,
+                      isLast: false,
+                      color: CustomColor.color3,
+                    ),
+                    CategoryWidget(
+                      label: 'Hello',
+                      onPressed: () {},
+                      photoPath: HelperFunctions.categoryImages[3],
+                      isFirst: true,
+                      isLast: false,
+                      color: CustomColor.color1,
+                    ),
+                  ],
+                  // List.generate(
+                  //   HelperFunctions.categoryImages.length,
+                  //   (index) => CategoryWidget(
+                  //     label: 'Design',
+                  //     onPressed: () {},
+                  //     photoPath: HelperFunctions.categoryImages[index],
+                  //     isFirst: index == 0,
+                  //     isLast: index ==
+                  //         HelperFunctions.categoryImages.indexOf(
+                  //           HelperFunctions.categoryImages.last,
+                  //         ),
+                  //     color: [
+                  //       CustomColor.color1,
+                  //       CustomColor.color2,
+                  //       CustomColor.color4,
+                  //       CustomColor.color4,
+                  //     ][index],
+                  //   ),
+                  // ),
                 ),
               ),
             ),
@@ -127,10 +163,12 @@ class _HomePageState extends State<HomePage> {
             Container(
               // height: 230,
               width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
               // margin: const EdgeInsets.symmetric(horizontal: 10).copyWith(
               //   bottom: 10,
               // ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CategoryHeader(
                     buttonLabel: 'See All',
@@ -256,7 +294,7 @@ class TrendingCategoryWidgetFinal extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(5).copyWith(
-                bottom: 2,
+                bottom: 0,
               ),
               child: Text(
                 label,

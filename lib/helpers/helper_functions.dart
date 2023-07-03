@@ -38,4 +38,19 @@ class HelperFunctions {
   ];
 
   static String profilePic = 'assets/home/profile_icon.png';
+  static String certificatePic = 'assets/profile/certificate.png';
+  static String rateusPic = 'assets/profile/rateus.png';
+}
+
+class ProfileCustomIcon {
+  static String certificateIcon = 'assets/profile/award.svg';
+  static String projectIcon = 'assets/profile/book.svg';
+  static String cardIcon = 'assets/profile/card.svg';
+  static String savedCourseIcon = 'assets/profile/frame.svg';
+  static String helpCenterIcon = 'assets/profile/info-circle.svg';
+  static String privacyPolicyIcon = 'assets/profile/lock.svg';
+  static String feedbackIcon = 'assets/profile/like.svg';
+  static String rateIcon = 'assets/profile/heart.svg';
+  static String ratingStarFilled = 'assets/profile/rating_fill.svg';
+  static String ratingStar = 'assets/profile/rating_unfill.svg';
 }
