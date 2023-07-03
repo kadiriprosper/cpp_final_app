@@ -43,4 +43,6 @@ flutter:
     - assets/nav-icon/
     - assets/profile/
     - assets/project/
+    - assets/contact/
+    - assets/payment/
 

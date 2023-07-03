@@ -1,8 +1,11 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:cpp_final_app/widgets/profile_pic_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -22,7 +25,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
       appBar: CustomAppBar(
         hasLeading: true,
         title: 'Edit Profile',
-        onBack: () {},
+        onBack: () {
+          Get.back();
+        },
       ).build(context),
       body: SingleChildScrollView(
         child: SizedBox(
@@ -37,19 +42,31 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(height: 20),
               EditProfileTextField(
                 controller: nameController,
-                icon: Icons.person_2_rounded,
+                icon: Icon(
+                  Icons.person_2,
+                ),
+                // SvgPicture.asset(
+                //   EditProfileIcon.profileIcon,
+                //   fit: BoxFit.contain,
+                //   height: 10,
+                // ),
                 keyboardType: TextInputType.name,
               ),
               const SizedBox(height: 20),
               EditProfileTextField(
                 controller: emailController,
-                icon: Icons.email_rounded,
+                icon: Icon(Icons.mail),
+                // SvgPicture.asset(
+                //   EditProfileIcon.mailIcon,
+                //   height: 10,
+                // ),
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 20),
               EditProfileTextField(
                 controller: numberController,
-                icon: Icons.phone_outlined,
+                icon: Icon(Icons.phone),
+                //SvgPicture.asset(EditProfileIcon.callIcon),
                 keyboardType: TextInputType.phone,
               ),
               const Spacer(),
@@ -77,7 +94,7 @@ class EditProfileTextField extends StatelessWidget {
   });
 
   final TextEditingController controller;
-  final IconData icon;
+  final Widget icon;
   final TextInputType keyboardType;
 
   @override
@@ -102,7 +119,7 @@ class EditProfileTextField extends StatelessWidget {
         controller: controller,
         keyboardType: keyboardType,
         decoration: InputDecoration(
-          prefixIcon: Icon(icon),
+          prefixIcon: icon,
           border: const OutlineInputBorder(
             borderSide: BorderSide.none,
           ),

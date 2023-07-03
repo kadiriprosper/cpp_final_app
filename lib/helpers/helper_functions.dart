@@ -42,6 +42,20 @@ class HelperFunctions {
   static String rateusPic = 'assets/profile/rateus.png';
 }
 
+class EditProfileIcon {
+  static String profileIcon = 'assets/profile/profile-1.svg';
+  static String mailIcon = 'assets/profile/email.svg';
+  static String callIcon = 'assets/profile/call_grey.svg';
+}
+
+class ContactIcon {
+  static String customerServiceIcon = 'assets/contact/headphone.svg';
+  static String websiteIcon = 'assets/contact/website.svg';
+  static String whatsappIcon = 'assets/contact/whatsapp.svg';
+  static String facebookIcon = 'assets/contact/facebook_icon.svg';
+  static String instagramIcon = 'assets/contact/instagram.svg';
+}
+
 class ProfileCustomIcon {
   static String certificateIcon = 'assets/profile/award.svg';
   static String projectIcon = 'assets/profile/book.svg';
@@ -53,4 +67,23 @@ class ProfileCustomIcon {
   static String rateIcon = 'assets/profile/heart.svg';
   static String ratingStarFilled = 'assets/profile/rating_fill.svg';
   static String ratingStar = 'assets/profile/rating_unfill.svg';
+  static String editIcon = 'assets/profile/edit-2.svg';
+}
+
+class NavCustomIcon {
+  static String chatIcon = 'assets/nav-icon/chat_bold.svg';
+  static String chatOutlined = 'assets/nav-icon/chat.svg';
+  static String courseIcon = 'assets/nav-icon/course_bold.svg';
+  static String courseOutlined = 'assets/nav-icon/course.svg';
+  static String homeIcon = 'assets/nav-icon/home_bold.svg';
+  static String homeOutlined = 'assets/nav-icon/home.svg';
+  static String profileIcon = 'assets/nav-icon/profile_bold.svg';
+  static String profileOutlined = 'assets/nav-icon/profile.svg';
+}
+
+class PaymentIcon {
+  static String cashIcon = 'assets/payment/cash.png';
+  static String mastercardIcon = 'assets/payment/mastercard.png';
+  static String paypalIcon = 'assets/payment/paypal.png';
+  static String visaIcon = 'assets/payment/visa.png';
 }

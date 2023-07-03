@@ -1,6 +1,8 @@
+import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HelpCenterPage extends StatefulWidget {
@@ -92,31 +94,31 @@ class ContactUsPage extends StatelessWidget {
         ContactUsButton(
           title: 'Customer Service',
           onPressed: () {},
-          icon: Icons.webhook_rounded,
+          icon: SvgPicture.asset(ContactIcon.customerServiceIcon),
         ),
         const SizedBox(height: 10),
         ContactUsButton(
           title: 'Website',
           onPressed: () {},
-          icon: Icons.webhook_rounded,
+          icon: SvgPicture.asset(ContactIcon.websiteIcon),
         ),
         const SizedBox(height: 10),
         ContactUsButton(
           title: 'Whatsapp',
           onPressed: () {},
-          icon: Icons.webhook_rounded,
+          icon: SvgPicture.asset(ContactIcon.whatsappIcon),
         ),
         const SizedBox(height: 10),
         ContactUsButton(
           title: 'Facebook',
           onPressed: () {},
-          icon: Icons.webhook_rounded,
+          icon: SvgPicture.asset(ContactIcon.facebookIcon),
         ),
         const SizedBox(height: 10),
         ContactUsButton(
           title: 'Instagram',
           onPressed: () {},
-          icon: Icons.webhook_rounded,
+          icon: SvgPicture.asset(ContactIcon.instagramIcon),
         ),
       ],
     );
@@ -132,7 +134,7 @@ class ContactUsButton extends StatelessWidget {
   });
 
   final VoidCallback onPressed;
-  final IconData icon;
+  final Widget icon;
   final String title;
 
   @override
@@ -157,7 +159,7 @@ class ContactUsButton extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon),
+            icon,
             const SizedBox(width: 10),
             Text(
               title,

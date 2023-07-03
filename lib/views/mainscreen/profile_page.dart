@@ -2,6 +2,7 @@ import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/chat_page.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
+import 'package:cpp_final_app/views/settingscreens/edit_profile_page.dart';
 import 'package:cpp_final_app/views/settingscreens/feedback_page.dart';
 import 'package:cpp_final_app/views/settingscreens/help_center_page.dart';
 import 'package:cpp_final_app/views/settingscreens/payments_page.dart';
@@ -50,7 +51,9 @@ class ProfilePage extends StatelessWidget {
               ),
               MaterialButton(
                 onPressed: () {
-                  //TODO: Edit the username
+                  Get.to(
+                    () => const EditProfilePage(),
+                  );
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,

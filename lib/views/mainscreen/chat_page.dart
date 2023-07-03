@@ -1,6 +1,7 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -82,7 +83,14 @@ class ChatPage extends StatelessWidget {
         },
         //TODO: Get the icon from the ux designer
         backgroundColor: CustomColor.buttonColor1,
-        child: const Icon(Icons.create),
+        child: SvgPicture.asset(
+          ProfileCustomIcon.editIcon,
+          height: 25,
+          colorFilter: ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        ),
       ),
     );
   }

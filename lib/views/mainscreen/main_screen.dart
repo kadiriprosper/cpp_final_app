@@ -1,10 +1,12 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/cpp_icons_icons.dart';
+import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/chat_page.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
 import 'package:cpp_final_app/views/mainscreen/home_page.dart';
 import 'package:cpp_final_app/views/mainscreen/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -37,39 +39,43 @@ class _MainScreenState extends State<MainScreen> {
         showUnselectedLabels: false,
         selectedItemColor: CustomColor.buttonColor1,
         elevation: 0,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: CustomInactiveIcon(
-                icon: Icon(CppIcons.home),
-              ),
-              activeIcon: CustomActiveIcon(
-                icon: Icon(CppIcons.home_bold),
-              ),
-              label: 'home'),
+            icon: CustomInactiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.homeOutlined),
+            ),
+            activeIcon: CustomActiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.homeIcon),
+            ),
+            label: 'home',
+          ),
           BottomNavigationBarItem(
-              icon: CustomInactiveIcon(
-                icon: Icon(CppIcons.course),
-              ),
-              activeIcon: CustomActiveIcon(
-                icon: Icon(CppIcons.course_bold),
-              ),
-              label: 'courses'),
+            icon: CustomInactiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.courseOutlined),
+            ),
+            activeIcon: CustomActiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.courseIcon),
+            ),
+            label: 'courses',
+          ),
           BottomNavigationBarItem(
-              icon: CustomInactiveIcon(
-                icon: Icon(CppIcons.chat),
-              ),
-              activeIcon: CustomActiveIcon(
-                icon: Icon(CppIcons.chat_bold),
-              ),
-              label: 'chat'),
+            icon: CustomInactiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.chatOutlined),
+            ),
+            activeIcon: CustomActiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.chatIcon),
+            ),
+            label: 'chat',
+          ),
           BottomNavigationBarItem(
-              icon: CustomInactiveIcon(
-                icon: Icon(CppIcons.profile),
-              ),
-              activeIcon: CustomActiveIcon(
-                icon: Icon(CppIcons.profile_bold),
-              ),
-              label: 'profile'),
+            icon: CustomInactiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.profileOutlined),
+            ),
+            activeIcon: CustomActiveIcon(
+              icon: SvgPicture.asset(NavCustomIcon.profileIcon),
+            ),
+            label: 'profile',
+          ),
         ],
       ),
     );
@@ -82,7 +88,7 @@ class CustomInactiveIcon extends StatelessWidget {
     required this.icon,
   });
 
-  final Icon icon;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +109,7 @@ class CustomActiveIcon extends StatelessWidget {
     required this.icon,
   });
 
-  final Icon icon;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,10 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
+import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:cpp_final_app/widgets/custom_button_small.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class PaymentsPage extends StatelessWidget {
   const PaymentsPage({super.key});
@@ -16,22 +17,23 @@ class PaymentsPage extends StatelessWidget {
         title: 'Payment',
         onBack: () {},
       ).build(context),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        padding: const EdgeInsets.all(15).copyWith(bottom: 5),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height - 60,
+          padding: const EdgeInsets.all(15).copyWith(bottom: 20),
           child: Column(
             children: [
               PaymentCard(
-                icon: MdiIcons.cash,
+                icon: Image.asset(
+                  PaymentIcon.paypalIcon,
+                  height: 25,
+                  filterQuality: FilterQuality.high,
+                ),
                 title: 'Paypal',
                 onPressed: (value) {
                   if (value == 0) {
-                    Get.bottomSheet(
-                      PaymentBottomSheet()
-                      
-                    );
+                    Get.bottomSheet(const PaymentBottomSheet());
                   } else {
                     Get.dialog(
                       const DialogBoxWidget(),
@@ -42,23 +44,42 @@ class PaymentsPage extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               PaymentCard(
-                icon: MdiIcons.cash,
+                icon: Image.asset(
+                  PaymentIcon.mastercardIcon,
+                  height: 25,
+                  filterQuality: FilterQuality.high,
+                ),
                 title: 'Master Card',
                 onPressed: (value) {},
               ),
               const SizedBox(height: 15),
               PaymentCard(
-                icon: MdiIcons.cash,
+                icon: Image.asset(
+                  PaymentIcon.visaIcon,
+                  height: 25,
+                  filterQuality: FilterQuality.high,
+                ),
                 title: 'Visa',
                 onPressed: (value) {},
               ),
               const SizedBox(height: 15),
               PaymentCard(
-                icon: MdiIcons.cash,
+                icon: Image.asset(
+                  PaymentIcon.cashIcon,
+                  height: 25,
+                  filterQuality: FilterQuality.high,
+                ),
                 title: 'Cash',
                 onPressed: (value) {},
               ),
               const SizedBox(height: 15),
+              const Spacer(),
+              CustomButton(
+                buttonColor: CustomColor.buttonColor1,
+                buttonText: 'Add New Card',
+                onPressed: () {},
+                textColor: Colors.white,
+              ),
             ],
           ),
         ),
@@ -111,7 +132,9 @@ class DialogBoxWidget extends StatelessWidget {
               title: 'Yes',
             ),
             CustomButtonSmall(
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+              },
               buttonColor: Colors.white,
               textColor: CustomColor.buttonColor1,
               title: 'No',
@@ -123,7 +146,6 @@ class DialogBoxWidget extends StatelessWidget {
   }
 }
 
-
 class PaymentCard extends StatelessWidget {
   const PaymentCard({
     super.key,
@@ -133,7 +155,7 @@ class PaymentCard extends StatelessWidget {
   });
 
   final String title;
-  final IconData icon;
+  final Widget icon;
   final void Function(int) onPressed;
 
   @override
@@ -159,8 +181,7 @@ class PaymentCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              //TODO: Put the icons here
-              Icon(icon),
+              icon,
               const SizedBox(width: 20),
               Text(
                 title,
