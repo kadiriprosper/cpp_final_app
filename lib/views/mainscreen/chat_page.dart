@@ -86,7 +86,7 @@ class ChatPage extends StatelessWidget {
         child: SvgPicture.asset(
           ProfileCustomIcon.editIcon,
           height: 25,
-          colorFilter: ColorFilter.mode(
+          colorFilter: const ColorFilter.mode(
             Colors.white,
             BlendMode.srcIn,
           ),
