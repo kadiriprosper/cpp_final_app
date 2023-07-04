@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
+  int carouselIndex = 0;
+  CarouselController controller = CarouselController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,34 +70,64 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 15),
             //TODO: Change the widget to a proper carousal
-            Container(
-              height: 140,
-              width: MediaQuery.of(context).size.width,
-              alignment: Alignment.center,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    HelperFunctions.sliderImages.length,
-                    (index) => SliderWidget(
-                      onPressed: () {},
-                      buttonTitle:
-                          'Get Started', //TODO: Connect to a list of button name
-                      label:
-                          'What do yo want to learn', //TODO: Connect to a list of slider titles
-                      sliderColor: [
-                        CustomColor.color1,
-                        CustomColor.color2,
-                        CustomColor.color3
-                      ][index],
-                      photoPath: HelperFunctions.sliderImages[index],
+            CarouselSlider.builder(
+              carouselController: controller,
+              itemCount: HelperFunctions.sliderImages.length,
+              options: CarouselOptions(
+                height: 160,
+                enlargeFactor: .2,
+                enlargeCenterPage: true,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    carouselIndex = index;
+                  });
+                },
+              ),
+              itemBuilder: (context, index, realIndex) {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: SliderWidget(
+                    onPressed: () {},
+                    buttonTitle:
+                        'Get Started', //TODO: Connect to a list of button name
+                    label:
+                        'What do yo want to learn', //TODO: Connect to a list of slider titles
+                    sliderColor: [
+                      CustomColor.color1,
+                      CustomColor.color2,
+                      CustomColor.color3
+                    ][index],
+                    photoPath: HelperFunctions.sliderImages[index],
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                HelperFunctions.sliderImages.length,
+                (index) => InkWell(
+                  onTap: () {
+                    setState(() {
+                      controller.animateToPage(index);
+                    });
+                  },
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    margin: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: index == carouselIndex
+                          ? CustomColor.buttonColor1
+                          : const Color.fromARGB(255, 223, 223, 223),
+                      shape: BoxShape.circle,
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             Container(
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -137,36 +170,13 @@ class _HomePageState extends State<HomePage> {
                       color: CustomColor.color1,
                     ),
                   ],
-                  // List.generate(
-                  //   HelperFunctions.categoryImages.length,
-                  //   (index) => CategoryWidget(
-                  //     label: 'Design',
-                  //     onPressed: () {},
-                  //     photoPath: HelperFunctions.categoryImages[index],
-                  //     isFirst: index == 0,
-                  //     isLast: index ==
-                  //         HelperFunctions.categoryImages.indexOf(
-                  //           HelperFunctions.categoryImages.last,
-                  //         ),
-                  //     color: [
-                  //       CustomColor.color1,
-                  //       CustomColor.color2,
-                  //       CustomColor.color4,
-                  //       CustomColor.color4,
-                  //     ][index],
-                  //   ),
-                  // ),
                 ),
               ),
             ),
             const SizedBox(height: 10),
             Container(
-              // height: 230,
               width: MediaQuery.of(context).size.width,
               alignment: Alignment.center,
-              // margin: const EdgeInsets.symmetric(horizontal: 10).copyWith(
-              //   bottom: 10,
-              // ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -176,37 +186,13 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {},
                   ),
                   const SizedBox(height: 5),
-                  // Container(
-                  //   width: MediaQuery.of(context).size.width,
-                  //   // height: 200,
-                  //   constraints:
-                  //       const BoxConstraints(maxHeight: 210, minHeight: 200),
-                  //   // color: Colors.black,
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       TrendingCategoryCard(
-                  //         imagePath: HelperFunctions.trendingImages.first,
-                  //         label: 'UI/UX Design Master class and',
-                  //         onBookMark: () {},
-                  //         onPressed: () {},
-                  //       ),
-                  //       TrendingCategoryCard(
-                  //         imagePath: HelperFunctions.trendingImages[1],
-                  //         label: 'Office management master class',
-                  //         onBookMark: () {},
-                  //         onPressed: () {},
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: GridView.builder(
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio: 6 / 7,
-                        crossAxisSpacing: 2,
+                        crossAxisSpacing: 4,
                         crossAxisCount:
                             (MediaQuery.of(context).size.width / 150).floor(),
                       ),
@@ -456,7 +442,10 @@ class SliderWidget extends StatelessWidget {
                 MaterialButton(
                   onPressed: onPressed,
                   textColor: CustomColor.buttonColor1,
-                  child: Text(buttonTitle),
+                  child: Text(
+                    buttonTitle,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),

@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
     ChatPage(),
     ProfilePage(),
   ];
-  int currentIndex = 3;
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

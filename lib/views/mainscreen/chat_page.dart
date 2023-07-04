@@ -1,7 +1,9 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/views/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -107,11 +109,15 @@ class UserChatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       //TODO: Link the route to the next page
-      onTap: () {},
+      onTap: () {
+        //TODO: Do some computations here to assign the person clicked to..
+        //TODO: ..the controller
+        Get.to(() => const ChatScreen());
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
-          color: Color.fromARGB(244, 250, 250, 250),
+          color: const Color.fromARGB(244, 250, 250, 250),
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
@@ -196,9 +202,11 @@ class UserChatIcon extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.imagePath,
+    this.isUserOnline = false,
   });
 
   final VoidCallback onTap;
+  final bool isUserOnline;
   //TODO: Technically, get the user info model (provider) and get the image
   //TODO: might even remove the voidcallback property and do all the calculations inside
   final String imagePath;
@@ -230,7 +238,8 @@ class UserChatIcon extends StatelessWidget {
                 right: 1,
                 child: CircleAvatar(
                   radius: 5,
-                  backgroundColor: Colors.green,
+                  backgroundColor:
+                      isUserOnline ? Colors.green : Colors.transparent,
                 ),
               )
             ],

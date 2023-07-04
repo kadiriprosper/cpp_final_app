@@ -5,7 +5,8 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     required this.hasLeading,
-    required this.title,
+    this.title,
+    this.titleWidget,
     this.bgColor = Colors.white,
     this.fgColor = Colors.black,
     this.onBack,
@@ -15,7 +16,8 @@ class CustomAppBar extends StatelessWidget {
   final bool hasLeading;
   final VoidCallback? onBack;
   final List<Widget>? actions;
-  final String title;
+  final String? title;
+  final Widget? titleWidget;
   final Color bgColor;
   final Color fgColor;
   @override
@@ -33,13 +35,15 @@ class CustomAppBar extends StatelessWidget {
               )
             : null,
         automaticallyImplyLeading: false,
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 19,
-          ),
-        ),
+        titleSpacing: 0,
+        title: titleWidget ??
+            Text(
+              title ?? '',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 19,
+              ),
+            ),
         backgroundColor: bgColor,
         foregroundColor: fgColor,
         actions: actions,
