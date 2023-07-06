@@ -199,11 +199,13 @@ class StatusButton extends StatelessWidget {
     required this.label,
     required this.onPressed,
     required this.isSelected,
+    this.width,
   });
 
   final String label;
   final VoidCallback onPressed;
   final bool isSelected;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +225,7 @@ class StatusButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      minWidth: MediaQuery.of(context).size.width / 2.3,
+      minWidth: width ?? MediaQuery.of(context).size.width / 2.3,
       height: 50,
       onPressed: onPressed,
       child: Text(

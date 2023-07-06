@@ -40,6 +40,11 @@ class HelperFunctions {
   static String profilePic = 'assets/home/profile_icon.png';
   static String certificatePic = 'assets/profile/certificate.png';
   static String rateusPic = 'assets/profile/rateus.png';
+
+  static String courseImage = 'assets/courses/cppimg.jpeg';
+  static String lessonsImage = 'assets/courses/lessons.svg';
+  static String programImage = 'assets/courses/program.png';
+  static String qaImage = 'assets/courses/qa.png';
 }
 
 class EditProfileIcon {

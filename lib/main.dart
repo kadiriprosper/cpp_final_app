@@ -3,6 +3,8 @@ import 'package:cpp_final_app/views/auth/login_page.dart';
 import 'package:cpp_final_app/views/auth/registration/mobile_auth_page.dart';
 import 'package:cpp_final_app/views/auth/registration/registration_page.dart';
 import 'package:cpp_final_app/views/auth/registration/verification_page.dart';
+import 'package:cpp_final_app/views/course_page.dart';
+import 'package:cpp_final_app/views/courses_list.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:cpp_final_app/views/settingscreens/edit_profile_page.dart';
@@ -28,7 +30,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: CustomTheme.dayTheme,
       defaultTransition: Transition.cupertino,
-      home: const MainScreen(),
+      home: const CourseList(),
     );
   }
 }
