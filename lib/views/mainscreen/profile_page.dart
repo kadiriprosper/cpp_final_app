@@ -170,7 +170,7 @@ class RateUsDialogBox extends StatelessWidget {
       ),
       child: Container(
         width: 500,
-        height: 500,
+        height: MediaQuery.of(context).size.height / 1.1,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -216,6 +216,7 @@ class RateUsDialogBox extends StatelessWidget {
             ),
             const Spacer(),
             ButtonBar(
+              alignment: MainAxisAlignment.center,
               children: [
                 CustomButtonSmall(
                   onPressed: () {
@@ -223,6 +224,7 @@ class RateUsDialogBox extends StatelessWidget {
                   },
                   title: 'Cancel',
                 ),
+                const SizedBox(height: 10),
                 CustomButtonSmall(
                   onPressed: () {},
                   title: 'Submit',

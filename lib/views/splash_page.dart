@@ -14,12 +14,35 @@ class SplashPage extends StatelessWidget {
             () => Get.to(() => const OnboardingPage()),
           ),
           builder: (context, snapshot) {
-            return Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                height: MediaQuery.of(context).size.height / 2,
-                child: Image.asset('assets/logo.png'),
-              ),
+            return Stack(
+              children: [
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: MediaQuery.of(context).size.height / 2,
+                    child: Image.asset('assets/logo.png'),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        'Team TYP',
+                        style: TextStyle(
+                          fontSize: 32,
+                          color: Color.fromARGB(148, 101, 123, 141),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 10,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             );
           }),
     );

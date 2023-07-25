@@ -30,7 +30,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: CustomTheme.dayTheme,
       defaultTransition: Transition.cupertino,
-      home: const CourseList(),
+      home: const MainScreen(),
     );
   }
 }

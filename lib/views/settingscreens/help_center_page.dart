@@ -1,6 +1,7 @@
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
+import 'package:cpp_final_app/widgets/faq_expansion_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         onBack: () {},
       ).build(context),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
@@ -198,51 +199,3 @@ class FAQPage extends StatelessWidget {
   }
 }
 
-class FAQExpansionWidget extends StatelessWidget {
-  const FAQExpansionWidget({
-    super.key,
-    required this.title,
-    required this.text,
-  });
-
-  final String title;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            offset: Offset.fromDirection(90),
-            blurRadius: 10,
-            spreadRadius: 3,
-          ),
-        ],
-      ),
-      child: ExpansionTile(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        childrenPadding: const EdgeInsets.all(10).copyWith(bottom: 15),
-        expandedAlignment: Alignment.centerLeft,
-        children: [
-          Text(text),
-        ],
-      ),
-    );
-  }
-}
