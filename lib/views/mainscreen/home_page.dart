@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/views/course_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,8 +22,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Container(
       // padding: const EdgeInsets.symmetric(horizontal: 20),
-      width: double.infinity,
-      height: double.infinity,
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 //TODO: Put the controller
+
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(28),
@@ -202,7 +205,9 @@ class _HomePageState extends State<HomePage> {
                           imagePath: HelperFunctions.trendingImages[index],
                           label: 'UI/UX masterclass and some lot of stuff',
                           onBookMark: () {},
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(const CoursePage());
+                          },
                         );
                       },
                     ),

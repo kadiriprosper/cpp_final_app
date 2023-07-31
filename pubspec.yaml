@@ -13,6 +13,7 @@ dependencies:
   firebase_core: ^2.14.0
   flutter:
     sdk: flutter
+  flutter_filereader: ^3.0.0
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.7
   get: ^4.6.5
@@ -20,7 +21,11 @@ dependencies:
   image_picker: ^0.8.9
   material_design_icons_flutter: ^7.0.7296
   path_provider: ^2.0.15
+  pdf: ^3.10.4
+  # printing: ^5.11.0
   rive: ^0.7.16
+  syncfusion_flutter_pdfviewer: ^22.1.39
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:
@@ -47,4 +52,6 @@ flutter:
     - assets/contact/
     - assets/payment/
     - assets/courses/
+    # - assets/policy.pdf
+    - assets/data/
 

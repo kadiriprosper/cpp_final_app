@@ -1,8 +1,9 @@
 import 'package:cpp_final_app/data/dummy_data.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/views/courses_list.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
 import 'package:cpp_final_app/views/qapage.dart';
-import 'package:cpp_final_app/views/settingscreens/help_center_page.dart';
+
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,6 +18,11 @@ class CoursePage extends StatefulWidget {
 
 class _CoursePageState extends State<CoursePage> {
   int currentSelected = 0;
+  final segments = const [
+    OverviewSegment(),
+    PdfSegment(),
+    PdfSegment(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -108,72 +114,118 @@ class _CoursePageState extends State<CoursePage> {
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'C++ Programming',
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                ),
-              ),
-              const SizedBox(height: 5),
-              const Text(
-                placeholderText,
-                style: TextStyle(
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(height: 20),
-              ButtonBar(
-                alignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CourseButton(
-                    isSvg: true,
-                    imagePath: HelperFunctions.lessonsImage,
-                    onPressed: () {},
-                    title: 'Tutorial',
-                  ),
-                  CourseButton(
-                    isSvg: false,
-                    imagePath: HelperFunctions.programImage,
-                    onPressed: () {},
-                    title: 'Program',
-                  ),
-                  CourseButton(
-                    isSvg: false,
-                    imagePath: HelperFunctions.qaImage,
-                    onPressed: () {
-                      Get.to(() => const QaPage());
-                    },
-                    title: 'Q/A',
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              ButtonBar(
-                alignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CourseButton(
-                    isSvg: true,
-                    imagePath: HelperFunctions.langImage,
-                    onPressed: () {},
-                    title: 'English',
-                  ),
-                  CourseButton(
-                    isSvg: true,
-                    imagePath: HelperFunctions.certImage,
-                    onPressed: () {},
-                    title: 'Certificate',
-                  ),
-                  CourseButton(
-                    isSvg: true,
-                    imagePath: HelperFunctions.securityImage,
-                    onPressed: () {},
-                    title: 'Fully Secure',
-                  ),
-                ],
-              )
+              segments[currentSelected],
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class OverviewSegment extends StatelessWidget {
+  const OverviewSegment({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        const Text(
+          'C++ Programming',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 18,
+          ),
+        ),
+        const SizedBox(height: 5),
+        const Text(
+          placeholderText,
+          style: TextStyle(
+            fontSize: 14,
+          ),
+        ),
+        const SizedBox(height: 20),
+        ButtonBar(
+          alignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CourseButton(
+              isSvg: true,
+              imagePath: HelperFunctions.lessonsImage,
+              onPressed: () {
+                //TODO: Change the course list based on the selected
+                Get.to(() => const CourseList());
+              },
+              title: 'Tutorial',
+            ),
+            CourseButton(
+              isSvg: true,
+              imagePath: HelperFunctions.programImage,
+              onPressed: () {
+                //TODO: Change the course list based on the selected
+                Get.to(() => const CourseList());
+              },
+              title: 'Program',
+            ),
+            CourseButton(
+              isSvg: true,
+              imagePath: HelperFunctions.qaImage,
+              onPressed: () {
+                Get.to(() => const QaPage());
+              },
+              title: 'Q/A',
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        ButtonBar(
+          alignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CourseButton(
+              isSvg: true,
+              imagePath: HelperFunctions.langImage,
+              onPressed: () {},
+              title: 'English',
+              isButton: false,
+            ),
+            CourseButton(
+              isSvg: true,
+              imagePath: HelperFunctions.certImage,
+              onPressed: () {},
+              title: 'Certificate',
+              isButton: false,
+            ),
+            CourseButton(
+              isSvg: true,
+              imagePath: HelperFunctions.securityImage,
+              onPressed: () {},
+              title: 'Fully Secure',
+              isButton: false,
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+      ],
+    );
+  }
+}
+
+//TODO: Fix up the coming soon page
+class PdfSegment extends StatelessWidget {
+  const PdfSegment({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+        child: Icon(
+          Icons.running_with_errors,
+          size: 50,
         ),
       ),
     );
@@ -187,50 +239,69 @@ class CourseButton extends StatelessWidget {
     required this.title,
     required this.imagePath,
     required this.onPressed,
+    this.isButton = true,
   });
 
   final bool isSvg;
   final String title;
   final String imagePath;
   final VoidCallback onPressed;
+  final bool isButton;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        height: 90,
-        width: 85,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 228, 243, 255),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            isSvg
-                ? SvgPicture.asset(
-                    imagePath,
-                  )
-                : Image.asset(
-                    imagePath,
-                    filterQuality: FilterQuality.high,
-                    height: 30,
-                    width: 30,
-                    fit: BoxFit.contain,
-                  ),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 12,
+    return Stack(
+      children: [
+        Container(
+          height: 90,
+          width: 85,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: isButton
+                ? const Color.fromARGB(255, 160, 212, 255)
+                : const Color.fromARGB(255, 228, 243, 255),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              isSvg
+                  ? SvgPicture.asset(
+                      imagePath,
+                      height: 30,
+                      width: 30,
+                      fit: BoxFit.contain,
+                    )
+                  : Image.asset(
+                      imagePath,
+                      filterQuality: FilterQuality.high,
+                      height: 30,
+                      width: 30,
+                      fit: BoxFit.contain,
+                    ),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 12,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+        isButton
+            ? MaterialButton(
+                onPressed: onPressed,
+                height: 98,
+                minWidth: 92,
+                hoverColor: Colors.black12,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              )
+            : const SizedBox(),
+      ],
     );
   }
 }

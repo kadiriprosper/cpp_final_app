@@ -1,9 +1,17 @@
+import 'package:cpp_final_app/data/data_pool.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+// import 'package:printing/printing.dart';
 
-class PrivacyPolicy extends StatelessWidget {
+class PrivacyPolicy extends StatefulWidget {
   const PrivacyPolicy({super.key});
 
+  @override
+  State<PrivacyPolicy> createState() => _PrivacyPolicyState();
+}
+
+class _PrivacyPolicyState extends State<PrivacyPolicy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,23 +20,55 @@ class PrivacyPolicy extends StatelessWidget {
         title: 'Privacy Policy',
         onBack: () {},
       ).build(context),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 10),
-        child: const SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.all(10).copyWith(top: 0, bottom: 0),
+        child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PrivacyPolicyTextSegment(
-                title: '1. Types of data we collect',
-                text: 'Some lorem stuff',
+              const Text(
+                'PRIVACY POLICY FOR C/C++ PROGRAMMING MOBILE APP',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'This Privacy Policy outlines the types of data we collect from you and how we use and safeguard that data.',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+              const SizedBox(height: 15),
+              ListView.separated(
+                itemCount: DataPool.policyPool.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                primary: false,
+                separatorBuilder: (context, index) => const SizedBox(height: 5),
+                itemBuilder: (context, index) {
+                  const policyPool = DataPool.policyPool;
+                  return PrivacyPolicyTextSegment(
+                    index: index,
+                    title: policyPool[index]!['title'] as String? ?? '',
+                    text: policyString(
+                        policyPool[index]!['body'] as List<String>?,
+                        policyPool[index]!['heading'] as String),
+                  );
+                },
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  policyString(List<String>? list, String body) {
+    return '''
+        $body\n${list != null ? list.toString().replaceAll(RegExp(r'\[|\]'), '').replaceAll('-', '\n  -').trim() : ''}
+        '''
+        .trim();
   }
 }
 
@@ -37,10 +77,12 @@ class PrivacyPolicyTextSegment extends StatelessWidget {
     super.key,
     required this.title,
     required this.text,
+    required this.index,
   });
 
   final String title;
   final String text;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +91,13 @@ class PrivacyPolicyTextSegment extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
+            '${index + 1}. $title',
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 5),
           Text(
             text,
             style: const TextStyle(

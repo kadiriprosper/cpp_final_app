@@ -1,6 +1,6 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
-import 'package:cpp_final_app/views/mainscreen/chat_page.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:cpp_final_app/views/settingscreens/edit_profile_page.dart';
 import 'package:cpp_final_app/views/settingscreens/feedback_page.dart';
@@ -10,27 +10,35 @@ import 'package:cpp_final_app/views/settingscreens/privacy_page.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:cpp_final_app/widgets/custom_button_small.dart';
 import 'package:cpp_final_app/widgets/profile_pic_widget.dart';
+import 'package:cpp_final_app/widgets/tab_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final landingPageController = Get.put(LandingPageController());
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          elevation: 0,
-          title: const Text('My Profile'),
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.black,
-          titleTextStyle: Theme.of(context)
-              .appBarTheme
-              .titleTextStyle
-              ?.copyWith(fontWeight: FontWeight.bold)),
+      appBar: TabAppBar(landingPageController: landingPageController, title: 'My Profile',)
+          .build(context),
+      // appBar: AppBar(
+      //     elevation: 0,
+      //     title: const Text('My Profile'),
+      //     backgroundColor: Colors.transparent,
+      //     foregroundColor: Colors.black,
+      //     titleTextStyle: Theme.of(context)
+      //         .appBarTheme
+      //         .titleTextStyle
+      //         ?.copyWith(fontWeight: FontWeight.bold)),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,

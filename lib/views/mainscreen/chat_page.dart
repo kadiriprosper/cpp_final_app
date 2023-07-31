@@ -1,16 +1,26 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/chat_screen.dart';
+import 'package:cpp_final_app/widgets/tab_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
   @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  final landingPageController = Get.put(LandingPageController());
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: TabAppBar(landingPageController: landingPageController, title: 'Chats',)
+          .build(context),
       body: SingleChildScrollView(
         child: Column(
           children: [

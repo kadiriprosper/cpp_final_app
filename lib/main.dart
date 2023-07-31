@@ -5,6 +5,7 @@ import 'package:cpp_final_app/views/auth/registration/registration_page.dart';
 import 'package:cpp_final_app/views/auth/registration/verification_page.dart';
 import 'package:cpp_final_app/views/course_page.dart';
 import 'package:cpp_final_app/views/courses_list.dart';
+import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:cpp_final_app/views/settingscreens/edit_profile_page.dart';

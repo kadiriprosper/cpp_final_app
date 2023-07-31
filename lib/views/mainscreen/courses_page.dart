@@ -1,6 +1,9 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/widgets/tab_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 //TODO: Change all the colors to their final colors
 
@@ -12,74 +15,74 @@ class CoursesPage extends StatefulWidget {
 }
 
 class _CoursesPageState extends State<CoursesPage> {
+  final landingPageController = Get.put(LandingPageController());
   int totalCourseProgress = 80;
   bool isOngoingSelected = true;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'My Courses',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  offset: Offset.fromDirection(90),
-                  blurRadius: 10,
-                  spreadRadius: 0.1,
-                ),
-              ],
-            ),
-            width: MediaQuery.of(context).size.width,
-            height: 45,
-            child: ButtonBar(
-              buttonPadding: const EdgeInsets.symmetric(
-                vertical: 0,
-                horizontal: 5,
+    return Scaffold(
+      appBar: TabAppBar(
+        landingPageController: landingPageController,
+        title: 'Courses',
+      ).build(context),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset.fromDirection(90),
+                    blurRadius: 10,
+                    spreadRadius: 0.1,
+                  ),
+                ],
               ),
-              alignment: MainAxisAlignment.center,
-              children: [
-                StatusButton(
-                  isSelected: isOngoingSelected,
-                  label: 'Ongoing',
-                  onPressed: () {
-                    setState(() {
-                      isOngoingSelected = true;
-                    });
-                  },
+              width: MediaQuery.of(context).size.width,
+              height: 45,
+              child: ButtonBar(
+                buttonPadding: const EdgeInsets.symmetric(
+                  vertical: 0,
+                  horizontal: 5,
                 ),
-                StatusButton(
-                  isSelected: !isOngoingSelected,
-                  label: 'Completed',
-                  onPressed: () {
-                    setState(() {
-                      isOngoingSelected = false;
-                    });
-                  },
-                ),
-              ],
+                alignment: MainAxisAlignment.center,
+                children: [
+                  StatusButton(
+                    isSelected: isOngoingSelected,
+                    label: 'Ongoing',
+                    onPressed: () {
+                      setState(() {
+                        isOngoingSelected = true;
+                      });
+                    },
+                  ),
+                  StatusButton(
+                    isSelected: !isOngoingSelected,
+                    label: 'Completed',
+                    onPressed: () {
+                      setState(() {
+                        isOngoingSelected = false;
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          isOngoingSelected
-              ? CoursesListView(totalCourseProgress: totalCourseProgress)
-              : CoursesListView(totalCourseProgress: totalCourseProgress),
-        ],
+            const SizedBox(height: 20),
+            isOngoingSelected
+                ? CoursesListView(totalCourseProgress: totalCourseProgress)
+                : CoursesListView(totalCourseProgress: totalCourseProgress),
+          ],
+        ),
       ),
     );
   }

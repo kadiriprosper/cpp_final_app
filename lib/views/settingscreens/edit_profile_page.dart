@@ -16,6 +16,7 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   //TODO: Get the user details from the controller
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
@@ -42,31 +43,34 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(height: 20),
               EditProfileTextField(
                 controller: nameController,
-                icon: Icon(
-                  Icons.person_2,
+                icon:
+                    // Icon(
+                    //   Icons.person_2,
+                    // ),
+                    SvgPicture.asset(
+                  EditProfileIcon.profileIcon,
+                  fit: BoxFit.contain,
+                  height: 5,
                 ),
-                // SvgPicture.asset(
-                //   EditProfileIcon.profileIcon,
-                //   fit: BoxFit.contain,
-                //   height: 10,
-                // ),
                 keyboardType: TextInputType.name,
               ),
               const SizedBox(height: 20),
               EditProfileTextField(
                 controller: emailController,
-                icon: Icon(Icons.mail),
-                // SvgPicture.asset(
-                //   EditProfileIcon.mailIcon,
-                //   height: 10,
-                // ),
+                icon:
+                    // Icon(Icons.mail),
+                    SvgPicture.asset(
+                  EditProfileIcon.mailIcon,
+                  height: 10,
+                ),
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 20),
               EditProfileTextField(
                 controller: numberController,
-                icon: Icon(Icons.phone),
-                //SvgPicture.asset(EditProfileIcon.callIcon),
+                icon:
+                    // Icon(Icons.phone),
+                    SvgPicture.asset(EditProfileIcon.callIcon),
                 keyboardType: TextInputType.phone,
               ),
               const Spacer(),

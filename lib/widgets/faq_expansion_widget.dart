@@ -14,6 +14,7 @@ class FAQExpansionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.all(5),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -23,7 +24,7 @@ class FAQExpansionWidget extends StatelessWidget {
             color: Colors.black12,
             offset: Offset.fromDirection(90),
             blurRadius: 10,
-            spreadRadius: 3,
+            spreadRadius: 2,
           ),
         ],
       ),
@@ -40,7 +41,7 @@ class FAQExpansionWidget extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        childrenPadding: const EdgeInsets.all(10).copyWith(bottom: 15),
+        childrenPadding: const EdgeInsets.all(15).copyWith(bottom: 15),
         expandedAlignment: Alignment.centerLeft,
         children: [
           Text(text),

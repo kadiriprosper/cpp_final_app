@@ -43,8 +43,8 @@ class HelperFunctions {
 
   static String courseImage = 'assets/courses/cppimg.jpeg';
   static String lessonsImage = 'assets/courses/lessons.svg';
-  static String programImage = 'assets/courses/program.png';
-  static String qaImage = 'assets/courses/qa.png';
+  static String programImage = 'assets/courses/program.svg';
+  static String qaImage = 'assets/courses/qa.svg';
   static String certImage = 'assets/courses/cert.svg';
   static String langImage = 'assets/courses/lang.svg';
   static String securityImage = 'assets/courses/security.svg';

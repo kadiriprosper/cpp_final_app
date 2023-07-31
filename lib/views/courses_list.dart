@@ -11,7 +11,7 @@ class CourseList extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         hasLeading: true,
-        title: 'C++',
+        title: 'C++ Tutorial',
       ).build(context),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
@@ -24,7 +24,7 @@ class CourseList extends StatelessWidget {
               onPressed: () {},
               title: courseList[index]?['title'] ?? '',
               length: courseList[index]?['length'] ?? '',
-              index: index,
+              index: index + 1,
             );
           },
         ),
@@ -101,30 +101,30 @@ class CourseListCard extends StatelessWidget {
                       fontSize: 13,
                     ),
                   ),
-                  Text(
-                    length,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
+                  // Text(
+                  //   length,
+                  //   style: const TextStyle(
+                  //     fontWeight: FontWeight.w400,
+                  //     fontSize: 12,
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
-            const CircleAvatar(
-              radius: 12,
-              backgroundColor: CustomColor.buttonColor1,
-              child: CircleAvatar(
-                radius: 10,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.play_arrow_outlined,
-                  color: CustomColor.buttonColor1,
-                  size: 20,
-                ),
-              ),
-            )
+            // const CircleAvatar(
+            //   radius: 12,
+            //   backgroundColor: CustomColor.buttonColor1,
+            //   child: CircleAvatar(
+            //     radius: 10,
+            //     backgroundColor: Colors.white,
+            //     child: Icon(
+            //       Icons.play_arrow_outlined,
+            //       color: CustomColor.buttonColor1,
+            //       size: 20,
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),

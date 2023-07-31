@@ -1,5 +1,5 @@
 import 'package:cpp_final_app/colors/colors.dart';
-import 'package:cpp_final_app/cpp_icons_icons.dart';
+import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/chat_page.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
@@ -7,6 +7,7 @@ import 'package:cpp_final_app/views/mainscreen/home_page.dart';
 import 'package:cpp_final_app/views/mainscreen/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,6 +17,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final landingPageController = Get.put(LandingPageController());
   final pages = const [
     HomePage(),
     CoursesPage(),
@@ -26,59 +28,63 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        type: BottomNavigationBarType.fixed,
-        onTap: (value) {
-          setState(() {
-            currentIndex = value;
-          });
-        },
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: CustomColor.buttonColor1,
-        elevation: 0,
-        items: [
-          BottomNavigationBarItem(
-            icon: CustomInactiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.homeOutlined),
-            ),
-            activeIcon: CustomActiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.homeIcon),
-            ),
-            label: 'home',
+        body: Obx(
+          () => IndexedStack(
+            index: landingPageController.tabIndex.last,
+            children: pages,
           ),
-          BottomNavigationBarItem(
-            icon: CustomInactiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.courseOutlined),
-            ),
-            activeIcon: CustomActiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.courseIcon),
-            ),
-            label: 'courses',
+        ),
+        bottomNavigationBar: Obx(
+          () => BottomNavigationBar(
+            currentIndex: landingPageController.tabIndex.last,
+            type: BottomNavigationBarType.fixed,
+            onTap: (value) {
+              landingPageController.changeTabIndex(value);
+            },
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            selectedItemColor: CustomColor.buttonColor1,
+            elevation: 0,
+            items: [
+              BottomNavigationBarItem(
+                icon: CustomInactiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.homeOutlined),
+                ),
+                activeIcon: CustomActiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.homeIcon),
+                ),
+                label: 'home',
+              ),
+              BottomNavigationBarItem(
+                icon: CustomInactiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.courseOutlined),
+                ),
+                activeIcon: CustomActiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.courseIcon),
+                ),
+                label: 'courses',
+              ),
+              BottomNavigationBarItem(
+                icon: CustomInactiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.chatOutlined),
+                ),
+                activeIcon: CustomActiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.chatIcon),
+                ),
+                label: 'chat',
+              ),
+              BottomNavigationBarItem(
+                icon: CustomInactiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.profileOutlined),
+                ),
+                activeIcon: CustomActiveIcon(
+                  icon: SvgPicture.asset(NavCustomIcon.profileIcon),
+                ),
+                label: 'profile',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: CustomInactiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.chatOutlined),
-            ),
-            activeIcon: CustomActiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.chatIcon),
-            ),
-            label: 'chat',
-          ),
-          BottomNavigationBarItem(
-            icon: CustomInactiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.profileOutlined),
-            ),
-            activeIcon: CustomActiveIcon(
-              icon: SvgPicture.asset(NavCustomIcon.profileIcon),
-            ),
-            label: 'profile',
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }
 
@@ -128,3 +134,5 @@ class CustomActiveIcon extends StatelessWidget {
     );
   }
 }
+
+

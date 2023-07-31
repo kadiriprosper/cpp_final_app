@@ -1,10 +1,8 @@
 import 'package:cpp_final_app/colors/colors.dart';
-import 'package:cpp_final_app/data/data_helper.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/_http/_stub/_file_decoder_stub.dart';
 
 class CertificatePage extends StatelessWidget {
   const CertificatePage({super.key});
