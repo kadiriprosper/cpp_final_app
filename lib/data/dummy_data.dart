@@ -16,24 +16,5 @@ Map<int, dynamic> messages = {
   },
 };
 
-final courseList = {
-  0: {
-    'title': 'Lorem ipsum and the likes',
-    'length': '12 min',
-  },
-  1: {
-    'title': 'Lorem ipsum and the likes',
-    'length': '12 min',
-  },
-  2: {
-    'title': 'Lorem ipsum and the likes',
-    'length': '12 min',
-  },
-  3: {
-    'title': 'Lorem ipsum and the likes',
-    'length': '12 min',
-  }
-};
-
 const placeholderText =
     'A lot of talk has been going on for a while now, well who are we to say lorem ispum and the likes of all the other text placeholders are wrong, well who knows about all these things and the other stuffs alongside. Anyways we\'re good to go.';

@@ -48,6 +48,7 @@ class HelperFunctions {
   static String certImage = 'assets/courses/cert.svg';
   static String langImage = 'assets/courses/lang.svg';
   static String securityImage = 'assets/courses/security.svg';
+  static String dotIcon = 'assets/icons/dotIcon.svg';
 }
 
 class EditProfileIcon {

@@ -14,6 +14,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_filereader: ^3.0.0
+  flutter_highlight: ^0.7.0
+  flutter_markdown: ^0.6.17+1
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.7
   get: ^4.6.5
@@ -26,6 +28,7 @@ dependencies:
   rive: ^0.7.16
   syncfusion_flutter_pdfviewer: ^22.1.39
   url_launcher: ^6.1.12
+  xterm: ^3.5.0
 
 dev_dependencies:
   flutter_test:
@@ -54,4 +57,20 @@ flutter:
     - assets/courses/
     # - assets/policy.pdf
     - assets/data/
+    - assets/icons/
+    - assets/markdown/
+    - assets/markdown/class1/
+    - assets/markdown/class2/
+    - assets/markdown/class3/
+    - assets/markdown/class4/
+    - assets/markdown/class5/
+    - assets/markdown/class6/
+    - assets/markdown/class7/
+    - assets/markdown/class8/
+    - assets/markdown/class9/
+    - assets/markdown/class10/
+    - assets/markdown/class11/
+    - assets/markdown/class12/
+    - assets/markdown/class13/
+    - assets/markdown/class14/
 

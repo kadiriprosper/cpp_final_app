@@ -1,10 +1,14 @@
 import 'package:cpp_final_app/colors/colors.dart';
-import 'package:cpp_final_app/data/dummy_data.dart';
+import 'package:cpp_final_app/data/data_pool.dart';
+import 'package:cpp_final_app/views/tutorial_detail_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CourseList extends StatelessWidget {
-  const CourseList({super.key});
+class TutorialList extends StatelessWidget {
+  const TutorialList({super.key, this.dataPool});
+
+  final Map<String, dynamic>? dataPool;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +21,35 @@ class CourseList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
         child: ListView.separated(
           shrinkWrap: true,
-          itemCount: courseList.length,
+          itemCount: dataPool?.length ?? DataPool.tutorialList.length,
           separatorBuilder: (context, index) => const SizedBox(height: 15),
           itemBuilder: (context, index) {
-            return CourseListCard(
-              onPressed: () {},
-              title: courseList[index]?['title'] ?? '',
-              length: courseList[index]?['length'] ?? '',
+            return TutorialListCard(
+              onPressed: () {
+                if (dataPool == null) {
+                  DataPool.tutorialList[index]?['type'] == 'linear'
+                      ? Get.to(
+                          TutorialDetailPage(
+                            pageTitle: DataPool.tutorialList[index]?['title']
+                                as String,
+                            mdString: DataPool.tutorialList[index]?['content']
+                                as String,
+                          ),
+                        )
+                      : Get.to(TutorialList(
+                          dataPool: DataPool.tutorialList[index]?['content']
+                              as Map<String, dynamic>,
+                        ));
+                } else {
+                  Get.to(
+                    TutorialDetailPage(
+                      pageTitle: dataPool?.keys.elementAt(index) ?? '', 
+                      mdString: dataPool?.entries.elementAt(index) as String,
+                    ),
+                  );
+                }
+              },
+              title: DataPool.tutorialList[index]?['title'] as String,
               index: index + 1,
             );
           },
@@ -33,19 +59,17 @@ class CourseList extends StatelessWidget {
   }
 }
 
-class CourseListCard extends StatelessWidget {
-  const CourseListCard({
+class TutorialListCard extends StatelessWidget {
+  const TutorialListCard({
     super.key,
     required this.onPressed,
     required this.title,
-    required this.length,
     required this.index,
   });
 
   final VoidCallback onPressed;
   //TODO: Probably pass the course here not just the title
   final String title;
-  final String length;
   final int index;
 
   @override

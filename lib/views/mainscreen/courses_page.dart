@@ -17,71 +17,73 @@ class CoursesPage extends StatefulWidget {
 class _CoursesPageState extends State<CoursesPage> {
   final landingPageController = Get.put(LandingPageController());
   int totalCourseProgress = 80;
-  bool isOngoingSelected = true;
+  bool isCpp = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TabAppBar(
         landingPageController: landingPageController,
-        title: 'Courses',
+        title: 'Projects',
       ).build(context),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    offset: Offset.fromDirection(90),
-                    blurRadius: 10,
-                    spreadRadius: 0.1,
-                  ),
-                ],
-              ),
-              width: MediaQuery.of(context).size.width,
-              height: 45,
-              child: ButtonBar(
-                buttonPadding: const EdgeInsets.symmetric(
-                  vertical: 0,
-                  horizontal: 5,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset.fromDirection(90),
+                      blurRadius: 10,
+                      spreadRadius: 0.1,
+                    ),
+                  ],
                 ),
-                alignment: MainAxisAlignment.center,
-                children: [
-                  StatusButton(
-                    isSelected: isOngoingSelected,
-                    label: 'Ongoing',
-                    onPressed: () {
-                      setState(() {
-                        isOngoingSelected = true;
-                      });
-                    },
+                width: MediaQuery.of(context).size.width,
+                height: 45,
+                child: ButtonBar(
+                  buttonPadding: const EdgeInsets.symmetric(
+                    vertical: 0,
+                    horizontal: 5,
                   ),
-                  StatusButton(
-                    isSelected: !isOngoingSelected,
-                    label: 'Completed',
-                    onPressed: () {
-                      setState(() {
-                        isOngoingSelected = false;
-                      });
-                    },
-                  ),
-                ],
+                  alignment: MainAxisAlignment.center,
+                  children: [
+                    StatusButton(
+                      isSelected: isCpp,
+                      label: 'Cpp',
+                      onPressed: () {
+                        setState(() {
+                          isCpp = true;
+                        });
+                      },
+                    ),
+                    StatusButton(
+                      isSelected: !isCpp,
+                      label: 'C',
+                      onPressed: () {
+                        setState(() {
+                          isCpp = false;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            isOngoingSelected
-                ? CoursesListView(totalCourseProgress: totalCourseProgress)
-                : CoursesListView(totalCourseProgress: totalCourseProgress),
-          ],
+              const SizedBox(height: 20),
+              isCpp
+                  ? CoursesListView(totalCourseProgress: totalCourseProgress)
+                  : CoursesListView(totalCourseProgress: totalCourseProgress),
+            ],
+          ),
         ),
       ),
     );
@@ -154,14 +156,14 @@ class CoursesListView extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const SizedBox(height: 5),
-                    Text(
-                      '8 Lessons to go',
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    // const SizedBox(height: 5),
+                    // Text(
+                    //   '8 Lessons to go',
+                    //   style: const TextStyle(
+                    //     fontSize: 11,
+                    //     fontWeight: FontWeight.w500,
+                    //   ),
+                    // ),
                     const SizedBox(height: 10),
                     Row(
                       children: [

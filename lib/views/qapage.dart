@@ -1,7 +1,9 @@
 import 'package:cpp_final_app/data/data_pool.dart';
+import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/faq_expansion_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class QaPage extends StatelessWidget {
   const QaPage({super.key});
@@ -18,6 +20,7 @@ class QaPage extends StatelessWidget {
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: DataPool.cppQA.length,
+          physics: const BouncingScrollPhysics(),
           // separatorBuilder: (context, index) => const SizedBox(height: 10),
           itemBuilder: (context, index) {
             const questions = DataPool.cppQA;
@@ -35,7 +38,7 @@ class QaPage extends StatelessWidget {
     return (body != null
             ? body
                 .replaceAll(RegExp(r'\[|\]'), '')
-                .replaceAll('-', '\n  -')
+                .replaceAll('-', '\n\n•') //⚈
                 .trim()
             : '')
         .trim();

@@ -1,7 +1,8 @@
 import 'package:cpp_final_app/data/dummy_data.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
-import 'package:cpp_final_app/views/courses_list.dart';
+import 'package:cpp_final_app/views/tutorial_list.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
+import 'package:cpp_final_app/views/program_list_page.dart';
 import 'package:cpp_final_app/views/qapage.dart';
 
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
@@ -156,7 +157,7 @@ class OverviewSegment extends StatelessWidget {
               imagePath: HelperFunctions.lessonsImage,
               onPressed: () {
                 //TODO: Change the course list based on the selected
-                Get.to(() => const CourseList());
+                Get.to(() => const TutorialList());
               },
               title: 'Tutorial',
             ),
@@ -165,7 +166,7 @@ class OverviewSegment extends StatelessWidget {
               imagePath: HelperFunctions.programImage,
               onPressed: () {
                 //TODO: Change the course list based on the selected
-                Get.to(() => const CourseList());
+                Get.to(() => const ProgramListPage());
               },
               title: 'Program',
             ),

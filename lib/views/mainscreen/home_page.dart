@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/course_page.dart';
+import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -141,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CategoryWidget(
-                      label: 'Design',
+                      label: 'Practical',
                       onPressed: () {},
                       photoPath: HelperFunctions.categoryImages[0],
                       isFirst: true,
@@ -157,15 +158,17 @@ class _HomePageState extends State<HomePage> {
                       color: CustomColor.color1,
                     ),
                     CategoryWidget(
-                      label: 'Business',
-                      onPressed: () {},
+                      label: 'Certificate',
+                      onPressed: () {
+                        Get.to(() => const CertificatePage());
+                      },
                       photoPath: HelperFunctions.categoryImages[2],
                       isFirst: true,
                       isLast: false,
                       color: CustomColor.color3,
                     ),
                     CategoryWidget(
-                      label: 'Hello',
+                      label: 'Q/A',
                       onPressed: () {},
                       photoPath: HelperFunctions.categoryImages[3],
                       isFirst: true,
@@ -185,32 +188,38 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   CategoryHeader(
                     buttonLabel: 'See All',
-                    label: 'Trending Course',
+                    label: 'Courses',
                     onPressed: () {},
                   ),
                   const SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 6 / 7,
-                        crossAxisSpacing: 4,
-                        crossAxisCount:
-                            (MediaQuery.of(context).size.width / 150).floor(),
-                      ),
-                      itemCount: HelperFunctions.trendingImages.length,
-                      itemBuilder: (context, index) {
-                        return TrendingCategoryWidgetFinal(
-                          imagePath: HelperFunctions.trendingImages[index],
-                          label: 'UI/UX masterclass and some lot of stuff',
-                          onBookMark: () {},
-                          onPressed: () {
-                            Get.to(const CoursePage());
-                          },
-                        );
-                      },
-                    ),
+                    child: GridView(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 6 / 7,
+                          crossAxisSpacing: 4,
+                          crossAxisCount:
+                              (MediaQuery.of(context).size.width / 150).floor(),
+                        ),
+                        children: [
+                          TrendingCategoryWidgetFinal(
+                            imagePath: HelperFunctions.trendingImages.first,
+                            label: 'Cpp',
+                            onBookMark: () {},
+                            onPressed: () {
+                              Get.to(const CoursePage());
+                            },
+                          ),
+                          TrendingCategoryWidgetFinal(
+                            imagePath: HelperFunctions.trendingImages[1],
+                            label: 'C',
+                            onBookMark: () {},
+                            onPressed: () {
+                              Get.to(const CoursePage());
+                            },
+                          ),
+                        ]),
                   ),
                 ],
               ),

@@ -28,8 +28,10 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TabAppBar(landingPageController: landingPageController, title: 'My Profile',)
-          .build(context),
+      appBar: TabAppBar(
+        landingPageController: landingPageController,
+        title: 'My Profile',
+      ).build(context),
       // appBar: AppBar(
       //     elevation: 0,
       //     title: const Text('My Profile'),
@@ -91,20 +93,23 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const SizedBox(height: 15),
               SettingsButton(
-                label: 'My Projects',
+                label: 'Projects',
                 leadingIcon: SvgPicture.asset(ProfileCustomIcon.projectIcon),
-                onPressed: () {},
+                onPressed: () {
+                  //TODO: link this to the controller and get it to go to page 2
+                  landingPageController.changeTabIndex(1);
+                },
               ),
+              // const SizedBox(height: 15),
+              // SettingsButton(
+              //   label: 'Saved Courses',
+              //   leadingIcon:
+              //       SvgPicture.asset(ProfileCustomIcon.savedCourseIcon),
+              //   onPressed: () {},
+              // ),
               const SizedBox(height: 15),
               SettingsButton(
-                label: 'Saved Courses',
-                leadingIcon:
-                    SvgPicture.asset(ProfileCustomIcon.savedCourseIcon),
-                onPressed: () {},
-              ),
-              const SizedBox(height: 15),
-              SettingsButton(
-                label: 'My Card',
+                label: 'Payments',
                 leadingIcon: SvgPicture.asset(ProfileCustomIcon.cardIcon),
                 onPressed: () {
                   Get.to(const PaymentsPage());

@@ -67,7 +67,7 @@ class _MobileAuthPageState extends State<MobileAuthPage> {
                         onChanged: (value) {
                           countryCode = value.toString();
                         },
-                        initialSelection: 'IT',
+                        initialSelection: 'NG',
                         padding: EdgeInsets.zero,
                         showCountryOnly: false,
                         showDropDownButton: true,

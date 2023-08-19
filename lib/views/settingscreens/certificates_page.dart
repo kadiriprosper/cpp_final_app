@@ -48,7 +48,7 @@ class CertificatePage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: CustomButton(
                 buttonColor: CustomColor.buttonColor1,
-                buttonText: 'Download Certificate',
+                buttonText: 'Get Certificate',
                 onPressed: () async {
                   //TODO: Implement the certificate saving feature,
                 },

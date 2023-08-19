@@ -26,7 +26,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
           child: Column(
             children: [
               const Text(
-                'PRIVACY POLICY FOR C/C++ PROGRAMMING MOBILE APP',
+                'PRIVACY POLICY FOR C/C++ PROGRAMMING MOBILE APP\n',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -45,7 +45,8 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 primary: false,
-                separatorBuilder: (context, index) => const SizedBox(height: 5),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 20),
                 itemBuilder: (context, index) {
                   const policyPool = DataPool.policyPool;
                   return PrivacyPolicyTextSegment(
@@ -66,7 +67,8 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
 
   policyString(List<String>? list, String body) {
     return '''
-        $body\n${list != null ? list.toString().replaceAll(RegExp(r'\[|\]'), '').replaceAll('-', '\n  -').trim() : ''}
+        $body\n\n${list != null ? list.toString().replaceAll(RegExp(r'\[|\]'), '').replaceAll('-', '\n\n•').replaceAll('.,', '.') //⚈
+            .trim() : ''}
         '''
         .trim();
   }
@@ -91,7 +93,7 @@ class PrivacyPolicyTextSegment extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${index + 1}. $title',
+            '${index + 1}. $title\n',
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
