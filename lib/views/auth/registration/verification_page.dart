@@ -1,3 +1,5 @@
+import 'package:cpp_final_app/views/mainscreen/home_page.dart';
+import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -172,6 +174,13 @@ class AuthDialogBox extends StatelessWidget {
             title: 'Ok',
             onPressed: () {
               //TODO: Write the code to go to the home screen
+              Get.offUntil(
+                MaterialPageRoute(
+                  builder: (context) => const MainScreen(),
+                ),
+                (route) => false,
+              );
+              
             },
           ),
         ],

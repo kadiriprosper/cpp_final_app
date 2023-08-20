@@ -2,6 +2,7 @@ import 'package:cpp_final_app/colors/theme.dart';
 import 'package:cpp_final_app/views/auth/login_page.dart';
 import 'package:cpp_final_app/views/auth/registration/mobile_auth_page.dart';
 import 'package:cpp_final_app/views/auth/registration/registration_page.dart';
+import 'package:cpp_final_app/views/auth/registration/school_selection_page.dart';
 import 'package:cpp_final_app/views/auth/registration/verification_page.dart';
 import 'package:cpp_final_app/views/course_page.dart';
 import 'package:cpp_final_app/views/tutorial_list.dart';
@@ -31,7 +32,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: CustomTheme.dayTheme,
       defaultTransition: Transition.cupertino,
-      home: const MainScreen(),
+      home: const SplashPage(),
     );
   }
 }

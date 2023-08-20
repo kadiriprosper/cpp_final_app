@@ -1,5 +1,6 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/views/auth/registration/mobile_auth_page.dart';
+import 'package:cpp_final_app/views/auth/registration/school_selection_page.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -248,11 +249,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       const SizedBox(height: 10),
                       AuthButton(
-                        title: 'Sign Up',
+                        title: 'Next',
                         onPressed: () {
                           // if (formkey.currentState?.validate() == true) {
                           //TODO: Go to mobile auth page
-                          Get.to(() => const MobileAuthPage());
+                          Get.to(() => const SchoolSelectionPage());
                           // }
                         },
                       )

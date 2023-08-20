@@ -26,6 +26,6 @@
 - **Use of constant in program**
 There are two way of using constants in the C/C++ program 
 
-- Using const
-- Using #define
+1. Using const
+2. Using #define
 

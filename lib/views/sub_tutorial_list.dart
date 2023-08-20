@@ -1,49 +1,41 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/data/data_pool.dart';
-import 'package:cpp_final_app/views/sub_tutorial_list.dart';
 import 'package:cpp_final_app/views/tutorial_detail_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TutorialList extends StatelessWidget {
-  const TutorialList({super.key});
+class SubTutorialList extends StatelessWidget {
+  const SubTutorialList(
+      {super.key, required this.dataPool, required this.pageTitle});
+
+  final Map<String, dynamic> dataPool;
+  final String pageTitle;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         hasLeading: true,
-        title: 'C++ Tutorial',
+        title: pageTitle,
       ).build(context),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
         child: ListView.separated(
           shrinkWrap: true,
-          itemCount: DataPool.tutorialList.length,
+          itemCount: dataPool.length,
           separatorBuilder: (context, index) => const SizedBox(height: 15),
           itemBuilder: (context, index) {
-            return TutorialListCard(
+            return SubTutorialListCard(
               onPressed: () {
-                DataPool.tutorialList[index]?['type'] != 'branch'
-                    ? Get.to(
-                        () => TutorialDetailPage(
-                          pageTitle:
-                              DataPool.tutorialList[index]?['title'] as String,
-                          mdString: DataPool.tutorialList[index]?['content']
-                              as String,
-                        ),
-                      )
-                    : Get.to(
-                        () => SubTutorialList(
-                          dataPool: DataPool.tutorialList[index]?['content']
-                              as Map<String, dynamic>,
-                          pageTitle:
-                              DataPool.tutorialList[index]?['title'] as String,
-                        ),
-                      );
+                Get.to(
+                  () => TutorialDetailPage(
+                    pageTitle: dataPool.entries.elementAt(index).key,
+                    mdString: dataPool.entries.elementAt(index).value as String,
+                  ),
+                );
               },
-              title: DataPool.tutorialList[index]?['title'] as String,
+              title: dataPool.entries.elementAt(index).key,
               index: index + 1,
             );
           },
@@ -53,8 +45,8 @@ class TutorialList extends StatelessWidget {
   }
 }
 
-class TutorialListCard extends StatelessWidget {
-  const TutorialListCard({
+class SubTutorialListCard extends StatelessWidget {
+  const SubTutorialListCard({
     super.key,
     required this.onPressed,
     required this.title,
@@ -117,6 +109,7 @@ class TutorialListCard extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
+                      color: Colors.black,
                     ),
                   ),
                   // Text(
@@ -130,19 +123,6 @@ class TutorialListCard extends StatelessWidget {
                 ],
               ),
             ),
-            // const CircleAvatar(
-            //   radius: 12,
-            //   backgroundColor: CustomColor.buttonColor1,
-            //   child: CircleAvatar(
-            //     radius: 10,
-            //     backgroundColor: Colors.white,
-            //     child: Icon(
-            //       Icons.play_arrow_outlined,
-            //       color: CustomColor.buttonColor1,
-            //       size: 20,
-            //     ),
-            //   ),
-            // )
           ],
         ),
       ),

@@ -208,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                             label: 'Cpp',
                             onBookMark: () {},
                             onPressed: () {
-                              Get.to(const CoursePage());
+                              Get.to(() => const CoursePage());
                             },
                           ),
                           TrendingCategoryWidgetFinal(
@@ -216,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                             label: 'C',
                             onBookMark: () {},
                             onPressed: () {
-                              Get.to(const CoursePage());
+                              Get.to(() => const CoursePage());
                             },
                           ),
                         ]),

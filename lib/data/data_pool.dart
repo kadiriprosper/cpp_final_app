@@ -3498,150 +3498,6 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     // 'Enumeration': {},
   };
   static const tutorialList = {
-    // 0: {
-    //   'title': 'Syntac of C++ Language',
-    //   'content': {
-    //     'type': 'text',
-    //     'content': {
-    //       'iostream': [
-    //         '1. It stands for input output stream',
-    //         '2. It is a collection of predefined functions/methods',
-    //         '3. It is also called library of C++',
-    //       ],
-    //       'include': [
-    //         '1. To include the header file into the program',
-    //       ],
-    //       '#': [
-    //         '1. It is called preprocessor',
-    //         '2. It includes the library of C++ into the program before the execution of program',
-    //       ],
-    //       'conio': [
-    //         '1. It stsands for console input output',
-    //         '2. It is used to show the ouput on console window',
-    //       ],
-    //       'void': [
-    //         '1. It is a keyword ',
-    //         '2. It indicate that no one value is being returned by the function',
-    //         '3. If we use anyother keyword like `int, float, char` etc in place of void then we will use return keyword',
-    //       ],
-    //       'main': [
-    //         '1. It is the function which is called the entry point of any program',
-    //         '2. The execution of any program starts from the main function',
-    //         '3. If in a program there is only one function then it should be main function',
-    //       ],
-    //       'clrscr': [
-    //         '1. It stands for clear screen',
-    //         '2. It is a predefined function which is used to clear the output screen',
-    //         '3. It acts like a duster on output screen',
-    //         '3. It is define in the `conio.h` header file',
-    //       ],
-    //       'cout': [
-    //         '1. It is a keyword which is used to print data or information on the output screen',
-    //         '2. It is always use with insertion operator',
-    //         '3. `cout` (pronounced "see-out")',
-    //       ],
-    //       'getch': [
-    //         '1. It is a predefine function which is used to hold the output screen',
-    //         '2. It acts like a duster on the output screen',
-    //         '3. It is define in the `conio.h` header file',
-    //       ],
-    //       'Remember': [
-    //         '- The compiler ignores white spaces. However, multiple lines makes the code more readable.',
-    //         '- Every C++ statement ends with a semicolon (;)',
-    //       ],
-    //     }
-    //   },
-    // },
-    // 1: {
-    //   'title': 'Comments in C++',
-    //   'content': {
-    //     'type': 'text',
-    //     'content': {
-    //       'Definition': [
-    //         '* Comments can be used to explain C++ code, and to make it more readable.',
-    //         '* It can also be used to prevent execution when testing alternative code.',
-    //         '* Comments can be singled-lined or multi-lined.',
-    //       ],
-    //       'Single-line comments start with two forward slashes (//).': [
-    //         '''
-    //             ```
-    //               // This is a comment
-    //               cout << "Hello World!";
-    //             ```
-    //         '''
-    //       ],
-    //       'Multi-line comments start with /* and ends with */.': [
-    //         '''
-    //             ```
-    //               /* The code below will print the words Hello World!
-    //               to the screen, and it is amazing */
-    //               cout << "Hello World!";
-    //             ```
-    //         ''',
-    //       ],
-    //     },
-    //   },
-    // },
-    // 2: {
-    //   'title': 'Variables in C++',
-    //   'content': {
-    //     'type': 'button',
-    //     'content': {
-    //       'Definition': [
-    //         '1. It is a name of storage space which is used to store data',
-    //         '2. It\'s value is changable',
-    //         '3. It always contains last value stored to it',
-    //         '4. It\'s always declare with data type',
-    //         '- In C++, there are different types of variables (defined with different keywords), for example:',
-    //         '* `int` - stores integers (whole numbers), without decimals, such as 123 or -123',
-    //         '* `double` - stores floating point numbers, with decimals, such as 19.99 or -19.99',
-    //         '* `char` - stores single characters, such as \'a\' or \'B\'. Char values are surrounded by single quotes',
-    //         '* `string` - stores text, such as "Hello World". String values are surrounded by double quotes',
-    //         '* `bool` - stores values with two states: true or false',
-    //       ],
-    //       'Variable Declaration': [
-    //         '''
-    //           ```
-    //             int rollno;
-    //             float marks;
-    //             char grade;
-
-    //           ```
-    //         ''',
-    //         '''
-    //           Here:
-    //             - rollno is a variable of type int
-    //             - marks is a variable of type float
-    //             - grade is a variable of type char
-    //         ''',
-    //       ],
-    //       'Variable Initialization': [
-    //         '''
-    //           ```
-    //             int rollno = 201;
-    //             float marks = 85.6;
-    //             char grade = 'A;
-
-    //           ```
-    //         ''',
-    //         '''
-    //           Here:
-    //           - 201 is the value of rollno
-    //           - 85.6 is the value of marks
-    //           - A is the value of grade (Character value is always written in single quotes)
-    //         ''',
-    //       ],
-    //       'Rules to declare a variable': [
-    //         '1. The first letter of a variable should be alphabet or underscore(_)',
-    //         '2. The first letter of a variable should not be digit',
-    //         '3. After first character it may be combination of alphabets and digits',
-    //         '4. Blank space are not allowed in variable name',
-    //         '5. Variable name should not be a keyword',
-    //       ],
-    //     },
-    //   },
-    // },
-
     0: {
       'title': 'Syntax of C++ Language',
       'type': 'linear',
@@ -3654,7 +3510,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     },
     2: {
       'title': 'Variables in C++',
-      'type': 'brannch',
+      'type': 'branch',
       'content': {
         'variables': 'assets/markdown/class3/variable.md',
         'Constant in C++': 'assets/markdown/class3/constants.md',
@@ -3700,7 +3556,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     },
     7: {
       'title': 'Switch in C++',
-      'type':'linear',
+      'type': 'linear',
       'content': 'assets/markdown/class8.md',
     },
     8: {
@@ -3715,16 +3571,15 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     },
     9: {
       'title': 'Pointer in C++',
-      'type':'linear',
+      'type': 'linear',
       'content': 'assets/markdown/class10/pointer_cpp.md',
     },
     10: {
       'title': 'Arrays in C++',
-      'type':'branch',
+      'type': 'branch',
       'content': {
         'Single Dimension Array': 'assets/markdown/class11/single_dim_aray.md',
         'Double Dimension Array': 'assets/markdown/class11/double_dim_aray.md',
-        
       },
     },
     11: {
@@ -3748,5 +3603,24 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
       'title': 'File Handling in C++',
       'content': 'assets/markdown/class14/class14.md',
     },
+  };
+  static const schoolList = [
+    'Uniben',
+    'Uniport',
+    'UniAbuja',
+    'UniZik',
+    'AAU',
+  ];
+  static const cppProjectLinks = {
+    'Registration System': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/A%20Login%20and%20Registration%20System',
+    'AIO Calculator': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/AIO%20Calculator',
+    'Bank Management System': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/Bank%20Management%20System',
+    'CPP Magic Text': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/CPP%20Magic%20Text',
+    'Calculate CGPA and GPA': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/Calculate%20CGPA%20and%20GPA',
+  };
+  static const cProjectLinks = {
+    'Modern Periodic Table': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Modern%20Periodic%20Table',
+    'Avoid Missile': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Avoid%20Missile',
+    'Love Calculator': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Love-Calculator',
   };
 }

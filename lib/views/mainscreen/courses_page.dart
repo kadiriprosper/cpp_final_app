@@ -1,9 +1,11 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/tab_controller.dart';
+import 'package:cpp_final_app/data/data_pool.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/widgets/tab_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 //TODO: Change all the colors to their final colors
 
@@ -80,8 +82,12 @@ class _CoursesPageState extends State<CoursesPage> {
               ),
               const SizedBox(height: 20),
               isCpp
-                  ? CoursesListView(totalCourseProgress: totalCourseProgress)
-                  : CoursesListView(totalCourseProgress: totalCourseProgress),
+                  ? CoursesListView(
+                      projectList: DataPool.cppProjectLinks,
+                    )
+                  : CoursesListView(
+                      projectList: DataPool.cProjectLinks,
+                    ),
             ],
           ),
         ),
@@ -93,107 +99,111 @@ class _CoursesPageState extends State<CoursesPage> {
 class CoursesListView extends StatelessWidget {
   const CoursesListView({
     super.key,
-    required this.totalCourseProgress,
+    required this.projectList,
+    // required this.totalCourseProgress,
   });
-
-  //TODO: This progress would come from the course model
-  final int totalCourseProgress;
-
-  //TODO: Plug this to the provider and allow it show the selected
-  //TODO: status for the courses
-
   //TODO: All colors need to be rectified to their final colors
+  final Map<String, String> projectList;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return Container(
-          height: 100,
-          width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                offset: Offset.fromDirection(90),
-                blurRadius: 10,
-                spreadRadius: 0.1,
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: 90,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      HelperFunctions.ongoingCourseImages[index],
+        return InkWell(
+          borderRadius: BorderRadius.circular(10),
+          onTap: () async {
+            final Uri url =
+                Uri.parse(projectList.entries.elementAt(index).value);
+            if (!await launchUrl(url)) {
+              Get.showSnackbar(
+                const GetSnackBar(
+                  title: 'Url could not be launched',
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            }
+          },
+          child: Container(
+            height: 100,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  offset: Offset.fromDirection(90),
+                  blurRadius: 10,
+                  spreadRadius: 0.1,
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 90,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        HelperFunctions.ongoingCourseImages[index],
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    fit: BoxFit.cover,
                   ),
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                // width: MediaQuery.of(context).size.width / 2.2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'UI UX Design',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    // const SizedBox(height: 5),
-                    // Text(
-                    //   '8 Lessons to go',
-                    //   style: const TextStyle(
-                    //     fontSize: 11,
-                    //     fontWeight: FontWeight.w500,
-                    //   ),
-                    // ),
-                    const SizedBox(height: 10),
-                    Row(
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    // width: MediaQuery.of(context).size.width / 2.2,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width - 200,
-                          child: LinearProgressIndicator(
-                            value: totalCourseProgress / 100,
-                            minHeight: 3.5,
-                            color: CustomColor.buttonColor1,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
                         Text(
-                          '$totalCourseProgress%',
+                          projectList.entries.elementAt(index).key,
                           style: const TextStyle(
-                            fontSize: 12,
+                            fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
+                        const SizedBox(height: 10),
+                        // Row(
+                        //   children: [
+                        //     SizedBox(
+                        //       width: MediaQuery.of(context).size.width - 200,
+                        //       child: LinearProgressIndicator(
+                        //         value: totalCourseProgress / 100,
+                        //         minHeight: 3.5,
+                        //         color: CustomColor.buttonColor1,
+                        //       ),
+                        //     ),
+                        //     const SizedBox(width: 10),
+                        //     Text(
+                        //       '$totalCourseProgress%',
+                        //       style: const TextStyle(
+                        //         fontSize: 12,
+                        //         fontWeight: FontWeight.w500,
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
-                  ],
-                ),
-              )
-            ],
+                  ),
+                )
+              ],
+            ),
           ),
         );
       },
       separatorBuilder: (context, index) => const SizedBox(height: 10),
-      itemCount: 4,
+      itemCount: projectList.length,
     );
   }
 }

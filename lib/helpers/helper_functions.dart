@@ -22,6 +22,7 @@ class HelperFunctions {
     'assets/project/ongoing2.png',
     'assets/project/ongoing3.png',
     'assets/project/ongoing4.png',
+    'assets/project/ongoing4.png',
   ];
 
   static List<String> completedCoursesImages = [

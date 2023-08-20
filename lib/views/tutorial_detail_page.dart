@@ -47,10 +47,9 @@ class _TutorialDetailPageState extends State<TutorialDetailPage> {
                         code: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
-                        
                       ),
-
-                      data: snapshot.data ??
+                      //TODO: Add spaces for the top
+                      data: snapshot.data?.replaceAll('- ', '\n\n- ') ??
                           '', //widget.dataList['code']?.replaceAll('```', '') ,
                       extensionSet: md.ExtensionSet(
                         md.ExtensionSet.gitHubFlavored.blockSyntaxes,

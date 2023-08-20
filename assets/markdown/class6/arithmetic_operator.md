@@ -1,10 +1,9 @@
 - **Arithmetic Operators**
 
-	<!-- <br>
 	<div align="center">
     <img src="../imgs/C%2B%2B/img11.jpg" height="60%" width="60%">
 	</div>
-	<br> -->
+
 ```
 #include<iostream>
 using namespace std;
