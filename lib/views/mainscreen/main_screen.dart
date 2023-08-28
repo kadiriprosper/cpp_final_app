@@ -24,14 +24,16 @@ class _MainScreenState extends State<MainScreen> {
     ChatPage(),
     ProfilePage(),
   ];
-  int currentIndex = 0;
+  // int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Obx(
-          () => IndexedStack(
-            index: landingPageController.tabIndex.last,
-            children: pages,
+        body: SafeArea(
+          child: Obx(
+            () => IndexedStack(
+              index: landingPageController.tabIndex.last,
+              children: pages,
+            ),
           ),
         ),
         bottomNavigationBar: Obx(
@@ -134,5 +136,3 @@ class CustomActiveIcon extends StatelessWidget {
     );
   }
 }
-
-

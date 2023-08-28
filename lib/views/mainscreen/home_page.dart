@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/views/coming_soon_page.dart';
 import 'package:cpp_final_app/views/course_page.dart';
+import 'package:cpp_final_app/views/qapage.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,20 +19,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  LandingPageController landingPageController =
+      Get.put(LandingPageController());
   int currentIndex = 0;
   int carouselIndex = 0;
   CarouselController controller = CarouselController();
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: const EdgeInsets.symmetric(horizontal: 20),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 15),
+            const SizedBox(height: 30),
             HomeHeaderWidget(
               //TODO: Change the image and name to the current user
               profilePic: HelperFunctions.profilePic,
@@ -97,9 +101,9 @@ class _HomePageState extends State<HomePage> {
                     label:
                         'What do yo want to learn', //TODO: Connect to a list of slider titles
                     sliderColor: [
-                      CustomColor.color1,
-                      CustomColor.color2,
-                      CustomColor.color3
+                      CustomColor.caroselColor1,
+                      CustomColor.caroselColor2,
+                      CustomColor.caroselColor3,
                     ][index],
                     photoPath: HelperFunctions.sliderImages[index],
                   ),
@@ -143,19 +147,24 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     CategoryWidget(
                       label: 'Practical',
-                      onPressed: () {},
+                      onPressed: () {
+                        landingPageController.changeTabIndex(1);
+                        //TODO: Change this to the project github link
+                      },
                       photoPath: HelperFunctions.categoryImages[0],
                       isFirst: true,
                       isLast: false,
-                      color: CustomColor.color1,
+                      color: CustomColor.tileColor1,
                     ),
                     CategoryWidget(
                       label: 'Code',
-                      onPressed: () {},
+                      onPressed: () {
+                        //TODO: Find out what to put in here
+                      },
                       photoPath: HelperFunctions.categoryImages[1],
                       isFirst: true,
                       isLast: false,
-                      color: CustomColor.color1,
+                      color: CustomColor.tileColor2,
                     ),
                     CategoryWidget(
                       label: 'Certificate',
@@ -165,15 +174,17 @@ class _HomePageState extends State<HomePage> {
                       photoPath: HelperFunctions.categoryImages[2],
                       isFirst: true,
                       isLast: false,
-                      color: CustomColor.color3,
+                      color: CustomColor.tileColor3,
                     ),
                     CategoryWidget(
                       label: 'Q/A',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => const QaPage());
+                      },
                       photoPath: HelperFunctions.categoryImages[3],
                       isFirst: true,
                       isLast: false,
-                      color: CustomColor.color1,
+                      color: CustomColor.caroselColor1,
                     ),
                   ],
                 ),
@@ -196,6 +207,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: GridView(
                         shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           childAspectRatio: 6 / 7,
                           crossAxisSpacing: 4,
@@ -205,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           TrendingCategoryWidgetFinal(
                             imagePath: HelperFunctions.trendingImages.first,
-                            label: 'Cpp',
+                            label: 'C++ Programming',
                             onBookMark: () {},
                             onPressed: () {
                               Get.to(() => const CoursePage());
@@ -213,10 +225,10 @@ class _HomePageState extends State<HomePage> {
                           ),
                           TrendingCategoryWidgetFinal(
                             imagePath: HelperFunctions.trendingImages[1],
-                            label: 'C',
+                            label: 'C Programming',
                             onBookMark: () {},
                             onPressed: () {
-                              Get.to(() => const CoursePage());
+                              Get.to(() => const ComingSoonPage());
                             },
                           ),
                         ]),
@@ -260,34 +272,13 @@ class TrendingCategoryWidgetFinal extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.black12, width: 1),
               ),
               child: Stack(
                 children: [
                   Image.asset(
                     imagePath,
                     fit: BoxFit.cover,
-                  ),
-                  Positioned(
-                    top: 5,
-                    left: 5,
-                    child: InkWell(
-                      onTap: onBookMark,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        padding: const EdgeInsets.all(3),
-                        //TODO: Check to see if the course has been bookmmarked
-                        //use the isBookmarked variable
-                        child: Center(
-                          child: Icon(
-                            Icons.bookmark_outline_outlined,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -302,7 +293,7 @@ class TrendingCategoryWidgetFinal extends StatelessWidget {
                 maxLines: 2,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 12,
+                  fontSize: 16,
                 ),
               ),
             )
@@ -327,8 +318,9 @@ class CategoryHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -336,21 +328,21 @@ class CategoryHeader extends StatelessWidget {
             label,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 14,
+              fontSize: 22,
             ),
           ),
-          MaterialButton(
-            onPressed: onPressed,
-            textColor: CustomColor.buttonColor1,
-            padding: EdgeInsets.zero,
-            child: Text(
-              buttonLabel,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
-            ),
-          )
+          // MaterialButton(
+          //   onPressed: onPressed,
+          //   textColor: CustomColor.buttonColor1,
+          //   padding: EdgeInsets.zero,
+          //   child: Text(
+          //     buttonLabel,
+          //     style: const TextStyle(
+          //       fontWeight: FontWeight.bold,
+          //       fontSize: 14,
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
@@ -498,10 +490,10 @@ class HomeHeaderWidget extends StatelessWidget {
         children: [
           //TODO: Is this profile pic clickable?
           CircleAvatar(
-            radius: 25,
+            radius: 30,
             backgroundColor: Colors.grey,
             child: CircleAvatar(
-              radius: 24,
+              radius: 29,
               //TODO: Change the image to the profile pic
               backgroundImage: AssetImage(profilePic),
             ),
@@ -514,7 +506,7 @@ class HomeHeaderWidget extends StatelessWidget {
             'Welcome, $username',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 16,
+              fontSize: 18,
             ),
           )
         ],

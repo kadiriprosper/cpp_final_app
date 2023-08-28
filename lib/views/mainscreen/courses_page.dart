@@ -1,10 +1,11 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/controllers/tab_controller.dart';
-import 'package:cpp_final_app/data/data_pool.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/widgets/tab_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 //TODO: Change all the colors to their final colors
@@ -18,6 +19,7 @@ class CoursesPage extends StatefulWidget {
 
 class _CoursesPageState extends State<CoursesPage> {
   final landingPageController = Get.put(LandingPageController());
+  final globalController = Get.put(GlobalController());
   int totalCourseProgress = 80;
   bool isCpp = true;
   @override
@@ -32,11 +34,11 @@ class _CoursesPageState extends State<CoursesPage> {
         height: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -61,7 +63,7 @@ class _CoursesPageState extends State<CoursesPage> {
                   children: [
                     StatusButton(
                       isSelected: isCpp,
-                      label: 'Cpp',
+                      label: 'C++',
                       onPressed: () {
                         setState(() {
                           isCpp = true;
@@ -83,10 +85,10 @@ class _CoursesPageState extends State<CoursesPage> {
               const SizedBox(height: 20),
               isCpp
                   ? CoursesListView(
-                      projectList: DataPool.cppProjectLinks,
+                      projectList: globalController.getProjectData('Cpp'),
                     )
                   : CoursesListView(
-                      projectList: DataPool.cProjectLinks,
+                      projectList: globalController.getProjectData('C'),
                     ),
             ],
           ),
@@ -102,12 +104,15 @@ class CoursesListView extends StatelessWidget {
     required this.projectList,
     // required this.totalCourseProgress,
   });
-  //TODO: All colors need to be rectified to their final colors
+
   final Map<String, String> projectList;
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = Get.put(ScrollController());
     return ListView.separated(
+      controller: scrollController,
+      physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return InkWell(
@@ -160,7 +165,6 @@ class CoursesListView extends StatelessWidget {
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(10),
-                    // width: MediaQuery.of(context).size.width / 2.2,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,27 +176,24 @@ class CoursesListView extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        // Row(
-                        //   children: [
-                        //     SizedBox(
-                        //       width: MediaQuery.of(context).size.width - 200,
-                        //       child: LinearProgressIndicator(
-                        //         value: totalCourseProgress / 100,
-                        //         minHeight: 3.5,
-                        //         color: CustomColor.buttonColor1,
-                        //       ),
-                        //     ),
-                        //     const SizedBox(width: 10),
-                        //     Text(
-                        //       '$totalCourseProgress%',
-                        //       style: const TextStyle(
-                        //         fontSize: 12,
-                        //         fontWeight: FontWeight.w500,
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
+                        const SizedBox(height: 5),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Icon(
+                              MdiIcons.github,
+                              size: 20,
+                            ),
+                            const SizedBox(width: 5),
+                            const Text(
+                              'Github',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),

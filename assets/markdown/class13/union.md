@@ -1,4 +1,4 @@
-- **Definition**
+## Definition
 
 1. It is a collection of data of different data type
 2. It is a user define data type
@@ -8,18 +8,12 @@
 6. **Note:** Union does not support multiple value simultaneously. <br> It can only store one value at a time.
 
 
-- **Syntax**
+### Syntax
 
-<br>
-<div align="center">
-<img src="../imgs/C++/img40.jpg" height="60%" width="60%">
-</div>
-<br>
+![Learning]("../imgs/C++/img40.jpg""../imgs/C++/img40.jpg")
 
 
-
-
-- **Example:**
+### Example:
 
 ```
 
@@ -32,12 +26,14 @@
 
 ```
 
-Here: 
+**Here:** 
 1. student is the name of union
 2. union is a keyword
 
 
-- **Example:- Write a program to store and display the student name, rollno and marks**
+### Example: 
+
+**Write a program to store and display the student name, rollno and marks**
 
 **Note:** 
 - Union will show only one last value correct cause it can store only single value at a time
@@ -73,5 +69,4 @@ Here:
 
 ```
 
-
-<a href="##">Click for Practical Program</a>
+[Click For Practical Program](/lib/views/course_page.dart)

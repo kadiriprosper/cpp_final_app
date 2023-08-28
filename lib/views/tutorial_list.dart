@@ -1,5 +1,5 @@
 import 'package:cpp_final_app/colors/colors.dart';
-import 'package:cpp_final_app/data/data_pool.dart';
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/views/sub_tutorial_list.dart';
 import 'package:cpp_final_app/views/tutorial_detail_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
@@ -11,39 +11,40 @@ class TutorialList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final globalController = Get.put(GlobalController());
     return Scaffold(
       appBar: const CustomAppBar(
         hasLeading: true,
         title: 'C++ Tutorial',
       ).build(context),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
+        // padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
         child: ListView.separated(
+          padding: const EdgeInsets.only(bottom: 20),
+          physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
-          itemCount: DataPool.tutorialList.length,
+          itemCount: globalController.getTutorialList('Cpp').length,
           separatorBuilder: (context, index) => const SizedBox(height: 15),
           itemBuilder: (context, index) {
+            final tutorialData = globalController.getTutorialList('Cpp');
             return TutorialListCard(
               onPressed: () {
-                DataPool.tutorialList[index]?['type'] != 'branch'
+                tutorialData[index]?['type'] != 'branch'
                     ? Get.to(
                         () => TutorialDetailPage(
-                          pageTitle:
-                              DataPool.tutorialList[index]?['title'] as String,
-                          mdString: DataPool.tutorialList[index]?['content']
-                              as String,
+                          pageTitle: tutorialData[index]?['title'] as String,
+                          mdString: tutorialData[index]?['content'] as String,
                         ),
                       )
                     : Get.to(
                         () => SubTutorialList(
-                          dataPool: DataPool.tutorialList[index]?['content']
+                          dataPool: tutorialData[index]?['content']
                               as Map<String, dynamic>,
-                          pageTitle:
-                              DataPool.tutorialList[index]?['title'] as String,
+                          pageTitle: tutorialData[index]?['title'] as String,
                         ),
                       );
               },
-              title: DataPool.tutorialList[index]?['title'] as String,
+              title: tutorialData[index]?['title'] as String,
               index: index + 1,
             );
           },
@@ -74,6 +75,7 @@ class TutorialListCard extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 70,
+        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
         decoration: BoxDecoration(
           color: Colors.white,

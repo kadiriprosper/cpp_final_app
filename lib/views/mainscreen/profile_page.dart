@@ -32,19 +32,11 @@ class _ProfilePageState extends State<ProfilePage> {
         landingPageController: landingPageController,
         title: 'My Profile',
       ).build(context),
-      // appBar: AppBar(
-      //     elevation: 0,
-      //     title: const Text('My Profile'),
-      //     backgroundColor: Colors.transparent,
-      //     foregroundColor: Colors.black,
-      //     titleTextStyle: Theme.of(context)
-      //         .appBarTheme
-      //         .titleTextStyle
-      //         ?.copyWith(fontWeight: FontWeight.bold)),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -53,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const SizedBox(height: 10),
               //TODO: Get the username
-              Text(
+              const Text(
                 'Leslie Alexander',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
@@ -100,13 +92,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   landingPageController.changeTabIndex(1);
                 },
               ),
-              // const SizedBox(height: 15),
-              // SettingsButton(
-              //   label: 'Saved Courses',
-              //   leadingIcon:
-              //       SvgPicture.asset(ProfileCustomIcon.savedCourseIcon),
-              //   onPressed: () {},
-              // ),
               const SizedBox(height: 15),
               SettingsButton(
                 label: 'Payments',
@@ -160,6 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   );
                 },
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -183,7 +169,7 @@ class RateUsDialogBox extends StatelessWidget {
       ),
       child: Container(
         width: 500,
-        height: MediaQuery.of(context).size.height / 1.1,
+        height: MediaQuery.of(context).size.height / 1.4,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -274,7 +260,7 @@ class ProfileDialogBoxWidget extends StatelessWidget {
         textAlign: TextAlign.center,
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 18,
+          fontSize: 22,
         ),
       ),
       children: [
@@ -282,12 +268,15 @@ class ProfileDialogBoxWidget extends StatelessWidget {
           alignment: MainAxisAlignment.center,
           children: [
             CustomButtonSmall(
+              minWidth: MediaQuery.of(context).size.width * 0.3,
               onPressed: () {
                 //TODO: Code to logout
               },
               title: 'Yes',
             ),
+            const SizedBox(height: 10),
             CustomButtonSmall(
+              minWidth: MediaQuery.of(context).size.width * 0.3,
               onPressed: () {
                 Get.back();
               },

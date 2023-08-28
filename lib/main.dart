@@ -16,10 +16,12 @@ import 'package:cpp_final_app/views/settingscreens/payments_page.dart';
 import 'package:cpp_final_app/views/settingscreens/privacy_page.dart';
 import 'package:cpp_final_app/views/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 //TODO: Change the text theme of the whole app
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
 
@@ -30,9 +32,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: CustomTheme.dayTheme,
+      theme: CustomTheme.dayTheme.copyWith(
+        appBarTheme: AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
+        ),
+      ),
       defaultTransition: Transition.cupertino,
-      home: const SplashPage(),
+      home: const LoginPage(),
     );
   }
 }

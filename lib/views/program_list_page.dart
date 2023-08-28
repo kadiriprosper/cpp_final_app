@@ -1,39 +1,43 @@
 import 'package:cpp_final_app/colors/colors.dart';
-import 'package:cpp_final_app/data/data_pool.dart';
-import 'package:cpp_final_app/data/dummy_data.dart';
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/views/program_sublist_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProgramListPage extends StatelessWidget {
   const ProgramListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final globalController = Get.put(GlobalController());
     return Scaffold(
       appBar: const CustomAppBar(
         hasLeading: true,
         title: 'C++ Programs',
       ).build(context),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
+        // padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
         child: ListView.separated(
+          padding: const EdgeInsets.only(bottom: 20),
+          physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
-          itemCount: DataPool.program.length,
+          itemCount: globalController.getProgramList('Cpp').length,
           separatorBuilder: (context, index) => const SizedBox(height: 15),
           itemBuilder: (context, index) {
+            final programs = globalController.getProgramList('Cpp');
             return CourseListCard(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => ProgramSublistPage(
-                      pageTitle: DataPool.program.keys.elementAt(index),
-                      dataList: DataPool.program.values.elementAt(index),
+                      pageTitle: programs.keys.elementAt(index),
+                      dataList: programs.values.elementAt(index),
                     ),
                   ),
                 );
               },
-              title: DataPool.program.keys.elementAt(index),
+              title: programs.keys.elementAt(index),
               //length: courseList[index]?['length'] ?? '',
               index: index + 1,
             );
@@ -68,6 +72,7 @@ class CourseListCard extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 70,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),

@@ -1,8 +1,8 @@
-import 'package:cpp_final_app/views/mainscreen/home_page.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pinput/pinput.dart';
 
 class VerificationPage extends StatefulWidget {
   const VerificationPage({super.key});
@@ -27,14 +27,14 @@ class _VerificationPageState extends State<VerificationPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8)
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30)
             .copyWith(bottom: 0),
         child: Column(
           children: [
             const Text(
               'Verification',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -44,58 +44,14 @@ class _VerificationPageState extends State<VerificationPage> {
               'Enter the code sent to 99*******5',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 25),
             //TODO: How to autofill from message
             //TODO: Update the input fields with the correct plugin
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Center(),
-                ),
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ],
+            Pinput(
+              onCompleted: (value) => print(value),
             ),
             const SizedBox(height: 26),
             AuthButton(
@@ -180,7 +136,6 @@ class AuthDialogBox extends StatelessWidget {
                 ),
                 (route) => false,
               );
-              
             },
           ),
         ],

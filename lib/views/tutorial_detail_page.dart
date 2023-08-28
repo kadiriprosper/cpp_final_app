@@ -36,6 +36,7 @@ class _TutorialDetailPageState extends State<TutorialDetailPage> {
               height: MediaQuery.of(context).size.height,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -59,6 +60,7 @@ class _TutorialDetailPageState extends State<TutorialDetailPage> {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 30),
                   ],
                 ),
               ),

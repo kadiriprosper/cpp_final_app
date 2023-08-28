@@ -1,8 +1,8 @@
-- **Arithmetic Operators**
+## Arithmetic Operators
 
-	<div align="center">
+	<!-- <div align="center">
     <img src="../imgs/C%2B%2B/img11.jpg" height="60%" width="60%">
-	</div>
+	</div> -->
 
 ```
 #include<iostream>

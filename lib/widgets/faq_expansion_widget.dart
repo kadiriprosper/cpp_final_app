@@ -13,7 +13,10 @@ class FAQExpansionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 10).copyWith(
+        bottom: 20,
+        top: 10,
+      ),
       padding: const EdgeInsets.all(5),
       width: double.infinity,
       decoration: BoxDecoration(

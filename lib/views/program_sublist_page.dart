@@ -19,8 +19,10 @@ class ProgramSublistPage extends StatelessWidget {
         title: pageTitle,
       ).build(context),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
+        // padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
         child: ListView.separated(
+          padding: const EdgeInsets.only(bottom: 20),
+          physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           itemCount: dataList.length,
           separatorBuilder: (context, index) => const SizedBox(height: 15),

@@ -1,4 +1,4 @@
-- **Definition**
+## Definition
 - To run the body countinously untill a required condition is fullfill is called "looping".
 - It is used to perform looping operation, when the condition will become false the execution of loop will be stopped 
 
@@ -9,17 +9,16 @@
 </div>
 <br>
 
-
-- **Syntax**
+### Syntax
 1. Its body will execute until the given condition is true
 
 
 <br>
 
-- **Example**
+### Example
 
 
-    ```
+```
     #include<iostream>
     int main()
     {
@@ -47,9 +46,9 @@
     10
 
     */
-    ```
+```
 
-    In the above program, 'i' is a variable which is initialized with '1', condition goes to 10 and it is incremented by 1 so the output will be 1 to 10. 
+In the above program, 'i' is a variable which is initialized with '1', condition goes to 10 and it is incremented by 1 so the output will be 1 to 10. 
 
 
-<a href="##">Click for Practical Program</a>
+<!-- <a href="##">Click for Practical Program</a> -->

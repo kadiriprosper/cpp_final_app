@@ -392,7 +392,7 @@ class DataPool {
       'Answer': '- Bjarne Stroustrup'
     },
   };
-  static const program = {
+  static const cppProgram = {
     'Basic': {
       'ADDITION OF TWO NUMBER': {
         'code': '''
@@ -3497,7 +3497,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 
     // 'Enumeration': {},
   };
-  static const tutorialList = {
+  static const cppTutorial = {
     0: {
       'title': 'Syntax of C++ Language',
       'type': 'linear',
@@ -3578,8 +3578,8 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
       'title': 'Arrays in C++',
       'type': 'branch',
       'content': {
-        'Single Dimension Array': 'assets/markdown/class11/single_dim_aray.md',
-        'Double Dimension Array': 'assets/markdown/class11/double_dim_aray.md',
+        'Single Dimension Array': 'assets/markdown/class11/single_dim_array.md',
+        'Double Dimension Array': 'assets/markdown/class11/double_dim_array.md',
       },
     },
     11: {
@@ -3593,6 +3593,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     },
     12: {
       'title': 'Structure in C++',
+      'type': 'branch',
       'content': {
         'Structure': 'assets/markdown/class13/structure.md',
         'Union': 'assets/markdown/class13/union.md',
@@ -3601,26 +3602,58 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     },
     13: {
       'title': 'File Handling in C++',
+      'type': 'linear',
       'content': 'assets/markdown/class14/class14.md',
     },
   };
   static const schoolList = [
+    'Select School',
     'Uniben',
     'Uniport',
     'UniAbuja',
     'UniZik',
     'AAU',
   ];
+  static const facultyList = [
+    'Select Faculty',
+    'Physical Science',
+    'Agricultural Science',
+    'Life Science',
+  ];
+
+  static const departmentList = [
+    'Select Department',
+    'Computer Science',
+    'Petroleum Engineering',
+    'Computer Engineering',
+  ];
+
+  static const levelList = [
+    'Select your level',
+    '100',
+    '200',
+    '300',
+    '400',
+  ];
+
   static const cppProjectLinks = {
-    'Registration System': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/A%20Login%20and%20Registration%20System',
-    'AIO Calculator': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/AIO%20Calculator',
-    'Bank Management System': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/Bank%20Management%20System',
-    'CPP Magic Text': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/CPP%20Magic%20Text',
-    'Calculate CGPA and GPA': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/Calculate%20CGPA%20and%20GPA',
+    'Registration System':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/A%20Login%20and%20Registration%20System',
+    'AIO Calculator':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/AIO%20Calculator',
+    'Bank Management System':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/Bank%20Management%20System',
+    'CPP Magic Text':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/CPP%20Magic%20Text',
+    'Calculate CGPA and GPA':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%2B%2B%20Projects/Basic/Calculate%20CGPA%20and%20GPA',
   };
   static const cProjectLinks = {
-    'Modern Periodic Table': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Modern%20Periodic%20Table',
-    'Avoid Missile': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Avoid%20Missile',
-    'Love Calculator': 'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Love-Calculator',
+    'Modern Periodic Table':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Modern%20Periodic%20Table',
+    'Avoid Missile':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Avoid%20Missile',
+    'Love Calculator':
+        'https://github.com/The-Young-Programmer/C-CPP-Programming/tree/main/Projects/C%20Projects/Basic/Love-Calculator',
   };
 }

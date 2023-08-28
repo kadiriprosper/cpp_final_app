@@ -25,6 +25,7 @@ dependencies:
   path_provider: ^2.0.15
   pdf: ^3.10.4
   # printing: ^5.11.0
+  pinput: ^3.0.1
   rive: ^0.7.16
   syncfusion_flutter_pdfviewer: ^22.1.39
   url_launcher: ^6.1.12

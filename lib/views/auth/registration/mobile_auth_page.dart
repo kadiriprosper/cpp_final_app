@@ -34,10 +34,11 @@ class _MobileAuthPageState extends State<MobileAuthPage> {
           padding: const EdgeInsets.all(15),
           child: Column(
             children: [
+              const SizedBox(height: 15),
               const Text(
                 'Enter your phone number',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -46,11 +47,10 @@ class _MobileAuthPageState extends State<MobileAuthPage> {
                 'You will receive 4 digits number to verified number',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 12,
                   fontWeight: FontWeight.normal,
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -62,13 +62,14 @@ class _MobileAuthPageState extends State<MobileAuthPage> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width / 2.5,
+                      width: MediaQuery.of(context).size.width / 3,
                       child: CountryCodePicker(
                         onChanged: (value) {
                           countryCode = value.toString();
                         },
                         initialSelection: 'NG',
                         padding: EdgeInsets.zero,
+                        
                         showCountryOnly: false,
                         showDropDownButton: true,
                         alignLeft: false,

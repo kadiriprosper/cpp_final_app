@@ -7,6 +7,7 @@ class CustomButtonSmall extends StatelessWidget {
     required this.onPressed,
     this.buttonColor = CustomColor.buttonColor1,
     required this.title,
+    this.minWidth,
     this.textColor,
   });
 
@@ -14,6 +15,7 @@ class CustomButtonSmall extends StatelessWidget {
   final Color buttonColor;
   final Color? textColor;
   final String title;
+  final double? minWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class CustomButtonSmall extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         side: const BorderSide(color: CustomColor.buttonColor1),
       ),
-      minWidth: MediaQuery.of(context).size.width / 2.5,
+      minWidth: minWidth ?? MediaQuery.of(context).size.width / 2.5,
       color: buttonColor,
       child: Text(
         title,

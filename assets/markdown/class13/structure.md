@@ -1,4 +1,4 @@
-- **Definition**
+## Definition
 
 1. It is a collection of data of different data type
 2. It is a user define data type
@@ -7,18 +7,13 @@
 5. `struct` keyword is used to create a structure
 
 
-- **Syntax**
+### **Syntax**
 
-<br>
-<div align="center">
-<img src="../imgs/C++/img39.jpg" height="60%" width="60%">
-</div>
-<br>
+![Syntax](../imgs/C++/img39.jpg)
 
-- **Example:**
+### **Example:**
 
 ```
-
     struct student
     {
         char name[200];
@@ -28,12 +23,14 @@
 
 ```
 
-Here: 
+**Here:**
 1. student is the name of structure
 2. struct is a keyword
 
 
-- **Example:- Write a program to store and display the student name, rollno and marks**
+### Example:
+
+**Write a program to store and display the student name, rollno and marks**
 
 
 ```
@@ -64,7 +61,4 @@ Here:
     Student Marks=85.9
 
 ```
-
-
-<a href="##">Click for Practical Program</a>
-
+<!-- <a href="##">Click for Practical Program</a> -->

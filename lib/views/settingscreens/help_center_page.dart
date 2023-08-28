@@ -1,3 +1,4 @@
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/data/data_pool.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
@@ -32,13 +33,15 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         onBack: () {},
       ).build(context),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
+        // margin: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10)
+                    .copyWith(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -47,12 +50,12 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
                       color: Colors.black12,
                       offset: Offset.fromDirection(90),
                       blurRadius: 10,
-                      spreadRadius: 0.1,
+                      spreadRadius: 2,
                     ),
                   ],
                 ),
                 width: MediaQuery.of(context).size.width,
-                height: 45,
+                height: 60,
                 child: ButtonBar(
                   buttonPadding: const EdgeInsets.symmetric(
                     vertical: 0,
@@ -82,7 +85,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              isFaqSelected ? FAQPage() : ContactUsPage(),
+              isFaqSelected ? const FAQPage() : const ContactUsPage(),
             ],
           ),
         ),
@@ -198,36 +201,39 @@ class ContactUsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        width: double.infinity,
-        height: 50,
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset.fromDirection(90),
-              blurRadius: 10,
-              spreadRadius: 3,
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            icon,
-            const SizedBox(width: 10),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset.fromDirection(90),
+                blurRadius: 10,
+                spreadRadius: 3,
               ),
-            ),
-          ],
+            ],
+          ),
+          child: Row(
+            children: [
+              icon,
+              const SizedBox(width: 10),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -241,14 +247,18 @@ class FAQPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = Get.put(ScrollController());
+    final globalController = Get.put(GlobalController());
     return ListView.builder(
-      itemCount: DataPool.fAQPool.length,
+      controller: scrollController,
+      itemCount: globalController.helpCenterData.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {
+        final faqPool = globalController.helpCenterData;
         return FAQExpansionWidget(
-          title: DataPool.fAQPool[index]!['title'] as String,
-          text: faqbody(DataPool.fAQPool[index]?['bullet'] as List<String>?,
-              DataPool.fAQPool[index]!['body'] as String),
+          title: faqPool[index]!['title'] as String,
+          text: faqbody(faqPool[index]?['bullet'] as List<String>?,
+              faqPool[index]!['body'] as String),
         );
       },
     );

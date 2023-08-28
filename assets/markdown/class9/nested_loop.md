@@ -1,19 +1,18 @@
-- **Definition**
+## Definition:
 A loop inside another loop is called "nested loop", so one 'for loop' inside another 'for loop' is called "nested loop"
 
-- **Syntax**
+<!-- - **Syntax**
 
 <br>
 <div align="center">
 <img src="../imgs/C++/img27.jpg" height="60%" width="60%">
 </div>
-<br>
+<br> -->
     
+### Example
 
-- **Example**
 
-
-    ```
+```
     #include<iostream.h>
     int main()
     {
@@ -41,7 +40,7 @@ A loop inside another loop is called "nested loop", so one 'for loop' inside ano
     20
     2 3 5 7 11 13 17 19 
     */
-    ```
+```
 
 
-<a href="##">Click for Practical Program</a>
+<!-- <a href="##">Click for Practical Program</a> -->

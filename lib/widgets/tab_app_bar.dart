@@ -14,6 +14,7 @@ class TabAppBar extends StatelessWidget {
   @override
   PreferredSizeWidget build(BuildContext context) {
     return AppBar(
+      
       elevation: 0,
       backgroundColor: Colors.transparent,
       foregroundColor: Colors.black,

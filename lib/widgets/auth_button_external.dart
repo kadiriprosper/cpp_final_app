@@ -1,3 +1,4 @@
+import 'package:cpp_final_app/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 class AuthButtonExternal extends StatelessWidget {
@@ -20,8 +21,9 @@ class AuthButtonExternal extends StatelessWidget {
       height: 60,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
+        side: const BorderSide(color: CustomColor.buttonColor1),
       ),
-      color: Colors.grey.shade100,
+      color: Colors.grey.shade200,
       onPressed: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +35,7 @@ class AuthButtonExternal extends StatelessWidget {
           Text(
             title,
             style: const TextStyle(
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

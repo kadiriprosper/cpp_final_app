@@ -1,9 +1,9 @@
-- **Definition**
+## Definition
 1. The word that has a predefined meaning is called keywords
 2. It's functionality is also predefined
 3. It can not be used as an identifier
 
-- **Keywords in C++ are givien below:**
+### Keywords in C++ are givien below:
 
 1. default
 2. float

@@ -1,10 +1,10 @@
-- **Syntax**
+## If Statement
 
-<br>
+<!-- <br>
 <div align="center">
 <img src="../imgs/C%2B%2B/img19.jpg" height="60%" width="60%">
 </div>
-<br>
+<br> -->
 
 
 1. If the condition is true its body execute otherwise does not execute
@@ -14,7 +14,7 @@
 
 - **Example**
 
-    ```
+```
     #include<iostream>
     #include<conio.h>
     int main()
@@ -33,9 +33,9 @@
     ### Output ###
     x is greater than y
     */
-    ```
+```
 
 
 <br>
 
-<a href="##">Click for Practical Program</a>
+<!-- <a href="##">Click for Practical Program</a> -->

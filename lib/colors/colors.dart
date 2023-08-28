@@ -18,4 +18,14 @@ class CustomColor {
   static const color15 = Color(0xFF5186EE);
   static const color16 = Color(0xFFCCCCCC);
   static const color17 = Color(0x0101032c);
+
+  static const caroselColor1 = Color(0x332D9CDB);
+  static const caroselColor2 = Color(0xCCFFCCCC);
+  static const caroselColor3 = Color(0x9DFF9E9E);
+
+  static const tileColor1 = Color(0x6EFDD00F);
+  static const tileColor2 = Color(0x64C46564);
+  static const tileColor3 = Color(0x4D3668C8);
+
+  static const courseFrameColor = Color(0xFFD9D9D9);
 }

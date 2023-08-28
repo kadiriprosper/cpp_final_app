@@ -1,7 +1,6 @@
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import 'package:markdown/markdown.dart' as md;
@@ -33,6 +32,7 @@ class _ProgramDetailPageState extends State<ProgramDetailPage> {
         height: MediaQuery.of(context).size.height,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
+          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -80,6 +80,7 @@ class _ProgramDetailPageState extends State<ProgramDetailPage> {
                 styleSheet: MarkdownStyleSheet(
                   code: const TextStyle(
                     fontWeight: FontWeight.bold,
+
                   ),
                 ),
                 data: widget.dataList['code']?.replaceAll('```', '') ?? '',

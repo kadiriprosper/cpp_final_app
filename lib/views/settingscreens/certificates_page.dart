@@ -1,14 +1,16 @@
 import 'package:cpp_final_app/colors/colors.dart';
-import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CertificatePage extends StatelessWidget {
   const CertificatePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final globalController = Get.put(GlobalController());
     return Scaffold(
       appBar: CustomAppBar(
         hasLeading: true,
@@ -35,7 +37,7 @@ class CertificatePage extends StatelessWidget {
                           maxWidth: 500,
                         ),
                         child: Image.asset(
-                          HelperFunctions.certificatePic,
+                          globalController.userCertificate,
                           fit: BoxFit.contain,
                         ),
                       ),

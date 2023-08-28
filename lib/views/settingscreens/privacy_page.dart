@@ -1,8 +1,7 @@
-import 'package:cpp_final_app/data/data_pool.dart';
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-// import 'package:printing/printing.dart';
+import 'package:get/get.dart';
 
 class PrivacyPolicy extends StatefulWidget {
   const PrivacyPolicy({super.key});
@@ -12,6 +11,7 @@ class PrivacyPolicy extends StatefulWidget {
 }
 
 class _PrivacyPolicyState extends State<PrivacyPolicy> {
+  final globalController = Get.put(GlobalController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +23,11 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
       body: Padding(
         padding: const EdgeInsets.all(10).copyWith(top: 0, bottom: 0),
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
+            
             children: [
+              const SizedBox(height: 10),
               const Text(
                 'PRIVACY POLICY FOR C/C++ PROGRAMMING MOBILE APP\n',
                 style: TextStyle(
@@ -41,14 +44,14 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
               ),
               const SizedBox(height: 15),
               ListView.separated(
-                itemCount: DataPool.policyPool.length,
+                itemCount: globalController.privacyPolicyData.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 primary: false,
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 20),
                 itemBuilder: (context, index) {
-                  const policyPool = DataPool.policyPool;
+                  final policyPool = globalController.privacyPolicyData;
                   return PrivacyPolicyTextSegment(
                     index: index,
                     title: policyPool[index]!['title'] as String? ?? '',
@@ -58,6 +61,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                   );
                 },
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -100,11 +104,14 @@ class PrivacyPolicyTextSegment extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],

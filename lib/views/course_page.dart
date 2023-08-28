@@ -1,3 +1,4 @@
+import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/data/dummy_data.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/tutorial_list.dart';
@@ -33,6 +34,7 @@ class _CoursePageState extends State<CoursePage> {
         title: 'C++ Programming',
       ).build(context),
       body: Container(
+        margin: const EdgeInsets.only(top: 10),
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: SingleChildScrollView(
           child: Column(
@@ -43,7 +45,10 @@ class _CoursePageState extends State<CoursePage> {
                 height: 200,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: Colors.grey, width: 10),
+                  border: Border.all(
+                    color: CustomColor.courseFrameColor,
+                    width: 5,
+                  ),
                   image: DecorationImage(
                     image: AssetImage(HelperFunctions.courseImage),
                     fit: BoxFit.fill,
@@ -134,21 +139,27 @@ class OverviewSegment extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        const Text(
-          'C++ Programming',
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 18,
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            'C++ Programming',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
           ),
         ),
         const SizedBox(height: 5),
-        const Text(
-          placeholderText,
-          style: TextStyle(
-            fontSize: 14,
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            placeholderText,
+            style: TextStyle(
+              fontSize: 16,
+            ),
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         ButtonBar(
           alignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -180,7 +191,7 @@ class OverviewSegment extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 20),
+        // const SizedBox(height: 10),
         ButtonBar(
           alignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -221,13 +232,19 @@ class PdfSegment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Center(
-        child: Icon(
-          Icons.running_with_errors,
-          size: 50,
-        ),
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.running_with_errors,
+            size: 50,
+          ),
+          Text(
+            'Feature not yet here, expect it in future updates',
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }

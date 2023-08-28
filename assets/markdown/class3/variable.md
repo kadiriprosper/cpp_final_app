@@ -1,4 +1,4 @@
-- **Definition**
+## Definition
 1. It is a name of storage space which is used to store data
 2. It's value is changable
 3. It always contains last value stored to it
@@ -12,7 +12,7 @@
 * `string` - stores text, such as "Hello World". String values are surrounded by double quotes
 * `bool` - stores values with two states: true or false
 
-- **Varable Declaration**
+### Varable Declaration
 
 ```
     int rollno;
@@ -21,12 +21,12 @@
 
 ```
 
-Here:
+**Here:**
 - rollno is a variable of type int
 - marks is a variable of type float
 - grade is a variable of type char
 
-- **Variable Initialization**
+### Variable Initialization
 
 ```
     int rollno=201
@@ -35,12 +35,12 @@ Here:
 
 ```
 
-Here:
+**Here:**
 - 201 is the value of rollno
 - 85.6 is the value of marks
 - A is the value of grade (Character value is always written in single quotes)
 
-- **Rules to declare a variable**
+### Rules to declare a variable
 1. The first letter of a variable should be alphabet or underscore(_)
 2. The first letter of a variable should not be digit
 3. After first character it may be combination of alphabets and digits
@@ -48,16 +48,17 @@ Here:
 5. Variable name should not be a keyword 
 
 
-- **To create a variable, specify the type and assign it a value:**
+### To create a variable, specify the type and assign it a value:
 
 `type variableName = value;`
 
 **Note:** Where `type` is one of C++ types (such as `int`), and `variableName` is the name of the variable (such as x or myName). The equal sign is used to assign values to the variable.
 
-    **Example 1**
+### Example 1
 
-    Create a variable called x of type int and assign it the value 15:
-    ```
+Create a variable called x of type int and assign it the value 15:
+ 
+```
     #include <iostream>
     using namespace std;
 
@@ -66,5 +67,4 @@ Here:
         cout << myNum;
         return 0;
     }
-
-    ```
+```

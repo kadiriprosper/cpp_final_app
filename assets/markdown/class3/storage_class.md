@@ -1,4 +1,4 @@
-- **Definition**
+## Definition
 A storage classes in C++ defines the **scope, lifetime, default initial value** and **storage space** of a variable.
 
 There are four storage classes in C++:
@@ -7,12 +7,13 @@ There are four storage classes in C++:
 3. register
 4. external
 
-- **automatic:storage class**
-    1. Automatic variables are declared inside a function in which they havae to used
-    2. When the function is called automatic variables are created and destroy when function is exited
-    3. Automatic variables can nt be used outside that function in which its declared. It means w can say that it is private member
-    4. Automatic variables are also known as local variable
-    5. `auto` keyword is usd to declare automatic ttype variable
+### automatic:storage class
+1. Automatic variables are declared inside a function in which they havae to used
+2. When the function is called automatic variables are created and destroy when function is exited
+3. Automatic variables can nt be used outside that function in which its declared. It means w can say that it is private member
+4. Automatic variables are also known as local variable
+5. `auto` keyword is usd to declare automatic ttype variable
+
 
     <br>
     <div align="center">
@@ -21,9 +22,9 @@ There are four storage classes in C++:
     <br>
 
 
-- **Example**
+### Example
 
-    ```
+```
     #include<iostream>
     using namespace std;
     int main()
@@ -47,16 +48,16 @@ There are four storage classes in C++:
     3
     5
     */
-    ```
+```
 
-    Here the value of innermost x is 1, out of this block value is 3 and out of this block is 5.
+Here, the value of innermost x is 1, out of this block value is 3 and out of this block is 5.
 
 
-- **static:storage class**
-    1. Static variables can be used anywhere in the program inside or outside of a function or block
-    2. The value of a static variable exits untill the end of program
-    3. The satic variable which is declared inside a function is called "internal static variable" and it can not be used outside that function
-    4. The static variable which is declared outside a function is called external variable" and it can be used in all the function of that program
+### static:storage class
+1. Static variables can be used anywhere in the program inside or outside of a function or block
+2. The value of a static variable exits untill the end of program
+3. The satic variable which is declared inside a function is called "internal static variable" and it can not be used outside that function
+4. The static variable which is declared outside a function is called external variable" and it can be used in all the function of that program
 
     <br>
     <div align="center">
@@ -65,9 +66,9 @@ There are four storage classes in C++:
     <br>
 
 
-- **Example**
+### Example
 
-    ```
+```
     #include<iostream>
     using namespace std;
     void demo()
@@ -93,14 +94,14 @@ There are four storage classes in C++:
     2
     3
     */
-    ```
+```
 
     Here the Demo function is called four times and each time value is incremented by one.
 
 
-- **Register:storage class**
-    1. registr variables is stored in one of the register of system, instead of memory
-    2. Value stored in register can be accessed faster than one that is stored in memory
+### Register:storage class
+1. registr variables is stored in one of the register of system, instead of memory
+2. Value stored in register can be accessed faster than one that is stored in memory
 
     <br>
     <div align="center">
@@ -109,9 +110,9 @@ There are four storage classes in C++:
     <br>
 
 
-- **Example**
+### Example
 
-    ```
+```
     #include<iostream>
     using namespace std;
     int main()
@@ -127,14 +128,14 @@ There are four storage classes in C++:
     ### Output ###
     Add=50
     */
-    ```
+```
 
     
 
-- **external:storage class**
-    1. Variable that can be used any where in the program is called external variable
-    2. External storage class does not create a variable, but its inform the compiler of its existence
-    3. `extern` keyword is used to declare external variable 
+### external:storage class
+1. Variable that can be used any where in the program is called external variable
+2. External storage class does not create a variable, but its inform the compiler of its existence
+3. `extern` keyword is used to declare external variable 
 
 
     <br>
@@ -143,10 +144,9 @@ There are four storage classes in C++:
     </div>
     <br>
 
+### Example
 
-- **Example**
-
-    ```
+```
     #include<iostream>
     using namespace std;
     int x=10; 	// extarnal variable
@@ -162,4 +162,4 @@ There are four storage classes in C++:
     ### Output ###
     5
     */
-    ```
+```

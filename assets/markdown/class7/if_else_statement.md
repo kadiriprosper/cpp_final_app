@@ -5,7 +5,7 @@
 <br>
 
 
-- **Syntax**
+## If-else statements
 1. If the condition is true, 'if' part is executes and if the conditions is false, 'else' part is execute
 2. In the case of 'if' in the condition always zero and non-zero value is checked 
 3. In which zero means condition false and non-zero means condition true  
@@ -13,10 +13,10 @@
 
 <br>
 
-- **Example**
+### Example
 
 
-    ```
+```
     #include<iostream>
     int main()
     {
@@ -40,7 +40,7 @@
 
     x is not equal to y
     */
-    ```
+```
 
 
-<a href="##">Click for Practical Program</a>
+<!-- <a href="##">Click for Practical Program</a> -->

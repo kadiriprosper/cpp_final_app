@@ -1,6 +1,7 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/data/data_pool.dart';
 import 'package:cpp_final_app/views/auth/registration/mobile_auth_page.dart';
+import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -19,22 +20,25 @@ class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
     return Scaffold(
       appBar: const CustomAppBar(
         hasLeading: true,
-        title: 'Register yourself',
       ).build(context),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          width: MediaQuery.of(context).size.width,
+          // height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
+              const Text(
+                'Register Yourself',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
+              ),
               const SizedBox(height: 25),
               DropdownMenu(
                 width: MediaQuery.of(context).size.width * 0.8,
                 onSelected: (value) {
                   print(value);
                 },
-                initialSelection: 'Select School',
+                initialSelection: DataPool.schoolList.first,
                 dropdownMenuEntries: List.generate(
                   DataPool.schoolList.length,
                   (index) => DropdownMenuEntry(
@@ -49,12 +53,12 @@ class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
                 onSelected: (value) {
                   print(value);
                 },
-                initialSelection: 'Selet Faculty',
+                initialSelection: DataPool.facultyList.first,
                 dropdownMenuEntries: List.generate(
-                  DataPool.schoolList.length,
+                  DataPool.facultyList.length,
                   (index) => DropdownMenuEntry(
-                    value: DataPool.schoolList[index],
-                    label: DataPool.schoolList[index],
+                    value: DataPool.facultyList[index],
+                    label: DataPool.facultyList[index],
                   ),
                 ),
               ),
@@ -64,12 +68,12 @@ class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
                 onSelected: (value) {
                   print(value);
                 },
-                initialSelection: 'Select Department',
+                initialSelection: DataPool.departmentList.first,
                 dropdownMenuEntries: List.generate(
-                  DataPool.schoolList.length,
+                  DataPool.departmentList.length,
                   (index) => DropdownMenuEntry(
-                    value: DataPool.schoolList[index],
-                    label: DataPool.schoolList[index],
+                    value: DataPool.departmentList[index],
+                    label: DataPool.departmentList[index],
                   ),
                 ),
               ),
@@ -79,12 +83,12 @@ class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
                 onSelected: (value) {
                   print(value);
                 },
-                initialSelection: 'Select Level',
+                initialSelection: DataPool.levelList.first,
                 dropdownMenuEntries: List.generate(
-                  DataPool.schoolList.length,
+                  DataPool.levelList.length,
                   (index) => DropdownMenuEntry(
-                    value: DataPool.schoolList[index],
-                    label: DataPool.schoolList[index],
+                    value: DataPool.levelList[index],
+                    label: DataPool.levelList[index],
                   ),
                 ),
               ),

@@ -1,4 +1,4 @@
-- **Definition**
+## Definition
 
 1. It is a collection of named integer constant
 2. It is a user define data type
@@ -6,29 +6,24 @@
 4. **Note:** Union does not support multiple value simultaneously. <br> It can only store one value at a time.
 
 
-- **Syntax**
+### Syntax
 
-<br>
-<div align="center">
-<img src="../imgs/C++/img41.jpg" height="60%" width="60%">
-</div>
-<br>
+![Syntax](../imgs/C++/img41.jpg)
 
-- **Example:**
+### Example:
 
 ```
-
     enum week {sunday,monday,tuesday,wednesday,thursday,friday,saturday};
-
 ```
 
-Here: 
+**Here:**
 1. enum is a keyword
 2. week is the name of union and its a user defined data type
 3. sunday,monday,tuesday,wednesday,thursday,friday,saturday are the values of enum
 
+<br>
 
-- **Default numerical value of the member of enum is given below:**
+**Default numerical value of the member of enum is given below:**
 
 - Default value of sunday is 0
 - Default value of monday is 1
@@ -38,10 +33,10 @@ Here:
 - Default value of friday is 5
 - Default value of saturday is 6
 
-for better understanding, see the below example:
 
+**for better understanding, see the below example:**
 
-- **Example 1:-**
+### **Example 1:**
 
 
 
@@ -66,7 +61,9 @@ for better understanding, see the below example:
 
 
 
-- **Example:- We can aslo change the default value of member of enum**
+### Example2:
+
+**We can aslo change the default value of member of enum**
 
 
 
@@ -88,8 +85,4 @@ for better understanding, see the below example:
     
 
 ```
-
-
-
-
-<a href="##">Click for Practical Program</a>
+<!-- <a href="##">Click for Practical Program</a> -->
