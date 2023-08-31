@@ -16,11 +16,22 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final landingPageController = Get.put(LandingPageController());
+  FocusNode focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    focusNode.unfocus();
+    focusNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TabAppBar(landingPageController: landingPageController, title: 'Chats',)
-          .build(context),
+      appBar: TabAppBar(
+        landingPageController: landingPageController,
+        title: 'Chats',
+      ).build(context),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -29,6 +40,7 @@ class _ChatPageState extends State<ChatPage> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 //TODO: Put the controller
+                focusNode: focusNode,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(28),
@@ -61,7 +73,9 @@ class _ChatPageState extends State<ChatPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   UserChatIcon(
-                    onTap: () {},
+                    onTap: () {
+                      focusNode.unfocus();
+                    },
                     imagePath: HelperFunctions.userIcons[0],
                   ),
                   UserChatIcon(
@@ -85,7 +99,12 @@ class _ChatPageState extends State<ChatPage> {
             ),
             const SizedBox(height: 20),
             //TODO: Get all the user chats here and populate the page
-            UserChatCard(),
+
+            UserChatCard(
+              onPressed: () {
+                focusNode.unfocus();
+              },
+            ),
           ],
         ),
       ),
@@ -111,9 +130,12 @@ class _ChatPageState extends State<ChatPage> {
 class UserChatCard extends StatelessWidget {
   const UserChatCard({
     super.key,
+    required this.onPressed,
   });
 
   //TODO: All colors would be changed
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +144,7 @@ class UserChatCard extends StatelessWidget {
       onTap: () {
         //TODO: Do some computations here to assign the person clicked to..
         //TODO: ..the controller
+        onPressed();
         Get.to(() => const ChatScreen());
       },
       child: Container(

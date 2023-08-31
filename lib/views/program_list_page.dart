@@ -16,33 +16,30 @@ class ProgramListPage extends StatelessWidget {
         hasLeading: true,
         title: 'C++ Programs',
       ).build(context),
-      body: Container(
-        // padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
-        child: ListView.separated(
-          padding: const EdgeInsets.only(bottom: 20),
-          physics: const BouncingScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: globalController.getProgramList('Cpp').length,
-          separatorBuilder: (context, index) => const SizedBox(height: 15),
-          itemBuilder: (context, index) {
-            final programs = globalController.getProgramList('Cpp');
-            return CourseListCard(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ProgramSublistPage(
-                      pageTitle: programs.keys.elementAt(index),
-                      dataList: programs.values.elementAt(index),
-                    ),
+      body: ListView.separated(
+        padding: const EdgeInsets.only(bottom: 20),
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: globalController.getProgramList('Cpp').length,
+        separatorBuilder: (context, index) => const SizedBox(height: 15),
+        itemBuilder: (context, index) {
+          final programs = globalController.getProgramList('Cpp');
+          return CourseListCard(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ProgramSublistPage(
+                    pageTitle: programs.keys.elementAt(index),
+                    dataList: programs.values.elementAt(index),
                   ),
-                );
-              },
-              title: programs.keys.elementAt(index),
-              //length: courseList[index]?['length'] ?? '',
-              index: index + 1,
-            );
-          },
-        ),
+                ),
+              );
+            },
+            title: programs.keys.elementAt(index).capitalize ?? '',
+            //length: courseList[index]?['length'] ?? '',
+            index: index + 1,
+          );
+        },
       ),
     );
   }

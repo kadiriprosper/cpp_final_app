@@ -20,7 +20,7 @@ class PaymentsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height - 60,
+          height: MediaQuery.of(context).size.height - 100,
           padding: const EdgeInsets.all(15).copyWith(bottom: 20),
           child: Column(
             children: [

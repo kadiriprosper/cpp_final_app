@@ -36,7 +36,7 @@ class ProgramSublistPage extends StatelessWidget {
                   ),
                 );
               },
-              title: dataList.keys.elementAt(index),
+              title: dataList.keys.elementAt(index).capitalize ?? '',
               // length: courseList[index]?['length'] ?? '',
               index: index + 1,
             );

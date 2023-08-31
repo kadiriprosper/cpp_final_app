@@ -123,7 +123,7 @@ class ContactUsPage extends StatelessWidget {
           title: 'Website',
           onPressed: () async {
             final Uri url = Uri.parse(website);
-            if (!await launchUrl(url)) {
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
               Get.showSnackbar(
                 const GetSnackBar(
                   title: 'Url could not be launched',
@@ -139,7 +139,7 @@ class ContactUsPage extends StatelessWidget {
           title: 'Whatsapp',
           onPressed: () async {
             final Uri url = Uri.parse(whatsappLink);
-            if (!await launchUrl(url)) {
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
               Get.showSnackbar(
                 const GetSnackBar(
                   title: 'Url could not be launched',
@@ -155,7 +155,7 @@ class ContactUsPage extends StatelessWidget {
           title: 'Facebook',
           onPressed: () async {
             final Uri url = Uri.parse(facebookLink);
-            if (!await launchUrl(url)) {
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
               Get.showSnackbar(
                 const GetSnackBar(
                   title: 'Url could not be launched',
@@ -171,7 +171,7 @@ class ContactUsPage extends StatelessWidget {
           title: 'Instagram',
           onPressed: () async {
             final Uri url = Uri.parse(instagramLink);
-            if (!await launchUrl(url)) {
+            if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
               Get.showSnackbar(
                 const GetSnackBar(
                   title: 'Url could not be launched',

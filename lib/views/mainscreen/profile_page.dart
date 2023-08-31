@@ -1,6 +1,7 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/views/auth/login_page.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:cpp_final_app/views/settingscreens/edit_profile_page.dart';
 import 'package:cpp_final_app/views/settingscreens/feedback_page.dart';
@@ -169,70 +170,75 @@ class RateUsDialogBox extends StatelessWidget {
       ),
       child: Container(
         width: 500,
-        height: MediaQuery.of(context).size.height / 1.4,
+        height: MediaQuery.of(context).size.height / 1.5,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-        child: Column(
-          children: [
-            Image.asset(
-              HelperFunctions.rateusPic,
-              fit: BoxFit.contain,
-              filterQuality: FilterQuality.high,
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Give Your Opinion',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                HelperFunctions.rateusPic,
+                fit: BoxFit.contain,
+                filterQuality: FilterQuality.high,
               ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Your opinion matters to us a lot, we\'d love to know how you rate this app',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 12,
-              ),
-            ),
-            const SizedBox(height: 10),
-            RatingBar.builder(
-              allowHalfRating: true,
-              glowColor: Colors.amberAccent,
-              itemSize: 50,
-              maxRating: 5,
-              itemCount: 5,
-              itemBuilder: (context, index) => const Icon(
-                Icons.star_rate_rounded,
-                color: Colors.amber,
-              ),
-              onRatingUpdate: (value) {
-                //TODO: Get the rating value from the widget
-              },
-            ),
-            const Spacer(),
-            ButtonBar(
-              alignment: MainAxisAlignment.center,
-              children: [
-                CustomButtonSmall(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  title: 'Cancel',
+              const SizedBox(height: 10),
+              const Text(
+                'Give Your Opinion',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
-                const SizedBox(height: 10),
-                CustomButtonSmall(
-                  onPressed: () {},
-                  title: 'Submit',
-                  textColor: CustomColor.buttonColor1,
-                  buttonColor: Colors.white,
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Your opinion matters to us a lot, we\'d love to know how you rate this app',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
                 ),
-              ],
-            )
-          ],
+              ),
+              const SizedBox(height: 10),
+              RatingBar.builder(
+                allowHalfRating: true,
+                glowColor: Colors.amberAccent,
+                itemSize: 50,
+                maxRating: 5,
+                itemCount: 5,
+                itemBuilder: (context, index) => const Icon(
+                  Icons.star_rate_rounded,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: (value) {
+                  //TODO: Get the rating value from the widget
+                },
+              ),
+              const SizedBox(height: 20),
+              ButtonBar(
+                alignment: MainAxisAlignment.center,
+                children: [
+                  CustomButtonSmall(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    title: 'Cancel',
+                    minWidth: 20,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomButtonSmall(
+                    onPressed: () {},
+                    minWidth: 20,
+                    title: 'Submit',
+                    textColor: CustomColor.buttonColor1,
+                    buttonColor: Colors.white,
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -271,6 +277,12 @@ class ProfileDialogBoxWidget extends StatelessWidget {
               minWidth: MediaQuery.of(context).size.width * 0.3,
               onPressed: () {
                 //TODO: Code to logout
+                Get.offUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                  (route) => false,
+                );
               },
               title: 'Yes',
             ),

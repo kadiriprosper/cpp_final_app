@@ -19,6 +19,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final confirmPasswordController = TextEditingController();
   bool acceptedCondition = false;
   bool showPassword = false;
+  bool showConfirmPassword = false;
+
   final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -156,7 +158,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         showPassword = !showPassword;
                                       });
                                     },
-                                    icon: !showPassword
+                                    icon: showPassword
                                         ? Icon(MdiIcons.eyeOff)
                                         : Icon(MdiIcons.eye),
                                   ),
@@ -190,7 +192,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   return null;
                                 },
                                 keyboardType: TextInputType.visiblePassword,
-                                obscureText: true,
+                                obscureText: showConfirmPassword,
                                 //TODO: Probably remove this text
                                 style: const TextStyle(
                                   fontSize: 12,
@@ -201,6 +203,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   hintStyle: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
+                                  ),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        showConfirmPassword =
+                                            !showConfirmPassword;
+                                      });
+                                    },
+                                    icon: showConfirmPassword
+                                        ? Icon(MdiIcons.eyeOff)
+                                        : Icon(MdiIcons.eye),
                                   ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),

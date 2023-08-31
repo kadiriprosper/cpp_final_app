@@ -23,7 +23,18 @@ class _HomePageState extends State<HomePage> {
       Get.put(LandingPageController());
   int currentIndex = 0;
   int carouselIndex = 0;
+  FocusNode focusNode = FocusNode();
   CarouselController controller = CarouselController();
+  TextEditingController textController = TextEditingController();
+
+  @override
+  void dispose() {
+    focusNode.unfocus();
+    textController.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +55,8 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 //TODO: Put the controller
-
+                focusNode: focusNode,
+                controller: textController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(28),
@@ -148,6 +160,7 @@ class _HomePageState extends State<HomePage> {
                     CategoryWidget(
                       label: 'Practical',
                       onPressed: () {
+                        focusNode.unfocus();
                         landingPageController.changeTabIndex(1);
                         //TODO: Change this to the project github link
                       },
@@ -160,6 +173,7 @@ class _HomePageState extends State<HomePage> {
                       label: 'Code',
                       onPressed: () {
                         //TODO: Find out what to put in here
+                        focusNode.unfocus();
                       },
                       photoPath: HelperFunctions.categoryImages[1],
                       isFirst: true,
@@ -169,6 +183,7 @@ class _HomePageState extends State<HomePage> {
                     CategoryWidget(
                       label: 'Certificate',
                       onPressed: () {
+                        focusNode.unfocus();
                         Get.to(() => const CertificatePage());
                       },
                       photoPath: HelperFunctions.categoryImages[2],
@@ -179,6 +194,7 @@ class _HomePageState extends State<HomePage> {
                     CategoryWidget(
                       label: 'Q/A',
                       onPressed: () {
+                        focusNode.unfocus();
                         Get.to(() => const QaPage());
                       },
                       photoPath: HelperFunctions.categoryImages[3],
@@ -220,6 +236,7 @@ class _HomePageState extends State<HomePage> {
                             label: 'C++ Programming',
                             onBookMark: () {},
                             onPressed: () {
+                              focusNode.unfocus();
                               Get.to(() => const CoursePage());
                             },
                           ),

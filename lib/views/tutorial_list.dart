@@ -44,7 +44,7 @@ class TutorialList extends StatelessWidget {
                         ),
                       );
               },
-              title: tutorialData[index]?['title'] as String,
+              title: (tutorialData[index]?['title'] as String).capitalize ?? '',
               index: index + 1,
             );
           },

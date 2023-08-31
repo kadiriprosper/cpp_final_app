@@ -22,6 +22,9 @@ class CustomButtonSmall extends StatelessWidget {
     return MaterialButton(
       onPressed: onPressed,
       height: 60,
+      padding: minWidth != null
+          ? const EdgeInsets.symmetric(horizontal: 40, vertical: 10)
+          : EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
         side: const BorderSide(color: CustomColor.buttonColor1),

@@ -17,7 +17,7 @@ class SubTutorialList extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         hasLeading: true,
-        title: pageTitle,
+        title: pageTitle.capitalize,
       ).build(context),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
@@ -35,7 +35,7 @@ class SubTutorialList extends StatelessWidget {
                   ),
                 );
               },
-              title: dataPool.entries.elementAt(index).key,
+              title: dataPool.entries.elementAt(index).key.capitalize ?? '',
               index: index + 1,
             );
           },

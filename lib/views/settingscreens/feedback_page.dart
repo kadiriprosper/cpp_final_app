@@ -24,14 +24,14 @@ class _FeedbackPageState extends State<FeedbackPage> {
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          height: MediaQuery.of(context).size.height - 60,
+          height: MediaQuery.of(context).size.height - 110,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
                 'Give Feedback',
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -39,7 +39,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
               const Text(
                 'Give your feedback about our app',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 14,
                 ),
               ),
               const SizedBox(height: 20),
