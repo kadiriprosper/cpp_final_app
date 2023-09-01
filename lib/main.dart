@@ -7,6 +7,9 @@ import 'package:get/get.dart';
 //TODO: Change the text theme of the whole app
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(const MainApp());
 }
 

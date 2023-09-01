@@ -1,0 +1,4 @@
+enum AuthStatusEnum {
+  success,
+  failed
+}
