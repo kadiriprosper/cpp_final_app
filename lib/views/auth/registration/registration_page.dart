@@ -190,7 +190,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 validator: (value) {
-                                  if (passwordController.text ==
+                                  if (passwordController.text !=
                                       confirmPasswordController.text) {
                                     return 'passswords do not match';
                                   }
@@ -285,7 +285,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               },
                               loadingWidget: const AuthLoadingWidget(),
                             );
-                            Get.to(() => const SchoolSelectionPage());
                             // }
                           },
                         )

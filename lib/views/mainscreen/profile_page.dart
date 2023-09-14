@@ -1,5 +1,6 @@
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/tab_controller.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/auth/login_page.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
@@ -275,8 +276,10 @@ class ProfileDialogBoxWidget extends StatelessWidget {
           children: [
             CustomButtonSmall(
               minWidth: MediaQuery.of(context).size.width * 0.3,
-              onPressed: () {
-                //TODO: Code to logout
+              onPressed: () async {
+                //TODO: Reset all the tab guys
+                final userController = Get.put(UserController());
+                await userController.userLogout();
                 Get.offUntil(
                   MaterialPageRoute(
                     builder: (context) => const LoginPage(),
