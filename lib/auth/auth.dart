@@ -1,6 +1,8 @@
 import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+const authSuccess = {AuthStatusEnum.success: 'success'};
+
 class Auth {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
@@ -12,9 +14,9 @@ class Auth {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      return {AuthStatusEnum.failed: e.code};
+      return {AuthStatusEnum.failed: e.message ?? 'error'};
     }
-    return {AuthStatusEnum.success: 'success'};
+    return authSuccess;
   }
 
   Future<Map<AuthStatusEnum, String>> userRegistration({
@@ -32,7 +34,7 @@ class Auth {
       return {AuthStatusEnum.failed: e.code};
     }
     userCredential.user?.updateDisplayName(name);
-    return {AuthStatusEnum.success: 'success'};
+    return authSuccess;
   }
 
   Future<Map<AuthStatusEnum, String>> sendPasswordResetMail({
@@ -43,7 +45,7 @@ class Auth {
     } on FirebaseAuthException catch (e) {
       return {AuthStatusEnum.failed: e.code};
     }
-    return {AuthStatusEnum.success: 'success'};
+    return authSuccess;
   }
 
   Future<Map<AuthStatusEnum, String>> resetPassword({
@@ -58,6 +60,24 @@ class Auth {
     } on FirebaseAuthException catch (e) {
       return {AuthStatusEnum.failed: e.code};
     }
-    return {AuthStatusEnum.success: 'success'};
+    return authSuccess;
+  }
+
+  Future<Map<AuthStatusEnum, String>> userLogout() async {
+    try {
+      await firebaseAuth.signOut();
+    } on FirebaseAuthException catch (e) {
+      return {AuthStatusEnum.failed: e.code};
+    }
+    return authSuccess;
+  }
+
+  Future<Map<AuthStatusEnum, String>> deleteAccount() async {
+    try {
+      await firebaseAuth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      return {AuthStatusEnum.failed: e.code};
+    }
+    return authSuccess;
   }
 }

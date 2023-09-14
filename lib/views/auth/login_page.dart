@@ -1,8 +1,12 @@
+import 'package:cpp_final_app/auth/auth.dart';
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
+import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:cpp_final_app/views/auth/registration/registration_page.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:cpp_final_app/widgets/auth_button_external.dart';
+import 'package:cpp_final_app/widgets/auth_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -18,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   final mailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  UserController userController = Get.put(UserController());
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -174,13 +179,17 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(height: 20),
                         AuthButton(
                           title: 'Log In',
-                          onPressed: () {
+                          onPressed: () async {
                             //TODO: Write code to validate login and go to home page
-                            Get.offUntil(
-                              MaterialPageRoute(
-                                builder: (context) => const MainScreen(),
-                              ),
-                              (route) => false,
+                            Get.showOverlay(
+                              asyncFunction: () async {
+                                await userController.userLogin(
+                                  mailController.text,
+                                  passwordController.text,
+                                  const MainScreen(),
+                                );
+                              },
+                              loadingWidget: const AuthLoadingWidget(),
                             );
                           },
                         ),

@@ -1,6 +1,10 @@
+import 'package:cpp_final_app/auth/auth.dart';
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
+import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:cpp_final_app/views/auth/registration/school_selection_page.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
+import 'package:cpp_final_app/widgets/auth_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -13,6 +17,7 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  UserController userController = Get.put(UserController());
   final nameController = TextEditingController();
   final mailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -268,7 +273,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           title: 'Next',
                           onPressed: () {
                             // if (formkey.currentState?.validate() == true) {
-                            //TODO: Validate input and check it against other users
+                            //TODO: Validate input
+                            Get.showOverlay(
+                              asyncFunction: () async {
+                                await userController.userRegistration(
+                                  mailController.text,
+                                  passwordController.text,
+                                  nameController.text,
+                                  const SchoolSelectionPage(),
+                                );
+                              },
+                              loadingWidget: const AuthLoadingWidget(),
+                            );
                             Get.to(() => const SchoolSelectionPage());
                             // }
                           },
@@ -290,7 +306,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                         MaterialButton(
                           onPressed: () {
-                            // Get.to(() => const RegistrationPage());
                             Get.back();
                           },
                           padding: const EdgeInsets.symmetric(
