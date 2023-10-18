@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "397443535473",
-    "project_id": "c-cpp-programming-app",
-    "storage_bucket": "c-cpp-programming-app.appspot.com"
+    "project_number": "721268082400",
+    "project_id": "c-cpp-programming",
+    "storage_bucket": "c-cpp-programming.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:397443535473:android:213229a0bba1137c4201d0",
+        "mobilesdk_app_id": "1:721268082400:android:59d54126268e1c6cacb285",
         "android_client_info": {
           "package_name": "com.teamtyp.cpp_tutorial_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "397443535473-ma38m8lke8j2ctp80hhhv6ia38hg40gp.apps.googleusercontent.com",
+          "client_id": "721268082400-n9d35bg76f24i1n476eeijenfoeue8th.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAUKzmoIsNThY-ho2Q6eWDx0R_ca9Tt-Lc"
+          "current_key": "AIzaSyCBZba-Qdl7sv2WP8T3AJ0bvxWjbX5Qqbw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "397443535473-3cjs4qjft6q6av9g2e5hkosibd1nrvkj.apps.googleusercontent.com",
+              "client_id": "721268082400-n9d35bg76f24i1n476eeijenfoeue8th.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

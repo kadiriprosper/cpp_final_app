@@ -6,6 +6,10 @@ import 'package:get/get.dart';
 class UserController extends GetxController {
   Auth auth = Auth();
 
+  get username => auth.username;
+
+  get usermail => auth.usermail;
+
   Future<void> userLogin(String email, String password, Widget toPage) async {
     final response = await auth.userLoginWithEmail(email, password);
     processFunction(response, toPage);
@@ -18,8 +22,11 @@ class UserController extends GetxController {
       name: name,
       password: password,
     );
+
     processFunction(response, toPage);
   }
+
+  Future<void> updateUserRegistration() async {}
 
   Future<void> sendPasswordReset(String email, Widget toPage) async {
     final response = await auth.sendPasswordResetMail(

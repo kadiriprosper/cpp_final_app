@@ -1,9 +1,13 @@
 class ProfileModel {
   ProfileModel({
     required this.name,
-    required this.profileImage,
+    required this.usermail,
+    this.phoneNumber,
+    this.profileImage,
   });
   String name;
-  String profileImage;
+  String usermail;
+  String? profileImage;
+  String? phoneNumber;
   //TODO: Add the remaining properties later
 }

@@ -6,6 +6,9 @@ const authSuccess = {AuthStatusEnum.success: 'success'};
 class Auth {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
+  String get username => firebaseAuth.currentUser?.displayName ?? '';
+  String get usermail => firebaseAuth.currentUser?.email ?? '';
+
   Future<Map<AuthStatusEnum, String>> userLoginWithEmail(
       String email, String password) async {
     try {

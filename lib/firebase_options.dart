@@ -47,30 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA1Mhs3BoUMZsd7fyj_E5Txleo8XM6NBuE',
-    appId: '1:397443535473:web:0c3d540a159b09d44201d0',
-    messagingSenderId: '397443535473',
-    projectId: 'c-cpp-programming-app',
-    authDomain: 'c-cpp-programming-app.firebaseapp.com',
-    storageBucket: 'c-cpp-programming-app.appspot.com',
-    measurementId: 'G-TW26L7PE09',
+    apiKey: 'AIzaSyDi7Fgcsr10dxPRwDkl59Ixd8A14HnEfgU',
+    appId: '1:721268082400:web:65f66f137a87c8c4acb285',
+    messagingSenderId: '721268082400',
+    projectId: 'c-cpp-programming',
+    authDomain: 'c-cpp-programming.firebaseapp.com',
+    storageBucket: 'c-cpp-programming.appspot.com',
+    measurementId: 'G-MKS2GR3MJQ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAUKzmoIsNThY-ho2Q6eWDx0R_ca9Tt-Lc',
-    appId: '1:397443535473:android:213229a0bba1137c4201d0',
-    messagingSenderId: '397443535473',
-    projectId: 'c-cpp-programming-app',
-    storageBucket: 'c-cpp-programming-app.appspot.com',
+    apiKey: 'AIzaSyCBZba-Qdl7sv2WP8T3AJ0bvxWjbX5Qqbw',
+    appId: '1:721268082400:android:59d54126268e1c6cacb285',
+    messagingSenderId: '721268082400',
+    projectId: 'c-cpp-programming',
+    storageBucket: 'c-cpp-programming.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDRQYctNnR65f-nzqaPwrSC_14cO99_s1w',
-    appId: '1:397443535473:ios:23d39612dbcc52234201d0',
-    messagingSenderId: '397443535473',
-    projectId: 'c-cpp-programming-app',
-    storageBucket: 'c-cpp-programming-app.appspot.com',
-    iosClientId: '397443535473-8i5mi6v6tprujgl3g5svgab8emp970dq.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBesOtJOJVUXNM_SgM2q7dhPk_RlcMpWYo',
+    appId: '1:721268082400:ios:e859f29f8d23317cacb285',
+    messagingSenderId: '721268082400',
+    projectId: 'c-cpp-programming',
+    storageBucket: 'c-cpp-programming.appspot.com',
+    iosClientId: '721268082400-gvsjba87t0563860f6412gcd6ud8lr9d.apps.googleusercontent.com',
     iosBundleId: 'com.example.cppFinalApp',
   );
 }
