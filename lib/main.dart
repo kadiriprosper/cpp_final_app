@@ -1,4 +1,5 @@
 import 'package:cpp_final_app/colors/theme.dart';
+import 'package:cpp_final_app/controllers/db_controller.dart';
 import 'package:cpp_final_app/firebase_options.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/views/splash_page.dart';
@@ -10,12 +11,19 @@ import 'package:get/get.dart';
 //TODO: Change the text theme of the whole app
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
+  //TODO: Move this to splash screen page
+  final dbController = Get.put(DataController());
+  await dbController.getDataElements('school_list');
+
   runApp(const MainApp());
 }
 
@@ -32,7 +40,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       defaultTransition: Transition.cupertino,
-      home: const MainScreen(),
+      home: const SplashPage(),
     );
   }
 }

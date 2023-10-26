@@ -1,5 +1,8 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/db_controller.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/data/data_pool.dart';
+import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:cpp_final_app/views/auth/registration/mobile_auth_page.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
@@ -15,6 +18,12 @@ class SchoolSelectionPage extends StatefulWidget {
 }
 
 class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
+  final dbController = Get.put(DataController());
+  final userController = Get.put(UserController());
+  String selectedSchool = '';
+  String selectedLevel = '';
+  String selectedDepartment = '';
+  String selectedFaculty = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,62 +42,78 @@ class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 25),
-              DropdownMenu(
+              DropdownMenu<String>(
                 width: MediaQuery.of(context).size.width * 0.8,
                 onSelected: (value) {
-                  print(value);
+                  if (value != null && value.isNotEmpty) {
+                    setState(() {
+                      selectedSchool = value;
+                    });
+                  }
                 },
-                initialSelection: DataPool.schoolList.first,
+                initialSelection: dbController.getData('schools').first,
                 dropdownMenuEntries: List.generate(
-                  DataPool.schoolList.length,
+                  dbController.getData('schools').length,
                   (index) => DropdownMenuEntry(
-                    value: DataPool.schoolList[index],
-                    label: DataPool.schoolList[index],
+                    value: dbController.getData('schools')[index],
+                    label: dbController.getData('schools')[index],
                   ),
                 ),
               ),
               const SizedBox(height: 25),
-              DropdownMenu(
+              DropdownMenu<String>(
                 width: MediaQuery.of(context).size.width * 0.8,
                 onSelected: (value) {
-                  print(value);
+                  if (value != null && value.isNotEmpty) {
+                    setState(() {
+                      selectedFaculty = value;
+                    });
+                  }
                 },
-                initialSelection: DataPool.facultyList.first,
+                initialSelection: dbController.getData('faculty').first,
                 dropdownMenuEntries: List.generate(
-                  DataPool.facultyList.length,
+                  dbController.getData('faculty').length,
                   (index) => DropdownMenuEntry(
-                    value: DataPool.facultyList[index],
-                    label: DataPool.facultyList[index],
+                    value: dbController.getData('faculty')[index],
+                    label: dbController.getData('faculty')[index],
                   ),
                 ),
               ),
               const SizedBox(height: 25),
-              DropdownMenu(
+              DropdownMenu<String>(
                 width: MediaQuery.of(context).size.width * 0.8,
                 onSelected: (value) {
-                  print(value);
+                  if (value != null && value.isNotEmpty) {
+                    setState(() {
+                      selectedDepartment = value;
+                    });
+                  }
                 },
-                initialSelection: DataPool.departmentList.first,
+                initialSelection: dbController.getData('departments').first,
                 dropdownMenuEntries: List.generate(
-                  DataPool.departmentList.length,
+                  dbController.getData('departments').length,
                   (index) => DropdownMenuEntry(
-                    value: DataPool.departmentList[index],
-                    label: DataPool.departmentList[index],
+                    value: dbController.getData('departments')[index],
+                    label: dbController.getData('departments')[index],
                   ),
                 ),
               ),
               const SizedBox(height: 25),
-              DropdownMenu(
+              DropdownMenu<String>(
                 width: MediaQuery.of(context).size.width * 0.8,
                 onSelected: (value) {
-                  print(value);
+                  if (value != null && value.isNotEmpty) {
+                    setState(() {
+                      selectedLevel = value;
+                    });
+                  }
                 },
-                initialSelection: DataPool.levelList.first,
+                initialSelection: dbController.getData('levels').first,
                 dropdownMenuEntries: List.generate(
-                  DataPool.levelList.length,
+                  dbController.getData('levels').length,
                   (index) => DropdownMenuEntry(
-                    value: DataPool.levelList[index],
-                    label: DataPool.levelList[index],
+                    value: dbController.getData('levels')[index],
+                    label: dbController.getData('levels')[index],
                   ),
                 ),
               ),
@@ -110,7 +135,39 @@ class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
                 buttonColor: CustomColor.buttonColor1,
                 buttonText: 'Continue',
                 textColor: Colors.white,
-                onPressed: () => Get.to(() => const MobileAuthPage()),
+                onPressed: () async {
+                  if (selectedDepartment.isNotEmpty) {
+                    if (selectedFaculty.isNotEmpty) {
+                      if (selectedLevel.isNotEmpty) {
+                        if (selectedSchool.isNotEmpty) {
+                          var response = await dbController
+                              .storeUserData(userController.usermail, {
+                                'username': userController.username,
+                            'school': selectedSchool,
+                            'faculty': selectedFaculty,
+                            'department': selectedDepartment,
+                            'level': selectedLevel,
+                          });
+                          if (response.keys.first == AuthStatusEnum.failed) {
+                            //TODO: Handle showing error here
+                            print('error1');
+                          } else {
+                            Get.to(() => const MobileAuthPage());
+                          }
+                        } else {
+                          //TODO: Handle showing error here
+                          print('error2');
+                        }
+                      } else {
+                        //TODO: Handle showing error here
+                        print('error3');
+                      }
+                    } else {
+                      //TODO: Handle showing error here
+                      print('error4');
+                    }
+                  }
+                },
               ),
             ],
           ),
