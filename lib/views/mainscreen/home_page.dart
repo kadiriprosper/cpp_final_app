@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/tab_controller.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/coming_soon_page.dart';
 import 'package:cpp_final_app/views/course_page.dart';
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   int carouselIndex = 0;
   FocusNode focusNode = FocusNode();
+  UserController userController = Get.put(UserController());
   CarouselController controller = CarouselController();
   TextEditingController textController = TextEditingController();
 
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             HomeHeaderWidget(
               //TODO: Change the image and name to the current user
               profilePic: HelperFunctions.profilePic,
-              username: 'Kelvin',
+              username: userController.username,
             ),
             const SizedBox(height: 20),
             Padding(

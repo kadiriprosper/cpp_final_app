@@ -69,12 +69,12 @@ class _MobileAuthPageState extends State<MobileAuthPage> {
                         },
                         initialSelection: 'NG',
                         padding: EdgeInsets.zero,
-                        
                         showCountryOnly: false,
                         showDropDownButton: true,
                         alignLeft: false,
                       ),
                     ),
+                    //TODO: Change this to credit card controller
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
                       child: TextField(

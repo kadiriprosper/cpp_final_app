@@ -1,4 +1,5 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
@@ -20,6 +21,31 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
+  UserController userController = Get.put(UserController());
+
+  FocusNode nameNode = FocusNode();
+  FocusNode mailNode = FocusNode();
+  FocusNode numberNode = FocusNode();
+
+  @override
+  void initState() {
+    nameController.text = userController.username;
+    emailController.text = userController.usermail;
+    //TODO: Init phone number controller
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    numberController.dispose();
+    nameNode.dispose();
+    mailNode.dispose();
+    numberNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,23 +68,28 @@ class _EditProfilePageState extends State<EditProfilePage> {
               children: [
                 ProfilePicWidget(
                   isEditable: true,
-                  onChangeImage: () {},
+                  onChangeImage: () {
+                    //TODO: Select image from device
+                  },
                 ),
                 const SizedBox(height: 20),
                 EditProfileTextField(
                   controller: nameController,
+                  focusNode: nameNode,
                   icon: SvgPicture.asset(EditProfileIcon.profileIcon),
                   keyboardType: TextInputType.name,
                 ),
                 const SizedBox(height: 20),
                 EditProfileTextField(
                   controller: emailController,
+                  focusNode: mailNode,
                   icon: SvgPicture.asset(EditProfileIcon.mailIcon),
                   keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 20),
                 EditProfileTextField(
                   controller: numberController,
+                  focusNode: numberNode,
                   icon: SvgPicture.asset(EditProfileIcon.callIcon),
                   keyboardType: TextInputType.phone,
                 ),
@@ -66,7 +97,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 CustomButton(
                   buttonColor: CustomColor.buttonColor1,
                   buttonText: 'Save',
-                  onPressed: () {},
+                  onPressed: () {
+                    nameNode.unfocus();
+                    mailNode.unfocus();
+                    numberNode.unfocus();
+                    Get.back();
+                  },
                   textColor: Colors.white,
                 ),
               ],
@@ -84,11 +120,13 @@ class EditProfileTextField extends StatelessWidget {
     required this.controller,
     required this.icon,
     required this.keyboardType,
+    required this.focusNode,
   });
 
   final TextEditingController controller;
   final Widget icon;
   final TextInputType keyboardType;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +161,15 @@ class EditProfileTextField extends StatelessWidget {
               alignment: Alignment.center,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                focusNode: focusNode,
                 controller: controller,
                 keyboardType: keyboardType,
+                onTap: () {
+                  focusNode.requestFocus();
+                },
+                onTapOutside: (_) {
+                  focusNode.unfocus();
+                },
                 maxLines: 1,
                 expands: false,
                 decoration: const InputDecoration(

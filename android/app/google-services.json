@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:721268082400:android:59d54126268e1c6cacb285",
+        "mobilesdk_app_id": "1:721268082400:android:16eb76ab42112920acb285",
         "android_client_info": {
-          "package_name": "com.teamtyp.cpp_tutorial_app"
+          "package_name": "com.example.cpp_final_app"
         }
       },
       "oauth_client": [
@@ -29,6 +29,13 @@
             {
               "client_id": "721268082400-n9d35bg76f24i1n476eeijenfoeue8th.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "721268082400-gvsjba87t0563860f6412gcd6ud8lr9d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cppFinalApp"
+              }
             }
           ]
         }

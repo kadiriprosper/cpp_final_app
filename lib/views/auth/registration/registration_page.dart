@@ -3,6 +3,7 @@ import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:cpp_final_app/views/auth/registration/school_selection_page.dart';
+import 'package:cpp_final_app/views/loading_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:cpp_final_app/widgets/auth_loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +78,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               TextFormField(
                                 controller: nameController,
                                 validator: (value) {
-                                  //TODO: Write the code to validate the name
+                                  if (value!.length < 5) {
+                                    return 'Name cannot be empty or less than 6 characters long';
+                                  }
                                   return null;
                                 },
                                 decoration: InputDecoration(
@@ -107,8 +110,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               TextFormField(
                                 controller: mailController,
                                 validator: (value) {
-                                  //TODO: Write the code to validate the email
-                                  return null;
+                                  if (value != null && value.isEmail) {
+                                    return null;
+                                  } else {
+                                    return 'Input a valid email address';
+                                  }
                                 },
                                 decoration: InputDecoration(
                                   hintText: 'Email',
@@ -272,20 +278,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         AuthButton(
                           title: 'Next',
                           onPressed: () {
-                            // if (formkey.currentState?.validate() == true) {
-                            //TODO: Validate input
-                            Get.showOverlay(
-                              asyncFunction: () async {
-                                await userController.userRegistration(
+                            if (formkey.currentState?.validate() == true &&
+                                acceptedCondition) {
+                              LoadingScreen.loadPage(
+                                computation: userController.userRegistration(
                                   mailController.text,
                                   passwordController.text,
                                   nameController.text,
                                   const SchoolSelectionPage(),
-                                );
-                              },
-                              loadingWidget: const AuthLoadingWidget(),
-                            );
-                            // }
+                                ),
+                              );
+                            }
                           },
                         )
                       ],

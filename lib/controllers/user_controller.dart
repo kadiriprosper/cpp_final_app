@@ -28,7 +28,7 @@ class UserController extends GetxController {
 
   Future<void> updateUserRegistration() async {}
 
-  Future<void> sendPasswordReset(String email, Widget toPage) async {
+  Future<void> sendPasswordResetMail(String email, Widget toPage) async {
     final response = await auth.sendPasswordResetMail(
       email: email,
     );

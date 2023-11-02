@@ -41,4 +41,23 @@ class DataController extends GetxController {
     );
     return response;
   }
+
+  Future<Map<AuthStatusEnum, String>> storeUserFeedback(
+      String userName, Map<String, dynamic> feedback) async {
+    Map<AuthStatusEnum, String> response = {AuthStatusEnum.success: 'success'};
+    await dbInstance
+        .collection('user_feedback')
+        .doc(userName)
+        .set(feedback)
+        .onError(
+      (error, _) {
+        response = {AuthStatusEnum.failed: error.toString()};
+      },
+    );
+    return response;
+  }
+
+
+
+
 }

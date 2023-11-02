@@ -17,7 +17,13 @@ class Auth {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      return {AuthStatusEnum.failed: e.message ?? 'error'};
+      if (e.message == 'user-not-found') {
+        return {AuthStatusEnum.failed: 'No user record'};
+      }
+      if (e.message == 'wrong-password') {
+        return {AuthStatusEnum.failed: 'Wrong email or password'};
+      }
+      return {AuthStatusEnum.failed: 'error logging in'};
     }
     return authSuccess;
   }
@@ -34,7 +40,13 @@ class Auth {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      return {AuthStatusEnum.failed: e.code};
+      if (e.message == 'weak-password') {
+        return {AuthStatusEnum.failed: 'password too weak'};
+      }
+      if (e.message == 'email-already-in-use') {
+        return {AuthStatusEnum.failed: 'email already exist'};
+      }
+      return {AuthStatusEnum.failed: 'registration error'};
     }
     userCredential.user?.updateDisplayName(name);
     return authSuccess;

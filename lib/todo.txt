@@ -1,0 +1,20 @@
+1. Add validations to the screens -- done
+2. Work on the database and the screens -- done
+3. Put loading icons -- done
+4. Change the error message -- done
+5. forget password page --> otp phone number / email --done
+6. registration criteria to next code -- done
+8. validations on the school details -- done
+10. Welcome &{user} -- done
+12. work on edit profile page and unfocus the node on keyboard -- done
+13. feedback to show on the database {username: feedback} -- done
+14. Nemo go do chat auth and payment, i no dey touch am again
+7. on register yourself the back button does not work ///work on this later ---not changing this --fixed
+
+
+11. change profile picture from firebase -- pending 
+9. Finish the debate on whether phone number go dey (max 15 length)
+15. 
+end. Work on the c aspect
+end1. Put the images in the tutorial
+end2. Change icon

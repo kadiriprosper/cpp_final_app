@@ -22,6 +22,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final landingPageController = Get.put(LandingPageController());
+  UserController userController = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,14 +38,14 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //TODO: Put the user image here
               const ProfilePicWidget(
                 isEditable: false,
               ),
               const SizedBox(height: 10),
-              //TODO: Get the username
-              const Text(
-                'Leslie Alexander',
-                style: TextStyle(
+              Text(
+                userController.username,
+                style: const TextStyle(
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -128,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 leadingIcon: SvgPicture.asset(ProfileCustomIcon.rateIcon),
                 onPressed: () {
                   Get.dialog(
-                    RateUsDialogBox(),
+                    const RateUsDialogBox(),
                   );
                 },
               ),

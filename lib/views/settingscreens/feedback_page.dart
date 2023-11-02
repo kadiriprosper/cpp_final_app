@@ -1,8 +1,13 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/db_controller.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
+import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:pinput/pinput.dart';
 
 class FeedbackPage extends StatefulWidget {
   const FeedbackPage({super.key});
@@ -12,6 +17,17 @@ class FeedbackPage extends StatefulWidget {
 }
 
 class _FeedbackPageState extends State<FeedbackPage> {
+  DataController dbController = Get.put(DataController());
+  UserController userController = Get.put(UserController());
+  String userRating = '';
+  TextEditingController feedbackTextController = TextEditingController();
+
+  @override
+  void dispose() {
+    feedbackTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +80,15 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 ),
                 itemSize: 50,
                 onRatingUpdate: (value) {
-                  //TODO: Get the value of the rating
+                  if (value < 2) {
+                    userRating = 'Poor - $value';
+                  } else if (value == 3) {
+                    userRating = 'Average - $value';
+                  } else if (value == 4) {
+                    userRating = 'Good - $value';
+                  } else {
+                    userRating = 'Excellent - $value';
+                  }
                 },
               ),
               const SizedBox(height: 30),
@@ -77,7 +101,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
               ),
               const SizedBox(height: 20),
               TextField(
-                //TODO: Add a controller here
+                controller: feedbackTextController,
                 maxLines: 5,
                 decoration: InputDecoration(
                   hintText: 'Write your feedback...',
@@ -98,7 +122,21 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 buttonColor: CustomColor.buttonColor1,
                 textColor: Colors.white,
                 buttonText: 'Submit Feedback',
-                onPressed: () {},
+                onPressed: () async {
+                  if (feedbackTextController.text.length > 4) {
+                    var response = await dbController
+                        .storeUserData(userController.usermail, {
+                      'rating': userRating,
+                      'feedback': feedbackTextController.text,
+                    });
+                    if (response.keys.first == AuthStatusEnum.failed) {
+                      //TODO: Handle showing error here
+                      print('error1');
+                    } else {
+                      Get.back();
+                    }
+                  }
+                },
               ),
               const SizedBox(height: 20),
             ],

@@ -48,17 +48,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDi7Fgcsr10dxPRwDkl59Ixd8A14HnEfgU',
-    appId: '1:721268082400:web:65f66f137a87c8c4acb285',
+    appId: '1:721268082400:web:4dcac9d8114bd12facb285',
     messagingSenderId: '721268082400',
     projectId: 'c-cpp-programming',
     authDomain: 'c-cpp-programming.firebaseapp.com',
     storageBucket: 'c-cpp-programming.appspot.com',
-    measurementId: 'G-MKS2GR3MJQ',
+    measurementId: 'G-JBEGEZJ0F2',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCBZba-Qdl7sv2WP8T3AJ0bvxWjbX5Qqbw',
-    appId: '1:721268082400:android:59d54126268e1c6cacb285',
+    appId: '1:721268082400:android:16eb76ab42112920acb285',
     messagingSenderId: '721268082400',
     projectId: 'c-cpp-programming',
     storageBucket: 'c-cpp-programming.appspot.com',
@@ -66,7 +66,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBesOtJOJVUXNM_SgM2q7dhPk_RlcMpWYo',
-    appId: '1:721268082400:ios:e859f29f8d23317cacb285',
+    appId: '1:721268082400:ios:2b69afe1e4640ba0acb285',
     messagingSenderId: '721268082400',
     projectId: 'c-cpp-programming',
     storageBucket: 'c-cpp-programming.appspot.com',
