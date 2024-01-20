@@ -2,12 +2,7 @@
 - To run the body countinously untill a required condition is fullfill is called "looping".
 - It is used to perform looping operation, when the condition will become false the execution of loop will be stopped 
 
-<br>
-
-<div align="center">
-<img src="../imgs/C++/img26.jpg" height="60%" width="60%">
-</div>
-<br>
+![](resource:assets/images/C++/img26.png)
 
 ### Syntax
 1. Its body will execute until the given condition is true.

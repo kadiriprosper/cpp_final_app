@@ -10,7 +10,7 @@
 
 ### Syntax
 
-![Syntax](../imgs/C++/img28.jpg)
+![](resource:assets/images/C++/img28.png)
 
 1. Here 'a' is a normal variable
 2. 'p' is apointer variable because it is associated with * symbol
@@ -50,8 +50,4 @@
 ### Output Explanation
 Assume that the addres of variable a is 8284 and address of variable p is 8288, it may be different in your system
 
-<br>
-<div align="center">
-<img src="../imgs/C++/img29.jpg" height="60%" width="60%">
-</div>
-<br>
+![](resource:assets/images/C++/img29.png)

@@ -1,9 +1,4 @@
-<br>
-<div align="center">
-<img src="../imgs/C%2B%2B/img20.jpg" height="60%" width="60%">
-</div>
-<br>
-
+![](resource:assets/images/C++/img20.png)
 
 ## If-else statements
 1. If the condition is true, 'if' part is executes and if the conditions is false, 'else' part is execute

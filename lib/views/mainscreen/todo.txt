@@ -1,8 +1,0 @@
-TODO
-
-1. Get all the right colors for the app
-2. Get all the other screens fot the app
-3. Connect the app to the controller and start preparing dummy data
-4. Work on the payment method
-4. Connect the app to firebase and hive db for local storage
-5. Work on the dark theme  

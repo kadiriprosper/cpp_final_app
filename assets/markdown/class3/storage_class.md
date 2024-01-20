@@ -14,13 +14,7 @@ There are four storage classes in C++:
 4. Automatic variables are also known as local variable
 5. `auto` keyword is usd to declare automatic ttype variable
 
-
-    <br>
-    <div align="center">
-    <img src="../imgs/C%2B%2B/img6.jpg" height="60%" width="60%">
-    </div>
-    <br>
-
+![](resource:assets/images/C++/img6.png)
 
 ### Example
 
@@ -59,12 +53,7 @@ Here, the value of innermost x is 1, out of this block value is 3 and out of thi
 3. The satic variable which is declared inside a function is called "internal static variable" and it can not be used outside that function
 4. The static variable which is declared outside a function is called external variable" and it can be used in all the function of that program
 
-    <br>
-    <div align="center">
-    <img src="../imgs/C%2B%2B/img7.jpg" height="60%" width="60%">
-    </div>
-    <br>
-
+![](resource:assets/images/C++/img7.png)
 
 ### Example
 
@@ -103,12 +92,7 @@ Here, the value of innermost x is 1, out of this block value is 3 and out of thi
 1. registr variables is stored in one of the register of system, instead of memory
 2. Value stored in register can be accessed faster than one that is stored in memory
 
-    <br>
-    <div align="center">
-    <img src="../imgs/C%2B%2B/img8.jpg" height="60%" width="60%">
-    </div>
-    <br>
-
+![](resource:assets/images/C++/img8.png)
 
 ### Example
 
@@ -137,12 +121,7 @@ Here, the value of innermost x is 1, out of this block value is 3 and out of thi
 2. External storage class does not create a variable, but its inform the compiler of its existence
 3. `extern` keyword is used to declare external variable 
 
-
-    <br>
-    <div align="center">
-    <img src="../imgs/C%2B%2B/img9.jpg" height="60%" width="60%">
-    </div>
-    <br>
+![](resource:assets/images/C++/img9.png)
 
 ### Example
 

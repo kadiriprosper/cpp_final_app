@@ -1,4 +1,5 @@
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/data/dummy_data.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/tutorial_list.dart';
@@ -136,6 +137,7 @@ class OverviewSegment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalController globalController = Get.put(GlobalController());
     return ListView(
       shrinkWrap: true,
       children: [
@@ -167,8 +169,9 @@ class OverviewSegment extends StatelessWidget {
               isSvg: true,
               imagePath: HelperFunctions.lessonsImage,
               onPressed: () {
-                //TODO: Change the course list based on the selected
-                Get.to(() => const TutorialList());
+                Get.to(() => const TutorialList(
+                      pageTitle: 'C++ Tutorials',
+                    ));
               },
               title: 'Tutorial',
             ),
@@ -176,6 +179,7 @@ class OverviewSegment extends StatelessWidget {
               isSvg: true,
               imagePath: HelperFunctions.programImage,
               onPressed: () {
+                globalController.selectedProgrammingLanguage = 'cpp';
                 //TODO: Change the course list based on the selected
                 Get.to(() => const ProgramListPage());
               },
@@ -185,6 +189,7 @@ class OverviewSegment extends StatelessWidget {
               isSvg: true,
               imagePath: HelperFunctions.qaImage,
               onPressed: () {
+                globalController.selectedProgrammingLanguage = 'cpp';
                 Get.to(() => const QaPage());
               },
               title: 'Q/A',

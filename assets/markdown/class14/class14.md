@@ -28,11 +28,10 @@
 	`open(const char *filename, ios::openmode mode);`
 - Different file opening mode is given below:
 
-	![Image](../imgs/C++/img42.jpg)
+![](resource:assets/images/C++/img42.png)
 	
 
 ### Writing into a file
-<br>
 
 ```
 	#include <iostream>
@@ -52,7 +51,6 @@
 ```
 
 ### **Reading from a file**
-<br>
 
 ```
 	#include <iostream>

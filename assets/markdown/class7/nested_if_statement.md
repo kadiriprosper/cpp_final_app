@@ -1,7 +1,4 @@
-<div align="center">
-<img src="../imgs/C%2B%2B/img22.jpg" height="60%" width="60%">
-</div>
-<br>
+![](resource:assets/images/C++/img22.png)
 
 ## Nested If Statement
 

@@ -1,13 +1,9 @@
 ## Definition:
 A loop inside another loop is called "nested loop", so one 'for loop' inside another 'for loop' is called "nested loop"
 
-<!-- - **Syntax**
+**Syntax**
 
-<br>
-<div align="center">
-<img src="../imgs/C++/img27.jpg" height="60%" width="60%">
-</div>
-<br> -->
+![](resource:assets/images/C++/img27.png)
     
 ### Example
 

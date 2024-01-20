@@ -7,15 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TutorialList extends StatelessWidget {
-  const TutorialList({super.key});
+  const TutorialList({super.key, required this.pageTitle});
+
+  final String pageTitle;
 
   @override
   Widget build(BuildContext context) {
     final globalController = Get.put(GlobalController());
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         hasLeading: true,
-        title: 'C++ Tutorial',
+        title: pageTitle,
       ).build(context),
       body: Container(
         // padding: const EdgeInsets.symmetric(horizontal: 15).copyWith(top: 10),
@@ -23,10 +25,10 @@ class TutorialList extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 20),
           physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
-          itemCount: globalController.getTutorialList('Cpp').length,
+          itemCount: globalController.tutorialList.length,
           separatorBuilder: (context, index) => const SizedBox(height: 15),
           itemBuilder: (context, index) {
-            final tutorialData = globalController.getTutorialList('Cpp');
+            final tutorialData = globalController.tutorialList;
             return TutorialListCard(
               onPressed: () {
                 tutorialData[index]?['type'] != 'branch'

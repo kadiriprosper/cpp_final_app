@@ -1,3 +1,5 @@
+![](resource:assets/images/C++/img1.png)
+
 ### iostream
 1. It stands for input output stream
 2. It is a collection of predefined functions/methods

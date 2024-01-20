@@ -9,7 +9,7 @@
 
 ### **Syntax**
 
-![Syntax](../imgs/C++/img39.jpg)
+![](resource:assets/images/C++/img39.png)
 
 ### **Example:**
 

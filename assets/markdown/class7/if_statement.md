@@ -1,10 +1,6 @@
 ## If Statement
 
-<!-- <br>
-<div align="center">
-<img src="../imgs/C%2B%2B/img19.jpg" height="60%" width="60%">
-</div>
-<br> -->
+![](resource:assets/images/C++/img19.png)
 
 
 1. If the condition is true its body execute otherwise does not execute

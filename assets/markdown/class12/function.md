@@ -6,11 +6,11 @@
 4. We can call a function again and again
 5. The most important features of function is code reusability
 6. The C library provides many pre-defined functions 
-<br>
 
 ### Syntax
 
-![Syntax](../imgs/C++/img36.jpg)
+![](resource:assets/images/C++/img34.png)
+![](resource:assets/images/C++/img35.png)
 
 
 ## Key point about the function

@@ -55,6 +55,9 @@ flutter:
     - assets/courses/
     # - assets/policy.pdf
     - assets/data/
+    - assets/images/
+    - assets/images/C/
+    - assets/images/C++/
     - assets/icons/
     - assets/markdown/
     - assets/markdown/class1/
@@ -71,4 +74,21 @@ flutter:
     - assets/markdown/class12/
     - assets/markdown/class13/
     - assets/markdown/class14/
+    - assets/ctutorial/
+    - assets/ctutorial/class1/
+    - assets/ctutorial/class2/
+    - assets/ctutorial/class3/
+    - assets/ctutorial/class4/
+    - assets/ctutorial/class5/
+    - assets/ctutorial/class6/
+    - assets/ctutorial/class7/
+    - assets/ctutorial/class8/
+    - assets/ctutorial/class9/
+    - assets/ctutorial/class10/
+    - assets/ctutorial/class11/
+    - assets/ctutorial/class12/
+    - assets/ctutorial/class13/
+    - assets/ctutorial/class14/
+    - assets/ctutorial/class15/
+    - assets/ctutorial/class16/
 

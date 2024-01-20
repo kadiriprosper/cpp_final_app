@@ -4,12 +4,7 @@ Switch statement allows us to execute one statement from many statement and thos
 
 Actually in switch statement, inside the body of switch a number of cases are used and a parameter are passed and from which cas this parameter is matched, executed.  
 
-<!-- 
-<br>
-<div align="center">
-<img src="../imgs/C%2B%2B/img23.jpg" height="60%" width="60%">
-</div>
-<br> -->
+![](resource:assets/images/C++/img23.png)
 
 ### Syntax
 1. IN the switch statement a value/number is passed in the place of parameter and that case will execute which is equal to the value/number.

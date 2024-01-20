@@ -9,12 +9,12 @@
 12. work on edit profile page and unfocus the node on keyboard -- done
 13. feedback to show on the database {username: feedback} -- done
 14. Nemo go do chat auth and payment, i no dey touch am again
-7. on register yourself the back button does not work ///work on this later ---not changing this --fixed
+15. Work on the c aspect 100% done:: remains putting the images
+16. Put the images in the tutorial -- done
+17. Change icon -- done
 
 
 11. change profile picture from firebase -- pending 
 9. Finish the debate on whether phone number go dey (max 15 length)
-15. 
-end. Work on the c aspect
-end1. Put the images in the tutorial
-end2. Change icon
+
+

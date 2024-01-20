@@ -116,8 +116,7 @@ class DataPool {
     0: {
       'Question': 'What is Operand?',
       'Answer':
-          '- The data or variable on which the operation is performed is called `operand`.- for example:`x+y` [Here ' +
-              ' is an operator, x & y are operand]'
+          '- The data or variable on which the operation is performed is called `operand`.- for example:`x+y` [Here \'+\' is an operator, x & y are operand]'
     },
     1: {
       'Question': ' What is Multilevel Inheritance?',
@@ -390,6 +389,184 @@ class DataPool {
     55: {
       'Question': 'Who develop C++ language?',
       'Answer': '- Bjarne Stroustrup'
+    },
+  };
+  static const cQA = {
+    0: {
+      'Question': 'What is an Operand?',
+      'Answer':
+          '- The data or variable on which the operation is performed is called an `operand`.- for example:`x+y` [Here \'+\' is an operator, x & y are operand]'
+    },
+    1: {
+      'Question': 'Types of Loop in C?',
+      'Answer':
+          'There are 3 types of loop in C:- 1. For Loop- 2. While Loop- 3. Do While Loop'
+    },
+    2: {
+      'Question': 'What is Data Type?',
+      'Answer':
+          '- It is a type of data which is used in the program.- The data type defines the amount of storage area allocated to variables.- Example of data types are `int`, `float`, `char` etc.'
+    },
+    3: {
+      'Question': 'What is Programming?',
+      'Answer':
+          '- Programming is a process to write a code to construct an application and the code is called program.'
+    },
+    4: {
+      'Question': 'What is Looping?',
+      'Answer':
+          '- To run the body countinously until a required condition is fufill is called looping'
+    },
+    5: {
+      'Question': 'What are math functions?',
+      'Answer':
+          '- It is used to perform the mathematical related operation- There are many predefine math function in C library- All the math funnction are predefine in `math.h` header file'
+    },
+    6: {
+      'Question': 'What are the advantages of C?',
+      'Answer':
+          '- C is a highly portable language means we can say that the software developed using C++ language can run on any platform- C is an object-oriented programming language which includes the concepts such as classes, objects, inheritance, polymorphism, abstruction, encapsulation- C has the concept of inheritance. Through inheritance, one can eliminate the redundant code and can reuse the existing classes.- Data hiding helps the programmer to build secure programs so that the program cannot be attacked by the invaders- It contains a rich function library '
+    },
+    7: {
+      'Question': 'What is a Structure?',
+      'Answer':
+          '- It is a collection of data of different data type- It is a user data type- Data can of `int, float, char, double` etc data type- We can access the member of structure by making the variable of structure- struct keyword is used to create a structure'
+    },
+    8: {
+      'Question': 'Key points about functions.',
+      'Answer':
+          'There are three key point of function:- Function Declaration = It is used to declare a function- Function Definition = It means to write the code to perform a specific task- Function Calling = It means to call the function to execute the function code'
+    },
+    9: {
+      'Question': 'What is the modulo Operator?',
+      'Answer':
+          '- It returns the remainder of a division - % symbol is used to calculate modulus Example: 16%6=4 because the remainder is 4 when we divide 16 by 6'
+    },
+    10: {
+      'Question': 'What is goto statement?',
+      'Answer':
+          '- It is an user controlled jump statement which is controlled by the user- It is always used with label'
+    },
+    11: {
+      'Question': 'What is an Operator?',
+      'Answer':
+          '- It is a special symbol which is usd to perform the operation like arithmetic, logical etc. - for example: `x+y` Here `+` is an operator, x & y are operand'
+    },
+    12: {
+      'Question': 'What is continue statement?',
+      'Answer':
+          '- It is a keyword which is used to skip the next statement and countinue the loop- It is mostly used with loop'
+    },
+    13: {
+      'Question': 'What is printf()?',
+      'Answer':
+          '- It is a predefined function which is used to print data unto the output screen- It is defined inside the `stdio.h` header file- In other word we can say  it is used for taking output'
+    },
+    14: {
+      'Question': 'Difference between while loop and do while loop?',
+      'Answer':
+          '- The difference between while loop and do while loop is that in the case of while loop, if the conditiion is wrong then the body does not execute. But in the case of do while loop, it\'s body execute at least one time either condition true or false'
+    },
+    15: {
+      'Question': 'Types of Loop in C?',
+      'Answer':
+          'There are there types of loop used in C- For loop- While loop- Do While loop'
+    },
+    16: {
+      'Question': 'What is recursion?',
+      'Answer':
+          '- The process of calling a function by itself is called recursion '
+    },
+    17: {
+      'Question': 'What is Variable?',
+      'Answer':
+          '- It is a name of storage area which is used to store data or infofrmation- It always contains last value assigned to it- Each value most be assigned a specific data type- for example: `int x=5` Here \'x\' ia a variable name and its value is 5 '
+    },
+    18: {
+      'Question': 'What is break statement?',
+      'Answer':
+          '- It is a keyword which is used to transfer the control out of the body of loop- In other word we can say that, it is used to terminate the execution of loop- It is also used to terminate the processing of a particular case in switch'
+    },
+    19: {
+      'Question': 'When was C Language develope?',
+      'Answer':
+          '- In 1972 at AT & T\'s Bell Lab (USA)'
+    },
+    20: {
+      'Question': 'Types of Array?',
+      'Answer':
+          'There are two types of array in C++- Single Dimension Array- Multi Dimension Array'
+    },
+    21: {
+      'Question': 'Types of Operator?',
+      'Answer':
+          '- Arithmetic Operators- Relational Operators- Logical Operators- Assignment Operators- Bitwise Operators- Increment/Decremnet Operators- Conditional Operators- Special Operator'
+    },
+    22: {
+      'Question': 'What is scanf()?',
+      'Answer':
+          '- It is a predefined function which is used to take user input at runtime- It is defined inside `stdio.h` header file- In other word, we can say that it is used for taking input'
+    },
+
+    23: {
+      'Question': 'Difference between local and global variable?',
+      'Answer':
+          '- Gloal variable is defined outside a function but Local vriable is defined inside a function- Global variable can be accessed anywhere in the program but Local variable can be accessed only withina function '
+    },
+    24: {
+      'Question': 'What is predefined function?',
+      'Answer':
+          '- The function which is predefined in the library is called prdefined function- It is also called library function- Example: printf, scanf, getch. clrscr, etc'
+    },
+    25: {
+      'Question': 'How many parts of for loop?',
+      'Answer':
+          'There are three parts of for loop- Initialization- Conditioon- Increment or Decrement (It is also called \'update\')'
+    },
+    26: {
+      'Question': 'What is Array?',
+      'Answer':
+          '- Array is te collection of data of same data type- It is used to store group of data simultaneously- It can store data of same data type (means an integer array can only store integer value, character array can only store only character value, and so on)- We can not fetch data from array directly therefore we use index point- The indexing of array always start with 0- Index value is always an integer number- array maybe of any data type like int, float, char, etc- for example:`int ar[5]=40: {10,20,30,50,80},;`Here \'ar\' is the name of array and \'5\' is the size of array means this array can store atmost 5 value'
+    },
+    27: {
+      'Question': 'What is Looping?',
+      'Answer':
+          '- To run the body countinously until a required condition is fufill is called looping'
+    },
+    28: {
+      'Question': 'What is Keyword?',
+      'Answer':
+          '- The word which is predefined in the library is called keyword- Its functinality is also predefined- we can not use keyword as variable'
+    },
+    29: {
+      'Question': 'What is function?',
+      'Answer':
+          '- It is a collction of statement that performs a specific task- It executes when it is called by its name - A large program is divided into a number of small building block for simplicity and this building block is called function- We can cal a function again and again- The most important features of function is code re-usability- The C library provides many predefine functions'
+    },
+    30: {
+      'Question': 'What is Constant?',
+      'Answer':
+          '- It refers to a fixeed value (can not be change any instant)- It is also called Literals- It can be of any data type like int, float, char etc'
+    },
+    31: {
+      'Question': 'What is Identifier',
+      'Answer':
+          '- It is a name of differnt part of programming elements like variable name, method name, etc- It is a string of alphanumeric characters that begins with alphabet or underscore- For example: `int x=5;`Here \'x\' ia a variable or we can say that identifiers'
+    },
+    32: {
+      'Question': 'Types of function?',
+      'Answer':
+          'There are two types of function in C- Predefined function- Userdefined function'
+    },
+    33: {
+      'Question': ' What is union?',
+      'Answer':
+          '- It is a collection of data of different data type- It is a user defined data type- Dat is of int, char, float, double, etc data type- We can access the member of union by making the varaible of union- union keyword is used to create a union- union can store single value at a time '
+    },
+    34: {
+      'Question': ' What is difference between structure and union?',
+      'Answer':
+          '- Structure supports multiple value simultaneously but union support only one value at a time because in structure, each variable have its own memory block but in union a single memory block is shared by all variable union. '
     },
   };
   static const cppProgram = {
@@ -3604,6 +3781,107 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
       'title': 'File Handling in C++',
       'type': 'linear',
       'content': 'assets/markdown/class14/class14.md',
+    },
+  };
+  static const cTutorial = {
+    0: {
+      'title': 'Introduction to the C language',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class1/c_intro.md',
+    },
+    1: {
+      'title': 'Syntax of C language',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class2/class2.md',
+    },
+    2: {
+      'title': 'Comments in C language',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class3/comments.md',
+    },
+    3: {
+      'title': 'Variables in C++',
+      'type': 'branch',
+      'content': {
+        'variables': 'assets/ctutorial/class4/variables.md',
+        'Constant in C++': 'assets/ctutorial/class4/constants.md',
+      },
+    },
+    4: {
+      'title': 'Keyword in C language',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class5/keywords.md',
+    },
+    5: {
+      'title': 'Data Types in C language',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class6/data_types.md',
+    },
+    6: {
+      'title': 'Input output functions',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class7/io_functions.md',
+    },
+    7: {
+      'title': 'Operator in C',
+      'type': 'branch',
+      'content': {
+        'Operator': 'assets/ctutorial/class8/operators.md',
+        'Arithmetic Operator': 'assets/ctutorial/class8/arithmetic_operator.md',
+        'Relational Operator': 'assets/ctutorial/class8/relational_operator.md',
+        'Logical Operator': 'assets/ctutorial/class8/logical_operator.md',
+        'Assignment Operator': 'assets/ctutorial/class8/assignment_operator.md',
+        'Increment/Decrement Operator':
+            'assets/ctutorial/class8/increment_operator.md',
+        'Conditional Operator':
+            'assets/ctutorial/class8/conditional_operator.md',
+        'Bitwise Operator': 'assets/ctutorial/class8/bitwise_operator.md',
+        'Special Operator': 'assets/ctutorial/class8/special_operator.md',
+      },
+    },
+    8: {
+      'title': 'Conditional Statements',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class9/conditional_statement.md',
+    },
+    9: {
+      'title': 'Loops',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class10/loops.md',
+    },
+    10: {
+      'title': 'Pointers',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class11/pointers.md',
+    },
+    11: {
+      'title': 'Arrays',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class12/arrays.md',
+    },
+    12: {
+      'title': 'Functions',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class13/functions.md',
+    },
+    13: {
+      'title': 'Structure in C++',
+      'type': 'branch',
+      'content': {
+        'Structure': 'assets/ctutorial/class14/structure.md',
+        'Union': 'assets/ctutorial/class14/union.md',
+        'Enumeration': 'assets/ctutorial/class14/enums.md',
+      },
+    },
+    14: {
+      'title': 'File Handling',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class15/file_handling.md',
+    },
+    15: {
+      'title': 'Graphics',
+      'type': 'linear',
+      'content': 'assets/ctutorial/class16/graphics.md',
     },
   };
   static const schoolList = [

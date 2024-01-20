@@ -6,7 +6,7 @@
 4. There are many predefined string function in C library
 5. All the string functions are predefined in `string.h` header file
 
-![Syntax](../imgs/C%2B%2B/img37.jpg)
+![](resource:assets/images/C++/img36.png)
 
 ### strlen(s)
 

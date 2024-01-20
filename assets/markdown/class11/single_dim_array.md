@@ -12,7 +12,7 @@
 
 ### Syntax
 
-![Image](../imgs/C++/img30.jpg)
+![](resource:assets/images/C++/img30.png)
 
 
 1. Here, 'a' is the name of array
@@ -23,14 +23,7 @@
 ### Initialization of array (method 1)
 
 
-![Image](../imgs/C++/img31.jpg)
-
-
-
-### Initialization of array (method 2)
-
-
-![Image](../imgs/C++/img32.jpg)
+![](resource:assets/images/C++/img31.png)
 
 
 ### Printing of array element (method 1)

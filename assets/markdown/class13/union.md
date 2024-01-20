@@ -10,7 +10,7 @@
 
 ### Syntax
 
-![Learning]("../imgs/C++/img40.jpg""../imgs/C++/img40.jpg")
+![](resource:assets/images/C++/img40.png)
 
 
 ### Example:

@@ -7,6 +7,7 @@ class GlobalController extends GetxController {
   Map<int, Map<String, Object>> tutorialList = {};
   Map<String, dynamic> allProgramList = {};
   Map<String, dynamic> allTutorialList = {};
+  String selectedProgrammingLanguage = 'cpp';
 
   ///This function returns the project data
   ///corresponding to the [programset] supplied as a parameter.
@@ -30,9 +31,10 @@ class GlobalController extends GetxController {
     return DataPool.policyPool;
   }
 
-  Map<int, Map<String, String>> getQaQuestions(String questionSet) {
+  Map<int, Map<String, String>> getQaQuestions() {
+    String questionSet = selectedProgrammingLanguage;
     if (questionSet == 'c' || questionSet == 'C') {
-      // return
+      return DataPool.cQA;
     }
     return DataPool.cppQA;
   }
@@ -49,11 +51,11 @@ class GlobalController extends GetxController {
     return DataPool.cppProgram;
   }
 
-  Map<int, Map<String, Object>> getTutorialList(String tutorialSet) {
-    if (tutorialSet == 'c' || tutorialSet == 'C') {
-      // tutorialList = DataPool.cppTutorial;
-      // getAllTutorialData();
-      // return
+  Map<int, Map<String, Object>> getTutorialList(bool isC) {
+    if (isC) {
+      tutorialList = DataPool.cTutorial;
+      getAllTutorialData();
+      return DataPool.cTutorial;
     }
     tutorialList = DataPool.cppTutorial;
     getAllTutorialData();

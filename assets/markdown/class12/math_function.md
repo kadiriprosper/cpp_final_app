@@ -6,9 +6,9 @@
 
 
 
-![Syntax](../imgs/C%2B%2B/../C++/img38.jpg)
-<br>
-![Syntax](../imgs/C%2B%2B/../C++/img38b.jpg)
+![](resource:assets/images/C++/img37.png)
+
+![](resource:assets/images/C++/img38.png)
 
 
 ### Example:

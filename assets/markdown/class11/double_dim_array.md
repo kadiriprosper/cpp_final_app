@@ -12,7 +12,7 @@
 
 ### Syntax
 
-![Syntax](../imgs/C++/img33.jpg)
+![](resource:assets/images/C++/img32.png)
 
 1. Here, 'a' is the name of array
 2. 'int' is the data type of array
@@ -21,12 +21,7 @@
 
 ### Initialization of array (method 1)
 
-![Syntax](../imgs/C++/img34.jpg)
-
-### Initialization of array (method 2)
-
-![Syntax](../imgs/C++/img35.jpg)
-
+![](resource:assets/images/C++/img33.png)
 
 
 ### Printing of array element (method 1)

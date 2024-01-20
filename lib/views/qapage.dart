@@ -21,11 +21,11 @@ class QaPage extends StatelessWidget {
         // margin: const EdgeInsets.only(top: 10),
         child: ListView.builder(
           shrinkWrap: true,
-          itemCount: globalController.getQaQuestions('Cpp').length,
+          itemCount: globalController.getQaQuestions().length,
           physics: const BouncingScrollPhysics(),
           // separatorBuilder: (context, index) => const SizedBox(height: 10),
           itemBuilder: (context, index) {
-            final questions = globalController.getQaQuestions('Cpp');
+            final questions = globalController.getQaQuestions();
             return FAQExpansionWidget(
               title: questions[index]!['Question']!.trim(),
               text: GlobalHelpers.stirngModifier(

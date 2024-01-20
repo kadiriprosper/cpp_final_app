@@ -1,7 +1,4 @@
-<div align="center">
-<img src="../imgs/C%2B%2B/img21.jpg" height="60%" width="60%">
-</div>
-<br>
+![](resource:assets/images/C++/img21.png)
 
 ## If-else ladder statement
 1. It is a part of conditional statement that executes only one condition at a time

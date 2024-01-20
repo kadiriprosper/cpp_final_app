@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
+import 'package:cpp_final_app/controllers/global_controller.dart';
 import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
+import 'package:cpp_final_app/views/c_course_page.dart';
 import 'package:cpp_final_app/views/coming_soon_page.dart';
 import 'package:cpp_final_app/views/course_page.dart';
 import 'package:cpp_final_app/views/qapage.dart';
@@ -26,6 +28,7 @@ class _HomePageState extends State<HomePage> {
   int carouselIndex = 0;
   FocusNode focusNode = FocusNode();
   UserController userController = Get.put(UserController());
+  GlobalController globalController = Get.put(GlobalController());
   CarouselController controller = CarouselController();
   TextEditingController textController = TextEditingController();
 
@@ -239,6 +242,7 @@ class _HomePageState extends State<HomePage> {
                             onBookMark: () {},
                             onPressed: () {
                               focusNode.unfocus();
+                              globalController.getTutorialList(false);
                               Get.to(() => const CoursePage());
                             },
                           ),
@@ -247,7 +251,9 @@ class _HomePageState extends State<HomePage> {
                             label: 'C Programming',
                             onBookMark: () {},
                             onPressed: () {
-                              Get.to(() => const ComingSoonPage());
+                              focusNode.unfocus();
+                              globalController.getTutorialList(true);
+                              Get.to(() => const CCoursePage());
                             },
                           ),
                         ]),
