@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/global_controller.dart';
@@ -5,7 +6,6 @@ import 'package:cpp_final_app/controllers/tab_controller.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/c_course_page.dart';
-import 'package:cpp_final_app/views/coming_soon_page.dart';
 import 'package:cpp_final_app/views/course_page.dart';
 import 'package:cpp_final_app/views/qapage.dart';
 import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 30),
             HomeHeaderWidget(
               //TODO: Change the image and name to the current user
-              profilePic: HelperFunctions.profilePic,
+              userController: userController,
               username: userController.username,
             ),
             const SizedBox(height: 20),
@@ -500,11 +500,11 @@ class SliderWidget extends StatelessWidget {
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({
     super.key,
-    required this.profilePic,
+    required this.userController,
     required this.username,
   });
 
-  final String profilePic;
+  final UserController userController;
   final String username;
 
   @override
@@ -514,13 +514,27 @@ class HomeHeaderWidget extends StatelessWidget {
       child: Row(
         children: [
           //TODO: Is this profile pic clickable?
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.grey,
-            child: CircleAvatar(
-              radius: 29,
-              //TODO: Change the image to the profile pic
-              backgroundImage: AssetImage(profilePic),
+          Obx(
+            () => CircleAvatar(
+              //TODO: Change the path to the provider profile pic
+              child: userController.userImage.value.isEmpty
+                  ? Image.asset(HelperFunctions.profilePic)
+                  : Obx(
+                      () => Container(
+                        // borderRadius: BorderRadius.circular(46),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                              userController.userImage.value,
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+              // backgroundImage:imagePath == null ? AssetImage(HelperFunctions.profilePic): ,
+              radius: 32,
             ),
           ),
           const SizedBox(

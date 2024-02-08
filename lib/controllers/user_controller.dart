@@ -1,17 +1,29 @@
+import 'dart:io';
+
 import 'package:cpp_final_app/auth/auth.dart';
+import 'package:cpp_final_app/auth/profile_update.dart';
 import 'package:cpp_final_app/enums/status_enum.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
   Auth auth = Auth();
+  FirebaseStorage firebaseStorage = FirebaseStorage.instance;
+  RxString userImage = ''.obs;
 
   get username => auth.username;
 
   get usermail => auth.usermail;
 
+  String getImage() {
+    return auth.userImage;
+  }
+
   Future<void> userLogin(String email, String password, Widget toPage) async {
     final response = await auth.userLoginWithEmail(email, password);
+    userImage = getImage().obs;
     processFunction(response, toPage);
   }
 
@@ -22,11 +34,25 @@ class UserController extends GetxController {
       name: name,
       password: password,
     );
-
+    userImage = getImage().obs;
     processFunction(response, toPage);
   }
 
   Future<void> updateUserRegistration() async {}
+
+  Future<void> updateUserImage(File imageFile) async {
+    final storageRef = firebaseStorage.ref('profile_pictures');
+    try {
+      final photoUrl = await storageRef.putFile(imageFile);
+      await auth.updateUserImage(await photoUrl.ref.getDownloadURL());
+
+      userImage = getImage().obs;
+      print('success');
+    } catch (e) {
+      print(e);
+      //TODO: Show a snackbar that tells uploading is failed
+    }
+  }
 
   Future<void> sendPasswordResetMail(String email, Widget toPage) async {
     final response = await auth.sendPasswordResetMail(

@@ -1,3 +1,4 @@
+import 'package:cpp_final_app/auth/profile_update.dart';
 import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,6 +9,7 @@ class Auth {
 
   String get username => firebaseAuth.currentUser?.displayName ?? '';
   String get usermail => firebaseAuth.currentUser?.email ?? '';
+  String get userImage => firebaseAuth.currentUser?.photoURL ?? '';
 
   Future<Map<AuthStatusEnum, String>> userLoginWithEmail(
       String email, String password) async {
@@ -96,5 +98,12 @@ class Auth {
     return authSuccess;
   }
 
-  
+  Future<Map<AuthStatusEnum, String>> updateUserImage(String photoUrl) async {
+    try {
+      await firebaseAuth.currentUser?.updatePhotoURL(photoUrl);
+    } on FirebaseAuthException catch (_) {
+      return updateFailed('Error updating user profile picture');
+    }
+    return updateSuccess;
+  }
 }

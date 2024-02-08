@@ -1,6 +1,5 @@
 import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 const updateSuccess = {AuthStatusEnum.success: 'success'};
 Map<AuthStatusEnum, String> updateFailed(String error) =>

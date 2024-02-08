@@ -6,8 +6,8 @@ import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:pinput/pinput.dart';
 
 class FeedbackPage extends StatefulWidget {
   const FeedbackPage({super.key});
@@ -123,18 +123,50 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 textColor: Colors.white,
                 buttonText: 'Submit Feedback',
                 onPressed: () async {
+                  Map<AuthStatusEnum, String>? response;
                   if (feedbackTextController.text.length > 4) {
-                    var response = await dbController
-                        .storeUserData(userController.usermail, {
-                      'rating': userRating,
-                      'feedback': feedbackTextController.text,
-                    });
-                    if (response.keys.first == AuthStatusEnum.failed) {
-                      //TODO: Handle showing error here
-                      print('error1');
+                    await Get.showOverlay(
+                      asyncFunction: () async {
+                        response = await dbController
+                            .storeUserData(userController.usermail, {
+                          'rating': userRating,
+                          'feedback': feedbackTextController.text,
+                        });
+                      },
+                      loadingWidget: const SpinKitChasingDots(
+                        color: Colors.green,
+                      ),
+                    );
+                    if (response != null &&
+                        response!.keys.first == AuthStatusEnum.failed) {
+                      Get.snackbar(
+                        'Error',
+                        'Error sending the feedback',
+                        margin: const EdgeInsets.all(12).copyWith(top: 21),
+                        duration: const Duration(seconds: 2),
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                      );
                     } else {
                       Get.back();
+                      Get.snackbar(
+                        'Success',
+                        'Thanks for the feedback',
+                        margin: const EdgeInsets.all(12).copyWith(top: 21),
+                        duration: const Duration(seconds: 2),
+                        backgroundColor: Colors.green,
+                        colorText: Colors.white,
+                      );
                     }
+                  } else {
+                    Get.snackbar(
+                      'Error',
+                      'Feedback has to more than 4 characters long',
+                      margin: const EdgeInsets.all(12).copyWith(top: 21),
+                      duration: const Duration(seconds: 3),
+                      backgroundColor: Colors.red,
+                      colorText: Colors.white,
+                    );
                   }
                 },
               ),

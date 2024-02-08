@@ -40,7 +40,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       defaultTransition: Transition.cupertino,
-      home: const MainScreen(),
+      home: const SplashPage(),
     );
   }
 }

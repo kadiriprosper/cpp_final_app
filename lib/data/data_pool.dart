@@ -109,7 +109,7 @@ class DataPool {
     7: {
       'title': 'Changes to the Privacy Policy',
       'heading': '''
-    We reserve the right to update or modify this Privacy Policy at any time. Any changes will be posted within the app, and your continued use of the app will indicate your acceptance of the updated policy.\n\nIf you have any questions or concerns about our Privacy Policy, please contact us at contact@typclass.com.''',
+    We reserve the right to update or modify this Privacy Policy at any time. Any changes will be posted within the app, and your continued use of the app will indicate your acceptance of the updated policy.\n\nIf you have any questions or concerns about our Privacy Policy, please contact us at contact@cppprogramming.io.''',
     }
   };
   static const cppQA = {

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
@@ -7,6 +9,7 @@ import 'package:cpp_final_app/widgets/profile_pic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -21,6 +24,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
+  final picker = ImagePicker();
+  File? _pickedImage;
   UserController userController = Get.put(UserController());
 
   FocusNode nameNode = FocusNode();
@@ -68,8 +73,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
               children: [
                 ProfilePicWidget(
                   isEditable: true,
-                  onChangeImage: () {
+                  userController: userController,
+                  onChangeImage: () async {
                     //TODO: Select image from device
+                    final pickedFile = await picker.pickImage(
+                      source: ImageSource.gallery,
+                    );
+                    setState(() {
+                      if (pickedFile != null) {
+                        _pickedImage = File(pickedFile.path);
+                        userController.updateUserImage(_pickedImage!);
+                      }
+                    });
                   },
                 ),
                 const SizedBox(height: 20),

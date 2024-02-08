@@ -39,8 +39,9 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //TODO: Put the user image here
-              const ProfilePicWidget(
+              ProfilePicWidget(
                 isEditable: false,
+                userController: userController,
               ),
               const SizedBox(height: 10),
               Text(
