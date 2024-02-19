@@ -1,4 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/views/auth/registration/verification_page.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,10 @@ class MobileAuthPage extends StatefulWidget {
 }
 
 class _MobileAuthPageState extends State<MobileAuthPage> {
-  String countryCode = '+232';
+  String countryCode = '+234';
   String number = '';
   final mobileController = TextEditingController();
+  UserController userController = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,13 +101,15 @@ class _MobileAuthPageState extends State<MobileAuthPage> {
               ),
               const SizedBox(height: 20),
               AuthButton(
-                  title: 'Continue',
-                  onPressed: () {
-                    number = countryCode + mobileController.text;
-                    // print(number);
-                    //TODO: Code to go to the verification page
-                    Get.to(() => const VerificationPage());
-                  })
+                title: 'Continue',
+                onPressed: () async {
+                  number = countryCode + mobileController.text;
+                  if (number.length > 5) {
+                    await userController.verifyPhoneNumber(number, context);
+                    userController.phoneNumber = number;
+                  }
+                },
+              ),
             ],
           ),
         ),

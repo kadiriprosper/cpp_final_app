@@ -36,6 +36,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   void initState() {
     nameController.text = userController.username;
     emailController.text = userController.usermail;
+    numberController.text = userController.userPhoneNumber;
     //TODO: Init phone number controller
     super.initState();
   }

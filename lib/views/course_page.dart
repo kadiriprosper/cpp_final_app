@@ -155,7 +155,7 @@ class OverviewSegment extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            placeholderText,
+            cppText,
             style: TextStyle(
               fontSize: 16,
             ),

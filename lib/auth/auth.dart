@@ -1,6 +1,7 @@
 import 'package:cpp_final_app/auth/profile_update.dart';
 import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 const authSuccess = {AuthStatusEnum.success: 'success'};
 
@@ -51,6 +52,39 @@ class Auth {
       return {AuthStatusEnum.failed: 'registration error'};
     }
     userCredential.user?.updateDisplayName(name);
+    return authSuccess;
+  }
+
+  Future<Map<AuthStatusEnum, String>> setPhoneNumber({
+    required String phoneNumber,
+    required VoidCallback verificationCompleted,
+    required VoidCallback verificationFailed,
+    required String Function() codeSent,
+    required VoidCallback codeAutoRetrievalTimeout,
+  }) async {
+    try {
+      await firebaseAuth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (phoneAuthCredential) => verificationCompleted,
+        verificationFailed: (error) => verificationFailed,
+        codeSent: (verificationId, forceResendingToken) async {
+          String smsCode = codeSent.call();
+          PhoneAuthCredential credential = PhoneAuthProvider.credential(
+            verificationId: verificationId,
+            smsCode: smsCode,
+          );
+          try {
+            await firebaseAuth.currentUser?.linkWithCredential(credential);
+          } on Exception catch (e) {
+            return Future(
+                () => {AuthStatusEnum.failed: 'registration error $e'});
+          }
+        },
+        codeAutoRetrievalTimeout: (verificationId) => codeAutoRetrievalTimeout,
+      );
+    } on FirebaseAuthException catch (e) {
+      return {AuthStatusEnum.failed: 'registration error $e'};
+    }
     return authSuccess;
   }
 

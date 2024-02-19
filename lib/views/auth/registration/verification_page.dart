@@ -1,3 +1,4 @@
+import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ class VerificationPage extends StatefulWidget {
 }
 
 class _VerificationPageState extends State<VerificationPage> {
+  TextEditingController inputController = TextEditingController();
+  UserController userController = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +42,10 @@ class _VerificationPageState extends State<VerificationPage> {
               ),
             ),
             const SizedBox(height: 15),
-            const Text(
-              //TODO: Input the phone number here
-              'Enter the code sent to 99*******5',
+            Text(
+              'Enter the code sent to ${userController.phoneNumber}',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -51,24 +53,22 @@ class _VerificationPageState extends State<VerificationPage> {
             //TODO: How to autofill from message
             //TODO: Update the input fields with the correct plugin
             Pinput(
+              controller: inputController,
+              length: 6,
               onCompleted: (value) => print(value),
             ),
             const SizedBox(height: 26),
             AuthButton(
               title: 'Confirm',
               onPressed: () {
-                //TODO: Code to validate
-
-                Get.dialog(
-                  const Dialog(
-                    insetPadding: EdgeInsets.symmetric(
-                      horizontal: 25,
-                      vertical: 20,
-                    ),
-                    backgroundColor: Colors.transparent,
-                    child: AuthDialogBox(),
-                  ),
-                );
+                if (inputController.text.length == 6) {
+                  // userController.getOtp(inputController.text);
+                  // userController.otpCode.update(
+                  //   (val) {
+                  //     val = inputController.text;
+                  //   },
+                  // );
+                }
               },
             ),
           ],
@@ -119,7 +119,7 @@ class AuthDialogBox extends StatelessWidget {
             ),
           ),
           const Text(
-            'Your password has been changed successfully!',
+            'You have been registered successfully',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.w700,

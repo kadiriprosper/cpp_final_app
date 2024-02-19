@@ -16,5 +16,7 @@ Map<int, dynamic> messages = {
   },
 };
 
-const placeholderText =
-    'A lot of talk has been going on for a while now, well who are we to say lorem ispum and the likes of all the other text placeholders are wrong, well who knows about all these things and the other stuffs alongside. Anyways we\'re good to go.';
+const cText =
+    'Welcome to the C tutorial!\nC is a widely used programming language known for its efficiency and versatility.\nWhether you are new to programming or an experienced coder, this tutorial will guide you through the fundamentals of C';
+const cppText =
+    'Welcome to the C++ tutorial!\nC++ is a powerful and widely used programming language known for its efficiency and fleibility.\nWhether you are a beginner or an experienced programmer, this tutorial will help you learn and understand the basics of C++';
