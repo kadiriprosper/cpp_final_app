@@ -10,7 +10,7 @@ class Auth {
 
   String get username => firebaseAuth.currentUser?.displayName ?? '';
   String get usermail => firebaseAuth.currentUser?.email ?? '';
-  String get userImage => firebaseAuth.currentUser?.photoURL ?? '';
+  String? get userImage => firebaseAuth.currentUser?.photoURL;
 
   Future<Map<AuthStatusEnum, String>> userLoginWithEmail(
       String email, String password) async {

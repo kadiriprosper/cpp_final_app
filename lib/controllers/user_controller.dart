@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cpp_final_app/auth/auth.dart';
-import 'package:cpp_final_app/auth/profile_update.dart';
+import 'package:cpp_final_app/helpers/image_downloader.dart';
 import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:cpp_final_app/views/auth/registration/verification_page.dart';
 import 'package:cpp_final_app/views/loading_screen.dart';
@@ -9,80 +9,109 @@ import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:pinput/pinput.dart';
 
 class UserController extends GetxController {
   Auth auth = Auth();
-  RxString otpCode = ''.obs;
+  RxString otpCode = ''.obs;  
   String phoneNumber = '';
+  Rx<String> profileImageUrl = ''.obs;
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
-  RxString userImage = ''.obs;
+  final secureStorage = const FlutterSecureStorage();
 
-  get username => auth.username;
+  get username =>    auth.username;
+  
 
   get usermail => auth.usermail;
 
   get userPhoneNumber => auth.firebaseAuth.currentUser?.phoneNumber ?? 'null';
 
-  String getImage() {
-    return auth.userImage;
-  }
+  String get getProfileImageUrl => profileImageUrl.value;
 
-  Future<void> verifyPhoneNumber(
-      String tempPhoneNumber, BuildContext context) async {
-    phoneNumber = tempPhoneNumber;
-    LoadingScreen.loadPage(
-      computation: Future(
-        () async => await auth.firebaseAuth.verifyPhoneNumber(
-          phoneNumber: tempPhoneNumber,
-          verificationCompleted: (phoneAuthCredential) async {},
-          verificationFailed: (error) {
-            Get.snackbar(
-              'Verification Failed',
-              error.code + (error.message ?? ''),
-              // 'Unable to register your phone number right now, Please check the number and try again',
-              colorText: Colors.white,
-              backgroundColor: Colors.red,
-              duration: const Duration(seconds: 4),
-            );
-          },
-          codeSent: (verificationId, forceResendingToken) async {
-            await Get.bottomSheet(
-              const OTPBottomSheet(),
-            );
-            String smsCode = otpCode.value;
-            print('error $smsCode');
+  // String? _getImage() {
+  //   return auth.userImage;
+  // }
 
-            if (smsCode.isNotEmpty) {
-              PhoneAuthCredential credential = PhoneAuthProvider.credential(
-                verificationId: verificationId,
-                smsCode: smsCode,
-              );
-              await auth.firebaseAuth.currentUser
-                  ?.linkWithCredential(credential);
-            }
-            Get.dialog(
-              const Dialog(
-                insetPadding: EdgeInsets.symmetric(
-                  horizontal: 25,
-                  vertical: 20,
-                ),
-                backgroundColor: Colors.transparent,
-                child: AuthDialogBox(),
-              ),
-            );
-          },
-          codeAutoRetrievalTimeout: (verificationId) {},
-          timeout: const Duration(seconds: 60),
+  // Future<void> verifyPhoneNumber(
+  //     String tempPhoneNumber, BuildContext context) async {
+  //   phoneNumber = tempPhoneNumber;
+  //   LoadingScreen.loadPage(
+  //     computation: Future(
+  //       () async => await auth.firebaseAuth.verifyPhoneNumber(
+  //         phoneNumber: tempPhoneNumber,
+  //         verificationCompleted: (phoneAuthCredential) async {},
+  //         verificationFailed: (error) {
+  //           Get.snackbar(
+  //             'Verification Failed',
+  //             error.code + (error.message ?? ''),
+  //             // 'Unable to register your phone number right now, Please check the number and try again',
+  //             colorText: Colors.white,
+  //             backgroundColor: Colors.red,
+  //             duration: const Duration(seconds: 4),
+  //           );
+  //         },
+  //         codeSent: (verificationId, forceResendingToken) async {
+  //           await Get.bottomSheet(
+  //             const OTPBottomSheet(),
+  //           );
+  //           String smsCode = otpCode.value;
+  //           print('error $smsCode');
+
+  //           if (smsCode.isNotEmpty) {
+  //             PhoneAuthCredential credential = PhoneAuthProvider.credential(
+  //               verificationId: verificationId,
+  //               smsCode: smsCode,
+  //             );
+  //             await auth.firebaseAuth.currentUser
+  //                 ?.linkWithCredential(credential);
+  //           }
+  //           Get.dialog(
+  //             const Dialog(
+  //               insetPadding: EdgeInsets.symmetric(
+  //                 horizontal: 25,
+  //                 vertical: 20,
+  //               ),
+  //               backgroundColor: Colors.transparent,
+  //               child: AuthDialogBox(),
+  //             ),
+  //           );
+  //         },
+  //         codeAutoRetrievalTimeout: (verificationId) {},
+  //         timeout: const Duration(seconds: 60),
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  Future<void> updateUsername(String newUserName) async {
+    try {
+      Get.showOverlay(
+        asyncFunction: () async {
+          await auth.firebaseAuth.currentUser!.updateDisplayName(newUserName);
+        },
+        loadingWidget: const SpinKitPianoWave(
+          color: Colors.grey,
+          size: 15,
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      print(e);
+      //TODO: Show a snackbar that tells uploading is failed
+    }
   }
 
   Future<void> userLogin(String email, String password, Widget toPage) async {
     final response = await auth.userLoginWithEmail(email, password);
-    userImage = getImage().obs;
+    if (response.entries.first.key == AuthStatusEnum.success) {
+      profileImageUrl.value = auth.firebaseAuth.currentUser!.photoURL!;
+      secureStorage.write(key: 'email', value: email);
+      secureStorage.write(key: 'password', value: password);
+    }
+    // _getProfileImage(imageUrl: _getImage());
     processFunction(response, toPage);
   }
 
@@ -93,19 +122,44 @@ class UserController extends GetxController {
       name: name,
       password: password,
     );
-    userImage = getImage().obs;
+    // _getProfileImage(imageUrl: _getImage());
+    if (response.entries.first.key == AuthStatusEnum.success) {
+      await auth.firebaseAuth.currentUser?.updatePhotoURL(
+          'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      profileImageUrl.value = auth.firebaseAuth.currentUser!.photoURL!;
+      print(profileImageUrl.value);
+      secureStorage.write(key: 'email', value: email);
+      secureStorage.write(key: 'password', value: password);
+    }
     processFunction(response, toPage);
   }
 
-  Future<void> updateUserRegistration() async {}
+  // Future<void> _getProfileImage({String? imageUrl}) async {
+  //   imageUrl ??=
+  //       'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+  //   ImageManager imgManager = ImageManager();
+  //   var result = await imgManager.imageDownloader(imageUrl);
+  //   profileImagePath.value = result.entries.elementAt(0).key
+  //       ? result.entries.elementAt(0).value ?? ''
+  //       : '';
+  // }
 
   Future<void> updateUserImage(File imageFile) async {
     final storageRef = firebaseStorage.ref('profile_pictures');
-    try {
-      final photoUrl = await storageRef.putFile(imageFile);
-      await auth.updateUserImage(await photoUrl.ref.getDownloadURL());
 
-      userImage = getImage().obs;
+    try {
+      Get.showOverlay(
+        asyncFunction: () async {
+          final photoUrl = await storageRef.putFile(imageFile);
+          await auth.updateUserImage(await photoUrl.ref.getDownloadURL());
+          profileImageUrl.value = auth.firebaseAuth.currentUser!.photoURL!;
+        },
+        loadingWidget: const SpinKitPianoWave(
+          color: Colors.grey,
+          size: 15,
+        ),
+      );
+
       print('success');
     } catch (e) {
       print(e);
@@ -130,12 +184,20 @@ class UserController extends GetxController {
   }
 
   Future<void> userLogout() async {
+    await secureStorage.delete(key: 'email');
+    await secureStorage.delete(key: 'password');
     await auth.userLogout();
   }
 
   Future<void> deleteUserAccount() async {
+    await secureStorage.delete(key: 'email');
+    await secureStorage.delete(key: 'password');
     await auth.deleteAccount();
   }
+
+  // Future<String> setProfilePicture(String path) async{
+
+  // }
 
   //TODO: Possibly take this guy to helper function
   void processFunction(

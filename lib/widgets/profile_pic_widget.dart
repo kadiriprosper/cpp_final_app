@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
@@ -24,25 +26,23 @@ class ProfilePicWidget extends StatelessWidget {
       child: Stack(
         children: [
           CircleAvatar(
-            //TODO: Change the path to the provider profile pic
-            child: userController.userImage.value.isEmpty
-                ? Image.asset(HelperFunctions.profilePic)
-                : Obx(
-                    () => Container(
-                      // borderRadius: BorderRadius.circular(46),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: CachedNetworkImageProvider(
-                            userController.userImage.value,
-                          ),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-            // backgroundImage:imagePath == null ? AssetImage(HelperFunctions.profilePic): ,
             radius: 44,
+            child: Obx(
+              () => Container(
+                // borderRadius: BorderRadius.circular(46),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(
+                        userController.getProfileImageUrl,                        
+                        ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            // backgroundImage:imagePath == null ? AssetImage(HelperFunctions.profilePic): ,
+            
           ),
           isEditable
               ? Positioned(

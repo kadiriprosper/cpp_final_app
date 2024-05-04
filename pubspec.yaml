@@ -11,6 +11,7 @@ dependencies:
   carousel_slider: ^4.2.1
   cloud_firestore: ^4.10.0
   country_code_picker: ^3.0.0
+  dio: ^5.4.1
   firebase_auth: ^4.6.3
   firebase_core: ^2.14.0
   firebase_storage: ^11.6.0
@@ -19,10 +20,12 @@ dependencies:
   flutter_highlight: ^0.7.0
   flutter_markdown: ^0.6.17+1
   flutter_rating_bar: ^4.0.1
+  flutter_secure_storage: ^9.0.0
   flutter_spinkit: ^5.2.0
   flutter_svg: ^2.0.7
   get: ^4.6.5
   hive_flutter: ^1.1.0
+  http: ^1.2.0
   image_picker: ^1.0.7
   material_design_icons_flutter: ^7.0.7296
   path_provider: ^2.0.15

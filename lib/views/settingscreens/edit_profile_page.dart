@@ -21,12 +21,12 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
   //TODO: Get the user details from the controller
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController numberController = TextEditingController();
   final picker = ImagePicker();
   File? _pickedImage;
   UserController userController = Get.put(UserController());
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController numberController = TextEditingController();
 
   FocusNode nameNode = FocusNode();
   FocusNode mailNode = FocusNode();
@@ -34,7 +34,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   void initState() {
-    nameController.text = userController.username;
+    // nameController.text = userController.username;
     emailController.text = userController.usermail;
     numberController.text = userController.userPhoneNumber;
     //TODO: Init phone number controller
@@ -76,16 +76,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   isEditable: true,
                   userController: userController,
                   onChangeImage: () async {
-                    //TODO: Select image from device
                     final pickedFile = await picker.pickImage(
                       source: ImageSource.gallery,
                     );
-                    setState(() {
-                      if (pickedFile != null) {
-                        _pickedImage = File(pickedFile.path);
-                        userController.updateUserImage(_pickedImage!);
-                      }
-                    });
+                    if (pickedFile != null) {
+                      _pickedImage = File(pickedFile.path);
+                      await userController.updateUserImage(_pickedImage!);
+                    }
+                    setState(() {});
                   },
                 ),
                 const SizedBox(height: 20),
@@ -94,6 +92,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   focusNode: nameNode,
                   icon: SvgPicture.asset(EditProfileIcon.profileIcon),
                   keyboardType: TextInputType.name,
+                  hint: userController.username,
                 ),
                 const SizedBox(height: 20),
                 EditProfileTextField(
@@ -101,6 +100,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   focusNode: mailNode,
                   icon: SvgPicture.asset(EditProfileIcon.mailIcon),
                   keyboardType: TextInputType.emailAddress,
+                  isEditable: false,
                 ),
                 const SizedBox(height: 20),
                 EditProfileTextField(
@@ -108,15 +108,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   focusNode: numberNode,
                   icon: SvgPicture.asset(EditProfileIcon.callIcon),
                   keyboardType: TextInputType.phone,
+                  isEditable: false,
                 ),
                 const Spacer(),
                 CustomButton(
                   buttonColor: CustomColor.buttonColor1,
                   buttonText: 'Save',
-                  onPressed: () {
+                  onPressed: () async {
                     nameNode.unfocus();
                     mailNode.unfocus();
                     numberNode.unfocus();
+                    // if (userController.username != nameController.text) {
+                    //   await userController.updateUsername(nameController.text);
+                    // }
+                    // setState(() {});
                     Get.back();
                   },
                   textColor: Colors.white,
@@ -137,12 +142,16 @@ class EditProfileTextField extends StatelessWidget {
     required this.icon,
     required this.keyboardType,
     required this.focusNode,
+    this.isEditable,
+    this.hint,
   });
 
   final TextEditingController controller;
   final Widget icon;
   final TextInputType keyboardType;
   final FocusNode focusNode;
+  final bool? isEditable;
+  final String? hint;
 
   @override
   Widget build(BuildContext context) {
@@ -188,14 +197,16 @@ class EditProfileTextField extends StatelessWidget {
                 },
                 maxLines: 1,
                 expands: false,
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(
+                decoration: InputDecoration(
+                  enabled: isEditable ?? true,
+                  hintText: hint,
+                  border: const UnderlineInputBorder(
                     borderSide: BorderSide.none,
                   ),
-                  enabledBorder: UnderlineInputBorder(
+                  enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide.none,
                   ),
-                  focusedBorder: UnderlineInputBorder(
+                  focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide.none,
                   ),
                 ),

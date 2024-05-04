@@ -2,9 +2,8 @@ import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/db_controller.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/enums/status_enum.dart';
-import 'package:cpp_final_app/views/auth/registration/mobile_auth_page.dart';
+import 'package:cpp_final_app/views/auth/registration/verification_page.dart';
 import 'package:cpp_final_app/views/loading_screen.dart';
-import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:cpp_final_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -217,7 +216,16 @@ class _SchoolSelectionPageState extends State<SchoolSelectionPage> {
       //TODO: Handle showing error here
       print('error1');
     } else {
-      Get.to(() => const MobileAuthPage());
+      Get.dialog(
+        const Dialog(
+          insetPadding: EdgeInsets.symmetric(
+            horizontal: 25,
+            vertical: 20,
+          ),
+          backgroundColor: Colors.transparent,
+          child: AuthDialogBox(),
+        ),
+      );
     }
   }
 }

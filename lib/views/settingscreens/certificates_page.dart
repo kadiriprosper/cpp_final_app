@@ -53,6 +53,16 @@ class CertificatePage extends StatelessWidget {
                 buttonText: 'Get Certificate',
                 onPressed: () async {
                   //TODO: Implement the certificate saving feature,
+                  Get.snackbar(
+                    'Coming Soon',
+                    'Just a bit, we would have this feature up for you',
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 10,
+                    ),
+                    colorText: Colors.blue,
+                    borderRadius: 20,
+                  );
                 },
                 textColor: Colors.white,
               ),

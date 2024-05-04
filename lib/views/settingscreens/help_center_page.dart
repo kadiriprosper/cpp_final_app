@@ -1,5 +1,4 @@
 import 'package:cpp_final_app/controllers/global_controller.dart';
-import 'package:cpp_final_app/data/data_pool.dart';
 import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:cpp_final_app/views/mainscreen/courses_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';

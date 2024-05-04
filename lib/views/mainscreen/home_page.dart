@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cpp_final_app/colors/colors.dart';
@@ -12,6 +14,7 @@ import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -516,25 +519,22 @@ class HomeHeaderWidget extends StatelessWidget {
           //TODO: Is this profile pic clickable?
           Obx(
             () => CircleAvatar(
-              //TODO: Change the path to the provider profile pic
-              child: userController.userImage.value.isEmpty
-                  ? Image.asset(HelperFunctions.profilePic)
-                  : Obx(
-                      () => Container(
-                        // borderRadius: BorderRadius.circular(46),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(
-                              userController.userImage.value,
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
               // backgroundImage:imagePath == null ? AssetImage(HelperFunctions.profilePic): ,
               radius: 32,
+              child: Container(
+                // borderRadius: BorderRadius.circular(46),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(
+                        userController.getProfileImageUrl),
+                    // FileImage(
+                    //   File(userController.getProfileImagePath),
+                    // ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
             ),
           ),
           const SizedBox(
@@ -542,12 +542,12 @@ class HomeHeaderWidget extends StatelessWidget {
           ),
           //TODO: Fetch the username from backend
           Text(
-            'Welcome, $username',
+            'Welcome, ${userController.username}',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
-          )
+          ),
         ],
       ),
     );

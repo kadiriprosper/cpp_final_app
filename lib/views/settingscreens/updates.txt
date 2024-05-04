@@ -1,0 +1,8 @@
+for the profile image, what we would do is always open the image from the local device
+this is how it works.
+    - when the user logs in, part of the auth process would be to download the profile image from firebase
+    - so the profile images would always be stored in the download location of the profile image
+    - the image cannot be empty because on registration, an image is assigned to the user
+    - once that image is assigned, then it is downloaded along side.
+    - on error downloading the application, the image currently on the device is usually still used
+    - the profile pictures downloade are of the same name to avoid conflict and ensure ease of image change

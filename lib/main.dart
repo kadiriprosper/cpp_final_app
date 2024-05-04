@@ -1,12 +1,15 @@
+import 'dart:convert';
+
 import 'package:cpp_final_app/colors/theme.dart';
 import 'package:cpp_final_app/controllers/db_controller.dart';
 import 'package:cpp_final_app/firebase_options.dart';
-import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/views/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 
 //TODO: Change the text theme of the whole app
 void main() async {
@@ -15,6 +18,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await Hive.initFlutter();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
