@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 
-//TODO: Change the text theme of the whole app
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
