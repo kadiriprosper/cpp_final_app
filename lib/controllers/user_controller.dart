@@ -1,30 +1,24 @@
 import 'dart:io';
 
 import 'package:cpp_final_app/auth/auth.dart';
-import 'package:cpp_final_app/helpers/image_downloader.dart';
 import 'package:cpp_final_app/enums/status_enum.dart';
-import 'package:cpp_final_app/views/auth/registration/verification_page.dart';
-import 'package:cpp_final_app/views/loading_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:pinput/pinput.dart';
 
 class UserController extends GetxController {
   Auth auth = Auth();
-  RxString otpCode = ''.obs;  
+  RxString otpCode = ''.obs;
   String phoneNumber = '';
   Rx<String> profileImageUrl = ''.obs;
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   final secureStorage = const FlutterSecureStorage();
 
-  get username =>    auth.username;
-  
+  get username => auth.username;
 
   get usermail => auth.usermail;
 
@@ -194,12 +188,7 @@ class UserController extends GetxController {
     await secureStorage.delete(key: 'password');
     await auth.deleteAccount();
   }
-
-  // Future<String> setProfilePicture(String path) async{
-
-  // }
-
-  //TODO: Possibly take this guy to helper function
+  
   void processFunction(
       Map<AuthStatusEnum, String> response, Widget toPage) async {
     if (response.entries.first.key == AuthStatusEnum.success) {
@@ -214,7 +203,10 @@ class UserController extends GetxController {
         'Error',
         response.entries.first.value,
         animationDuration: const Duration(seconds: 3),
-        backgroundColor: Colors.red.shade300,
+        colorText: Colors.red,
+        borderWidth: 1,
+        borderColor: Colors.red,
+        backgroundColor: Colors.black,
         margin: const EdgeInsets.symmetric(
           vertical: 20,
           horizontal: 10,

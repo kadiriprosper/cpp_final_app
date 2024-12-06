@@ -3304,7 +3304,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
             int alpha=0;
             cout<<"Enter any string: \\n";
             gets(s);
-            for(int i=0;s[i]!='\0';i++)
+            for(int i=0;s[i]!='0';i++)
             {
                 if((s[i]>=65&&s[i]<=90) || (s[i]>=97&&s[i]<=122))
                 alpha++;
@@ -3331,7 +3331,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
             int digit=0;
             cout<<"Enter any string: \\n";
             gets(s);
-            for(int i=0;s[i]!='\0';i++)
+            for(int i=0;s[i]!='0';i++)
             {
                 if(s[i]>=48&&s[i]<=57)
             }
@@ -3357,7 +3357,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
             int ss=0;
             cout<<"Enter any string: \\n";
             gets(s);
-            for(int i=0;s[i]!='\0';i++)
+            for(int i=0;s[i]!='0';i++)
             {
                 if((s[i]>=65&&s[i]<=90) || (s[i]>=97&&s[i]<=122)) 
                 {}
@@ -3387,7 +3387,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
             int space=0;
             cout<<"Enter any string: \\n";
             gets(s);
-            for(int i=0;s[i]!='\0';i++)
+            for(int i=0;s[i]!='0';i++)
             {
                 if(s[i]=='')
                 space++;
@@ -3413,7 +3413,7 @@ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
             int vowel=0,constant=0;
             cout<<"Enter any string \\n";
             gets(s);
-            for(int i=0;s[i]!='\0';i++)
+            for(int i=0;s[i]!='0';i++)
             {
                 if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'||s[i]=='A'||s[i]=='E'||s[i]=='I'||s[i]=='O'||s[i]=='U')
                 vowel++;

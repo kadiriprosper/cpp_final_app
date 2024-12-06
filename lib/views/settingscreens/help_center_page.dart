@@ -31,7 +31,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         title: 'Help Center',
         onBack: () {},
       ).build(context),
-      body: Container(
+      body: SizedBox(
         // margin: const EdgeInsets.symmetric(horizontal: 10).copyWith(top: 10),
         width: double.infinity,
         height: double.infinity,
@@ -54,31 +54,31 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
                   ],
                 ),
                 width: MediaQuery.of(context).size.width,
-                height: 60,
-                child: ButtonBar(
-                  buttonPadding: const EdgeInsets.symmetric(
-                    vertical: 0,
-                    horizontal: 5,
-                  ),
-                  alignment: MainAxisAlignment.center,
+                child: Row(
+                  // spacing: 5,
+                  // alignment: MainAxisAlignment.center,
                   children: [
-                    StatusButton(
-                      isSelected: isFaqSelected,
-                      label: 'FAQ',
-                      onPressed: () {
-                        setState(() {
-                          isFaqSelected = true;
-                        });
-                      },
+                    Expanded(
+                      child: StatusButton(
+                        isSelected: isFaqSelected,
+                        label: 'FAQ',
+                        onPressed: () {
+                          setState(() {
+                            isFaqSelected = true;
+                          });
+                        },
+                      ),
                     ),
-                    StatusButton(
-                      isSelected: !isFaqSelected,
-                      label: 'Contact Us',
-                      onPressed: () {
-                        setState(() {
-                          isFaqSelected = false;
-                        });
-                      },
+                    Expanded(
+                      child: StatusButton(
+                        isSelected: !isFaqSelected,
+                        label: 'Contact Us',
+                        onPressed: () {
+                          setState(() {
+                            isFaqSelected = false;
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),

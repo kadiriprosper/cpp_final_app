@@ -42,7 +42,7 @@ class _CoursesPageState extends State<CoursesPage> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
+                  color: Colors.white60,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
@@ -52,32 +52,34 @@ class _CoursesPageState extends State<CoursesPage> {
                     ),
                   ],
                 ),
-                width: MediaQuery.of(context).size.width,
+                // width: MediaQuery.of(context).size.width,
                 height: 45,
-                child: ButtonBar(
-                  buttonPadding: const EdgeInsets.symmetric(
-                    vertical: 0,
-                    horizontal: 5,
-                  ),
-                  alignment: MainAxisAlignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // spacing: 5,
+                  // alignment: MainAxisAlignment.center,
                   children: [
-                    StatusButton(
-                      isSelected: isCpp,
-                      label: 'C++',
-                      onPressed: () {
-                        setState(() {
-                          isCpp = true;
-                        });
-                      },
+                    Expanded(
+                      child: StatusButton(
+                        isSelected: isCpp,
+                        label: 'C++',
+                        onPressed: () {
+                          setState(() {
+                            isCpp = true;
+                          });
+                        },
+                      ),
                     ),
-                    StatusButton(
-                      isSelected: !isCpp,
-                      label: 'C',
-                      onPressed: () {
-                        setState(() {
-                          isCpp = false;
-                        });
-                      },
+                    Expanded(
+                      child: StatusButton(
+                        isSelected: !isCpp,
+                        label: 'C',
+                        onPressed: () {
+                          setState(() {
+                            isCpp = false;
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -134,7 +136,7 @@ class CoursesListView extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.white70,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
@@ -152,7 +154,7 @@ class CoursesListView extends StatelessWidget {
                   height: 90,
                   width: 100,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
                       image: AssetImage(

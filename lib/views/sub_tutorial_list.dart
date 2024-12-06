@@ -1,5 +1,4 @@
 import 'package:cpp_final_app/colors/colors.dart';
-import 'package:cpp_final_app/data/data_pool.dart';
 import 'package:cpp_final_app/views/tutorial_detail_page.dart';
 import 'package:cpp_final_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';

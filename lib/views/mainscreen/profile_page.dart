@@ -161,17 +161,17 @@ class RateUsDialogBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       insetPadding: const EdgeInsets.symmetric(horizontal: 20),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
         width: 500,
-        height: MediaQuery.of(context).size.height / 1.5,
+        // height: MediaQuery.of(context).size.height / 1.5,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -181,7 +181,7 @@ class RateUsDialogBox extends StatelessWidget {
                 fit: BoxFit.contain,
                 filterQuality: FilterQuality.high,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               const Text(
                 'Give Your Opinion',
                 style: TextStyle(
@@ -198,7 +198,7 @@ class RateUsDialogBox extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               RatingBar.builder(
                 allowHalfRating: true,
                 glowColor: Colors.amberAccent,
@@ -213,24 +213,30 @@ class RateUsDialogBox extends StatelessWidget {
                   //TODO: Get the rating value from the widget
                 },
               ),
-              const SizedBox(height: 20),
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
+              const SizedBox(height: 24),
+              Row(
+                // alignment: WrapAlignment.center,
+                // spacing: 12,
+                // runSpacing: 8,
                 children: [
-                  CustomButtonSmall(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    title: 'Cancel',
-                    minWidth: 20,
+                  Expanded(
+                    child: CustomButtonSmall(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      title: 'Cancel',
+                      minWidth: 20,
+                    ),
                   ),
-                  const SizedBox(height: 10),
-                  CustomButtonSmall(
-                    onPressed: () {},
-                    minWidth: 20,
-                    title: 'Submit',
-                    textColor: CustomColor.buttonColor1,
-                    buttonColor: Colors.white,
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: CustomButtonSmall(
+                      onPressed: () {},
+                      minWidth: 20,
+                      title: 'Submit',
+                      textColor: CustomColor.buttonColor1,
+                      buttonColor: Colors.white,
+                    ),
                   ),
                 ],
               )
@@ -252,8 +258,10 @@ class ProfileDialogBoxWidget extends StatelessWidget {
     return SimpleDialog(
       //TODO: Probably convert this to container instead of simple dialog
       //TODO: Also use the index to know which card is selected
-      contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
-      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+      insetPadding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
       backgroundColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
@@ -267,33 +275,36 @@ class ProfileDialogBoxWidget extends StatelessWidget {
         ),
       ),
       children: [
-        ButtonBar(
-          alignment: MainAxisAlignment.center,
+        Row(
           children: [
-            CustomButtonSmall(
-              minWidth: MediaQuery.of(context).size.width * 0.3,
-              onPressed: () async {
-                //TODO: Reset all the tab guys
-                final userController = Get.put(UserController());
-                await userController.userLogout();
-                Get.offUntil(
-                  MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
-                  ),
-                  (route) => false,
-                );
-              },
-              title: 'Yes',
+            Expanded(
+              child: CustomButtonSmall(
+                minWidth: MediaQuery.of(context).size.width * 0.3,
+                onPressed: () async {
+                  //TODO: Reset all the tab guys
+                  final userController = Get.put(UserController());
+                  await userController.userLogout();
+                  Get.offUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ),
+                    (route) => false,
+                  );
+                },
+                title: 'Yes',
+              ),
             ),
-            const SizedBox(height: 10),
-            CustomButtonSmall(
-              minWidth: MediaQuery.of(context).size.width * 0.3,
-              onPressed: () {
-                Get.back();
-              },
-              buttonColor: Colors.white,
-              textColor: CustomColor.buttonColor1,
-              title: 'No',
+            const SizedBox(width: 10),
+            Expanded(
+              child: CustomButtonSmall(
+                minWidth: MediaQuery.of(context).size.width * 0.3,
+                onPressed: () {
+                  Get.back();
+                },
+                buttonColor: Colors.white,
+                textColor: CustomColor.buttonColor1,
+                title: 'No',
+              ),
             ),
           ],
         ),

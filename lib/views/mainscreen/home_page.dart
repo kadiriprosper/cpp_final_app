@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -14,7 +14,6 @@ import 'package:cpp_final_app/views/settingscreens/certificates_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   FocusNode focusNode = FocusNode();
   UserController userController = Get.put(UserController());
   GlobalController globalController = Get.put(GlobalController());
-  CarouselController controller = CarouselController();
+  CarouselSliderController controller = CarouselSliderController();
   TextEditingController textController = TextEditingController();
 
   @override
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
@@ -54,7 +53,6 @@ class _HomePageState extends State<HomePage> {
           children: [
             const SizedBox(height: 30),
             HomeHeaderWidget(
-              //TODO: Change the image and name to the current user
               userController: userController,
               username: userController.username,
             ),
@@ -62,7 +60,6 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                //TODO: Put the controller
                 focusNode: focusNode,
                 controller: textController,
                 decoration: InputDecoration(
@@ -81,7 +78,6 @@ class _HomePageState extends State<HomePage> {
                     color: CustomColor.buttonColor1,
                   ),
                   suffixIcon: IconButton(
-                    //TODO: change the icon
                     icon: Icon(
                       MdiIcons.filterSettings,
                       color: CustomColor.buttonColor1,

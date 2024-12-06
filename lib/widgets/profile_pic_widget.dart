@@ -1,8 +1,6 @@
-import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
-import 'package:cpp_final_app/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

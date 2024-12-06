@@ -44,7 +44,7 @@ class CustomAppBar extends StatelessWidget {
                 fontSize: 19,
               ),
             ),
-        backgroundColor: bgColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         foregroundColor: fgColor,
         actions: actions,
       ),

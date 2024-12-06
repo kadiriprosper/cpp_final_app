@@ -124,7 +124,7 @@ class DialogBoxWidget extends StatelessWidget {
         ),
       ),
       children: [
-        ButtonBar(
+        OverflowBar(
           alignment: MainAxisAlignment.center,
           children: [
             CustomButtonSmall(

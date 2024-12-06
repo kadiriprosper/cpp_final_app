@@ -1,9 +1,7 @@
-import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pinput/pinput.dart';
 
 // class VerificationPage extends StatefulWidget {
 //   const VerificationPage({super.key});

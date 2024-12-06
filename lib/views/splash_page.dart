@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cpp_final_app/controllers/user_controller.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
+import 'package:cpp_final_app/views/network_error_page.dart';
 import 'package:cpp_final_app/views/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -18,14 +21,17 @@ class SplashPage extends StatelessWidget {
             if (await secureStorage.read(key: 'email') == null) {
               Get.to(() => const OnboardingPage());
             } else {
-              final controller = Get.put(UserController());
-              print(await secureStorage.read(key: 'email'));
-              print(await secureStorage.read(key: 'password'));
-              await controller.userLogin(
-                (await secureStorage.read(key: 'email'))!,
-                (await secureStorage.read(key: 'password'))!,
-                const MainScreen(),
-              );
+              final networkResponse = await isNetworkAvailable();
+              if (networkResponse) {
+                final controller = Get.put(UserController());
+                await controller.userLogin(
+                  (await secureStorage.read(key: 'email'))!,
+                  (await secureStorage.read(key: 'password'))!,
+                  const MainScreen(),
+                );
+              } else {
+                Get.to(NetwortErrorPage());
+              }
             }
           }.call(),
           builder: (context, snapshot) {
@@ -68,5 +74,14 @@ class SplashPage extends StatelessWidget {
             );
           }),
     );
+  }
+}
+
+Future<bool> isNetworkAvailable() async {
+  try {
+    final response = await InternetAddress.lookup('google.com');
+    return response.isNotEmpty && response[0].rawAddress.isNotEmpty;
+  } catch (_) {
+    return false;
   }
 }

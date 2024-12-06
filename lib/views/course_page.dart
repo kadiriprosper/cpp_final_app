@@ -41,34 +41,37 @@ class _CoursePageState extends State<CoursePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    color: CustomColor.courseFrameColor,
-                    width: 5,
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage(HelperFunctions.courseImage),
-                    fit: BoxFit.fill,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      offset: Offset.fromDirection(90),
-                      blurRadius: 10,
-                      spreadRadius: 0.1,
+              AspectRatio(
+                aspectRatio: 4 / 2,
+                child: Container(
+                  // width: MediaQuery.of(context).size.width,
+                  // height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: CustomColor.courseFrameColor,
+                      width: 5,
                     ),
-                  ],
+                    image: DecorationImage(
+                      image: AssetImage(HelperFunctions.courseImage),
+                      fit: BoxFit.fill,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        offset: Offset.fromDirection(90),
+                        blurRadius: 10,
+                        spreadRadius: 0.1,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 10),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
+                  color: Colors.white60,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
@@ -80,42 +83,42 @@ class _CoursePageState extends State<CoursePage> {
                 ),
                 width: MediaQuery.of(context).size.width,
                 height: 45,
-                child: ButtonBar(
-                  buttonPadding: const EdgeInsets.symmetric(
-                    vertical: 0,
-                    horizontal: 5,
-                  ),
-                  alignment: MainAxisAlignment.center,
+                child: Row(
+                  // spacing: 5,
+                  // alignment: MainAxisAlignment.center,
                   children: [
-                    StatusButton(
-                      isSelected: currentSelected == 0,
-                      label: 'Overview',
-                      width: MediaQuery.of(context).size.width / 3.5,
-                      onPressed: () {
-                        setState(() {
-                          currentSelected = 0;
-                        });
-                      },
+                    Expanded(
+                      child: StatusButton(
+                        isSelected: currentSelected == 0,
+                        label: 'Overview',
+                        onPressed: () {
+                          setState(() {
+                            currentSelected = 0;
+                          });
+                        },
+                      ),
                     ),
-                    StatusButton(
-                      isSelected: currentSelected == 1,
-                      label: 'PDFs',
-                      width: MediaQuery.of(context).size.width / 3.5,
-                      onPressed: () {
-                        setState(() {
-                          currentSelected = 1;
-                        });
-                      },
+                    Expanded(
+                      child: StatusButton(
+                        isSelected: currentSelected == 1,
+                        label: 'PDFs',
+                        onPressed: () {
+                          setState(() {
+                            currentSelected = 1;
+                          });
+                        },
+                      ),
                     ),
-                    StatusButton(
-                      isSelected: currentSelected == 2,
-                      label: 'Videos',
-                      width: MediaQuery.of(context).size.width / 3.5,
-                      onPressed: () {
-                        setState(() {
-                          currentSelected = 2;
-                        });
-                      },
+                    Expanded(
+                      child: StatusButton(
+                        isSelected: currentSelected == 2,
+                        label: 'Videos',
+                        onPressed: () {
+                          setState(() {
+                            currentSelected = 2;
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -151,7 +154,10 @@ class OverviewSegment extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(
+          height: 5,
+          width: double.infinity,
+        ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
@@ -162,64 +168,80 @@ class OverviewSegment extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        ButtonBar(
-          alignment: MainAxisAlignment.spaceEvenly,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CourseButton(
-              isSvg: true,
-              imagePath: HelperFunctions.lessonsImage,
-              onPressed: () {
-                Get.to(() => const TutorialList(
-                      pageTitle: 'C++ Tutorials',
-                    ));
-              },
-              title: 'Tutorial',
+            Expanded(
+              child: CourseButton(
+                isSvg: true,
+                imagePath: HelperFunctions.lessonsImage,
+                onPressed: () {
+                  Get.to(() => const TutorialList(
+                        pageTitle: 'C++ Tutorials',
+                      ));
+                },
+                title: 'Tutorial',
+              ),
             ),
-            CourseButton(
-              isSvg: true,
-              imagePath: HelperFunctions.programImage,
-              onPressed: () {
-                globalController.selectedProgrammingLanguage = 'cpp';
-                //TODO: Change the course list based on the selected
-                Get.to(() => const ProgramListPage());
-              },
-              title: 'Program',
+            const SizedBox(width: 12),
+            Expanded(
+              child: CourseButton(
+                isSvg: true,
+                imagePath: HelperFunctions.programImage,
+                onPressed: () {
+                  globalController.selectedProgrammingLanguage = 'cpp';
+                  //TODO: Change the course list based on the selected
+                  Get.to(() => const ProgramListPage());
+                },
+                title: 'Program',
+              ),
             ),
-            CourseButton(
-              isSvg: true,
-              imagePath: HelperFunctions.qaImage,
-              onPressed: () {
-                globalController.selectedProgrammingLanguage = 'cpp';
-                Get.to(() => const QaPage());
-              },
-              title: 'Q/A',
+            const SizedBox(width: 12),
+            Expanded(
+              child: CourseButton(
+                isSvg: true,
+                imagePath: HelperFunctions.qaImage,
+                onPressed: () {
+                  globalController.selectedProgrammingLanguage = 'cpp';
+                  Get.to(() => const QaPage());
+                },
+                title: 'Q/A',
+              ),
             ),
           ],
         ),
-        // const SizedBox(height: 10),
-        ButtonBar(
-          alignment: MainAxisAlignment.spaceEvenly,
+        const SizedBox(height: 12),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CourseButton(
-              isSvg: true,
-              imagePath: HelperFunctions.langImage,
-              onPressed: () {},
-              title: 'English',
-              isButton: false,
+            Expanded(
+              child: CourseButton(
+                isSvg: true,
+                imagePath: HelperFunctions.langImage,
+                onPressed: () {},
+                title: 'English',
+                isButton: false,
+              ),
             ),
-            CourseButton(
-              isSvg: true,
-              imagePath: HelperFunctions.certImage,
-              onPressed: () {},
-              title: 'Certificate',
-              isButton: false,
+            const SizedBox(width: 12),
+            Expanded(
+              child: CourseButton(
+                isSvg: true,
+                imagePath: HelperFunctions.certImage,
+                onPressed: () {},
+                title: 'Certificate',
+                isButton: false,
+              ),
             ),
-            CourseButton(
-              isSvg: true,
-              imagePath: HelperFunctions.securityImage,
-              onPressed: () {},
-              title: 'Fully Secure',
-              isButton: false,
+            const SizedBox(width: 12),
+            Expanded(
+              child: CourseButton(
+                isSvg: true,
+                imagePath: HelperFunctions.securityImage,
+                onPressed: () {},
+                title: 'Fully Secure',
+                isButton: false,
+              ),
             ),
           ],
         ),
@@ -273,58 +295,48 @@ class CourseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 90,
-          width: 85,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: isButton
-                ? const Color.fromARGB(255, 160, 212, 255)
-                : const Color.fromARGB(255, 228, 243, 255),
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              isSvg
-                  ? SvgPicture.asset(
-                      imagePath,
-                      height: 30,
-                      width: 30,
-                      fit: BoxFit.contain,
-                    )
-                  : Image.asset(
-                      imagePath,
-                      filterQuality: FilterQuality.high,
-                      height: 30,
-                      width: 30,
-                      fit: BoxFit.contain,
-                    ),
-              const SizedBox(height: 10),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 12,
-                ),
+    return Container(
+      height: 90,
+      width: 85,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: isButton
+            ? const Color.fromARGB(255, 160, 212, 255)
+            : const Color.fromARGB(255, 228, 243, 255),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: InkWell(
+        onTap: onPressed,
+        hoverColor: Colors.black12,
+        borderRadius: BorderRadius.circular(15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            isSvg
+                ? SvgPicture.asset(
+                    imagePath,
+                    height: 30,
+                    width: 30,
+                    fit: BoxFit.contain,
+                  )
+                : Image.asset(
+                    imagePath,
+                    filterQuality: FilterQuality.high,
+                    height: 30,
+                    width: 30,
+                    fit: BoxFit.contain,
+                  ),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 12,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        isButton
-            ? MaterialButton(
-                onPressed: onPressed,
-                height: 98,
-                minWidth: 92,
-                hoverColor: Colors.black12,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              )
-            : const SizedBox(),
-      ],
+      ),
     );
   }
 }

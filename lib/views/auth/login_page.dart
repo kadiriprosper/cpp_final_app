@@ -1,14 +1,11 @@
-import 'package:cpp_final_app/auth/auth.dart';
 import 'package:cpp_final_app/colors/colors.dart';
 import 'package:cpp_final_app/controllers/user_controller.dart';
-import 'package:cpp_final_app/enums/status_enum.dart';
 import 'package:cpp_final_app/views/auth/forgot_password_screen.dart';
 import 'package:cpp_final_app/views/auth/registration/registration_page.dart';
 import 'package:cpp_final_app/views/loading_screen.dart';
 import 'package:cpp_final_app/views/mainscreen/main_screen.dart';
 import 'package:cpp_final_app/widgets/auth_button.dart';
 import 'package:cpp_final_app/widgets/auth_button_external.dart';
-import 'package:cpp_final_app/widgets/auth_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -37,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(bottom: 40),
+                  padding: const EdgeInsets.only(bottom: 10),
                   constraints: const BoxConstraints(
                     maxWidth: 500,
                   ),
@@ -182,34 +179,37 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         },
                       ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        'or sign in with',
-                      ),
-                      const SizedBox(height: 20),
-                      AuthButtonExternal(
-                        icon: Icon(
-                          MdiIcons.google,
-                          color: Colors.red,
-                        ),
-                        title: 'Login with Google',
-                        onPressed: () {
-                          //TODO: validate and login with google
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      AuthButtonExternal(
-                          icon: Icon(
-                            MdiIcons.facebook,
-                            color: CustomColor.buttonColor1,
-                          ),
-                          title: 'Login with Facebook',
-                          onPressed: () {}),
+                      // const SizedBox(height: 20),
+                      // const Text(
+                      //   'or sign in with',
+                      // ),
+                      // const SizedBox(height: 20),
+                      // AuthButtonExternal(
+                      //   icon: Icon(
+                      //     MdiIcons.google,
+                      //     color: Colors.red,
+                      //   ),
+                      //   title: 'Login with Google',
+                      //   onPressed: () {
+                      //     //TODO: validate and login with google
+                      //   },
+                      // ),
+                      // const SizedBox(height: 20),
+                      // AuthButtonExternal(
+                      //     icon: Icon(
+                      //       MdiIcons.facebook,
+                      //       color: CustomColor.buttonColor1,
+                      //     ),
+                      //     title: 'Login with Facebook',
+                      //     onPressed: () {},),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0).copyWith(bottom: 30),
+                  padding: const EdgeInsets.all(8.0).copyWith(
+                    bottom: 30,
+                    top: 0,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
