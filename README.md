@@ -16,7 +16,7 @@ Beyond the tutorials, see the programming languages in action by browsing throug
   -  Utilizes Firebase services for authentication (firebase auth), cloud database (cloud-Firestore) and Firebase storage to persist user data on the cloud
   -  Converts tutorials in markdown format to visually appealing text format
 
-[Click here](https://github.com/kadiriprosper/mobile_chef/blob/master/assets/app-release.apk) to download the sample application.
+[Click here](https://github.com/kadiriprosper/cpp_final_app/blob/master/assets/app-release.apk) to download the sample application.
 
 ##  Attributions
 This application was built alongside team-mates from Team Typ.
